@@ -12,6 +12,6 @@
   - Computational geometry
   - Generative design
   - Visualization of data and algorithms 
- - Consider issues of algorithmic efficiency in performing computationally intensive tasks. 
+ - Algorithmic efficiency in performing computationally intensive tasks. 
  - Investigate topics from both theoretical and applied perspectives. 
  - Code projects using standard web development tools: HTML, CSS, and JavaScript.
