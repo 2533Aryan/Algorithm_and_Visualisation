@@ -1,10 +1,10 @@
 # Course: Algorithm and Visualisation
 
-- Professor: Will Rosenbaum
+Professor: Will Rosenbaum
 
 # In this course
  - Explore algorithmic and aesthetic principles to create interactive graphical content on the web.
- 
+
  - Topics include 
    - Design layout
    - Combinatorial optimization
