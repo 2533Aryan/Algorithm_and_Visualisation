@@ -5,7 +5,7 @@
 # In this course
  - Explore algorithmic and aesthetic principles to create interactive graphical content on the web.
  - Topics include 
-  - Design layout
+ -- Design layout
   - Combinatorial optimization
   - Geometry of color spaces
   - Graph drawing
