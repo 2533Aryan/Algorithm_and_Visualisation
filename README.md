@@ -4,6 +4,7 @@
 
 # In this course
  - Explore algorithmic and aesthetic principles to create interactive graphical content on the web.
+ 
  - Topics include 
    - Design layout
    - Combinatorial optimization
@@ -12,7 +13,7 @@
    - Computational geometry
    - Generative design
    - Visualization of data and algorithms 
-   
+
  - Algorithmic efficiency in performing computationally intensive tasks. 
  - Investigate topics from both theoretical and applied perspectives. 
  - Code projects using standard web development tools: HTML, CSS, and JavaScript.
