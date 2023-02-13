@@ -47,7 +47,14 @@ nav a {
     text-decoration: none;
   }
 
+/*link colors*/
+nav a:hover {
+    background-color: #999;
+    color: #FFF;
+  }
+
 .active a {
     background-color: #FFF;
     color: #333;
   }
+  
