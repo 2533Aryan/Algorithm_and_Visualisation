@@ -56,6 +56,7 @@ nav a {
     text-decoration: none;
   }
 
+  
 /*link colors*/
 nav a:hover {
     background-color: #999;
@@ -68,7 +69,7 @@ nav a:hover {
   }
 
 
-
+/*project styling*/
   .project {
     display: flex;
     justify-content: center;
