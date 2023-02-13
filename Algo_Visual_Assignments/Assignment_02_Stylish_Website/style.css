@@ -26,6 +26,7 @@ header {
     right: 100;
   }
   
+/*   
 .center {
     position: absolute;
     left: 100;
@@ -34,7 +35,7 @@ header {
     width: 50%;
   }
   
-  
+   */
 
 .title {
     text-align: center;
@@ -45,7 +46,7 @@ header {
 
 /*nav styling*/
 nav {
-    display: flex;
+    display: flex; /*tabs whole window center*/
     justify-content: center;
   }
   
@@ -53,7 +54,7 @@ nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
+    display: flex; /*horizontal center*/
   }
   
 nav li {
@@ -67,20 +68,20 @@ nav a {
 
 
 nav a.active {
-    background-color: #FFF;
+    background-color: #4e86c5;
     color: #333;
   }
 
 /*link colors*/
 nav a:hover {
-    background-color: #999;
+    background-color: #38ce5b;
     color: #FFF;
   }
-
+/* 
 .active a {
-    background-color: #FFF;
+    background-color: #820e0e;
     color: #333;
-  }
+  } */
 
   
 
