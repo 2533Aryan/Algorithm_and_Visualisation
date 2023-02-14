@@ -14,14 +14,18 @@ header {
     color: #FFF;
     position: fixed;
     top: 0;
-    width: 50%;
+    width: 100%;
   }
   
-.container {
+.container{
     width: 800px;
-    margin: 0 auto;
+    position: absolute;
+    left: 20% auto;
+    right: 20%;
+    top: 10.5%;
     background-color: white;
   }
+
 
 
 .title {
