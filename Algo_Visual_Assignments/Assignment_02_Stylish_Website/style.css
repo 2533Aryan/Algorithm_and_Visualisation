@@ -3,7 +3,7 @@ body {
   }
 
 main {
-    background-color: #ffffff;
+    background-color: #d08181;
     margin: 50px auto;
     text-align: justify;
     padding: 10px;
@@ -12,9 +12,11 @@ main {
 header {
     background-color: #333;
     color: #FFF;
-    position: fixed;
     top: 0;
-    width: 100%;
+    width: 800px;
+    position: absolute;
+    left: 20% auto;
+    right: 20%;
   }
   
 .container{
