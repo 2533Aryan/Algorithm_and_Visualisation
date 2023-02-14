@@ -14,7 +14,7 @@ header {
     color: #FFF;
     top: 0;
     width: 800px;
-    position: absolute;
+    position: fixed;
     left: 20% auto;
     right: 20%;
   }
@@ -56,7 +56,6 @@ nav a {
     color: #FFF;
     text-decoration: none;
   }
-
 
 nav a.active {
     background-color: #4e86c5;
