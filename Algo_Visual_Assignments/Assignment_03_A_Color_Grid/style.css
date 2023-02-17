@@ -1,24 +1,22 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  }
-  
-  .container {
-    width: 600px;
-    margin: 0 auto;
-  }
-  
-  .title {
-    text-align: center;
-  }
-  
-  #grid {
-    width: 500px;
-    height: 500px;
-    margin: 0 auto;
-    border: 1px solid black;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
+.container {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid black;
+}
+
+.title {
+	text-align: center;
+}
+
+.tile {
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+	float: left;
+}
+
+/* This rule changes the color of a tile on hover */
+.tile:hover {
+	background-color: #ddd;
+}
