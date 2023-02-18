@@ -39,7 +39,11 @@ body {
 } */
 
 .tile:hover {
-    background-color: rgb(0, 0, 0);
+	-webkit-filter: blur(1px);
+	filter: blur(1px);
+	opacity: 10;
+	transform: scale(1, 1);
+	transition: -webkit-filter 0.5s, filter 0.5s, opacity 0.5s, transform 0.5s;
 }
 
 /* This rule changes the color of a tile on hover */
