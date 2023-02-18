@@ -22,6 +22,8 @@ function drawTiles() {
     }
 }
 
+
 window.onload = function() {
 	drawTiles();
 };
+
