@@ -34,10 +34,7 @@ body {
 	float: left;
 }
 
-
 /* hover effect */
 .tile:hover {
-	filter: blur(1px);
-	opacity: 10;
-	transform: scale(1, 1);
+	filter: blur(25px);
 }
