@@ -34,7 +34,15 @@ body {
 	float: left;
 }
 
-/* This rule changes the color of a tile on hover */
+/* .tile {
+    transition: background-color 0.5s;
+} */
+
 .tile:hover {
-	background-color: #b71414;
+    background-color: rgb(0, 0, 0);
 }
+
+/* This rule changes the color of a tile on hover */
+/* .tile:hover {
+	background-color: #b71414;
+} */
