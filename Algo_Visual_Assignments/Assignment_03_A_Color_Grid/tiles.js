@@ -16,6 +16,11 @@ function drawTiles() {
             // Set the background color of the tile
             tile.style.backgroundColor = 'hsl(' + hue + ', ' + saturation + '%, ' + lightness + '%)';
 
+			// Add an event listener to the tile that changes its color permanently when clicked
+			tile.addEventListener('click', function() {
+			this.style.backgroundColor = 'black';
+			});
+
             // Append the tile to the container
             gridContainer.appendChild(tile);
         }
