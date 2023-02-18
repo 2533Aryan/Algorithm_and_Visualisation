@@ -14,7 +14,7 @@ function drawTiles() {
             var lightness = 30 + (row * 5) + (col * 2);
 
             // Set the background color of the tile
-            tile.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+            tile.style.backgroundColor = 'hsl(' + hue + ', ' + saturation + '%, ' + lightness + '%)';
 
             // Append the tile to the container
             gridContainer.appendChild(tile);
