@@ -74,45 +74,45 @@ function drawGrid() {
     container.style.height = CONTAINER_HEIGHT + "px";
 
     for (let i = 0; i < NUM_COLUMNS; i++) {
-	for (let j = 0; j < NUM_ROWS; j++) {
-	    // make a new div for a box
-	    let box = document.createElement('div');
+		for (let j = 0; j < NUM_ROWS; j++) {
+			// make a new div for a box
+			let box = document.createElement('div');
 
-	    box.id = 'tile' + i + '-' + j;
+			box.id = 'tile' + i + '-' + j;
 
-	    // make box's class 'tile'
-	    box.classList.add('tile');
+			// make box's class 'tile'
+			box.classList.add('tile');
 
-	    // compute coordinates for this box
-	    let x = i * TILE_SIZE;
-	    let y = j * TILE_SIZE;
+			// compute coordinates for this box
+			let x = i * TILE_SIZE;
+			let y = j * TILE_SIZE;
 
-	    box.style.left = x + 'px';
-	    box.style.top = y + 'px';
+			box.style.left = x + 'px';
+			box.style.top = y + 'px';
 
-	    // set the size of the box
-	    box.style.width = TILE_INNER + 'px';
-	    box.style.height = TILE_INNER + 'px';
+			// set the size of the box
+			box.style.width = TILE_INNER + 'px';
+			box.style.height = TILE_INNER + 'px';
 
-	    // set the color of the box
-	    let h = 32 * (i + 2 * j) / 5 + 150;
-	    let s = 100 - 5 * j;
-	    let l = 50 + 5 * (i - j) / 2;
-	    box.style.backgroundColor = "white";
-	    box.style.borderColor = "rgb(64, 64, 64)";
+			// set the color of the box
+			let h = 32 * (i + 2 * j) / 5 + 150;
+			let s = 100 - 5 * j;
+			let l = 50 + 5 * (i - j) / 2;
+			box.style.backgroundColor = "white";
+			box.style.borderColor = "rgb(64, 64, 64)";
 
-	    if (j == 0 && i == 15) {
-		box.style.backgroundColor = "black";
-	    }
+			if (j == 0 && i == 15) {
+			box.style.backgroundColor = "black";
+			}
 
-	    // make interactions!
-	    if (j > 0) {
-		box.addEventListener("click", tileUpdate);
-	    }
+			// make interactions!
+			if (j > 0) {
+			box.addEventListener("click", tileUpdate);
+			}
 
-	    // make the box a child of container
-	    container.appendChild(box);
-	}
+			// make the box a child of container
+			container.appendChild(box);
+		}
     }
 }
 
