@@ -112,6 +112,7 @@ function drawGrid() {
     }
 }
 
+
 function tileUpdate(e) {
     const textBox = document.querySelector("#text-box");
     let tile = e.target;
