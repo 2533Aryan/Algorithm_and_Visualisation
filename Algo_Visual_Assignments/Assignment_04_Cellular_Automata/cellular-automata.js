@@ -107,8 +107,8 @@ function tileUpdate(e) {
     const textBox = document.querySelector("#text-box");
     let tile = e.target;
     if (tile.style.backgroundColor == "black") {
-	tile.style.backgroundColor = "white";
+		tile.style.backgroundColor = "white";
     } else {
-	tile.style.backgroundColor = "black";	    
+		tile.style.backgroundColor = "black";	    
     }
 }
