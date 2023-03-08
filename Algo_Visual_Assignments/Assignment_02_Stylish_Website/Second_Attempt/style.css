@@ -5,11 +5,10 @@ body {
 header {
     background-color: #333;
     color: #FFF;
-    top: 0;
     width: 800px;
-    position: fixed;
+    /* position: fixed;
     left: 25%;
-    right: 20%;
+    right: 20%; */
   }
   
 /* body {
