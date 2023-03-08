@@ -1,20 +1,25 @@
-body {
+  body {
     background-color: #BBB6DF;
   }
 
-header {
-    background-color: #333;
+  header {
+    background-color: #424242;
     color: #FFF;
     width: 800px;
-    /* position: fixed;
-    left: 25%;
-    right: 20%; */
+    /* position: fixed; */
   }
   
-/* body {
-    background-color: #d08181;
+  main{
+    display: flex;
+    justify-content: center;
+  }  
+
+  .container{
+    background-color: white;
+    width: 800px;
   }
 
+/*
 main {
     background-color: #d08181;
     margin: 50px auto;
