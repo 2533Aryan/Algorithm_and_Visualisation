@@ -2,6 +2,20 @@ body {
     background-color: #d08181;
   }
 
+header {
+    background-color: #333;
+    color: #FFF;
+    top: 0;
+    width: 800px;
+    position: fixed;
+    left: 25%;
+    right: 20%;
+  }
+  
+/* body {
+    background-color: #d08181;
+  }
+
 main {
     background-color: #d08181;
     margin: 50px auto;
@@ -83,4 +97,4 @@ nav a:hover {
   .project-description {
     text-align: left;
     width: 400px;
-  }
+  } */
