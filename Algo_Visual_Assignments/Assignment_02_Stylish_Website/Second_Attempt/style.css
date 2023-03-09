@@ -2,7 +2,7 @@
     background-color: #BBB6DF;
   }
 
-  header {
+  .top {
     display: flex;
     justify-content: center;
   }
