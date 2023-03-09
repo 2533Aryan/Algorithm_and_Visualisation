@@ -12,7 +12,13 @@
     color: #FFF;
     width: 800px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+  }
+  
+  .nav{
+    display: flex;
+    justify-content: space-evenly;
   }
   
   main{
