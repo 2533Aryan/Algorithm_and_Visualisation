@@ -16,11 +16,16 @@
     justify-content: center;
   }
   
+  .title{
+    display: flex;
+    justify-content: center;
+  }
+
   .nav{
     display: flex;
     justify-content: space-evenly;
   }
-  
+
   main{
     display: flex;
     justify-content: center;
