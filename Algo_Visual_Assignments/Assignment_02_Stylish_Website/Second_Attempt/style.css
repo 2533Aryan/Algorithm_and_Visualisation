@@ -25,11 +25,9 @@
   .nav{
     display: flex;
     list-style: none;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     height: 40px;
-    border: 1px solid white;
-
   }
 
   .button{
