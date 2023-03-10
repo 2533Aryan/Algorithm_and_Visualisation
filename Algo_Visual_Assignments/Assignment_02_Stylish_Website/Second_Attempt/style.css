@@ -21,24 +21,20 @@
     justify-content: center;
   }
 
-  nav{
+  .nav{
     display: flex;
+    list-style: none;
     justify-content: center;
   }
 
-  ul {
-    display: flex;
-    list-style: none;
-  }
-
-  .links-list a {
+  .nav a {
     background-color: rgb(179,57,81);
     color: #fff;
     text-decoration: none;
     padding: 1em 2em;
   }
   
-  .links-list a:hover {
+  .nav a:hover {
     background-color: rgb(66, 28, 40);
     color: #fff;
   }
