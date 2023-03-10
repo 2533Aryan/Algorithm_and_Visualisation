@@ -32,24 +32,6 @@
     list-style: none;
   }
 
-  .button{
-    border: 1px solid snow;
-    padding: 15px;
-    width: 15%;
-    background-color: #FAD4C0;
-    
-  }
-
-  main{
-    display: flex;
-    justify-content: center;
-  }  
-
-  .container{
-    background-color: white;
-    width: 800px;
-  }
-
   .links-list a {
     background-color: rgb(179,57,81);
     color: #fff;
@@ -60,6 +42,18 @@
   .links-list a:hover {
     background-color: rgb(66, 28, 40);
     color: #fff;
+  }
+
+  
+
+  main{
+    display: flex;
+    justify-content: center;
+  }  
+
+  .container{
+    background-color: white;
+    width: 800px;
   }
 
 /*
