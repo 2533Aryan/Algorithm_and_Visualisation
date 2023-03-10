@@ -19,7 +19,7 @@
   .title{
     display: flex;
     justify-content: center;
-    height: 75px;
+    height: 60px;
   }
 
   .nav{
@@ -27,7 +27,8 @@
     list-style: none;
     justify-content: center;
     justify-content: space-evenly;
-    height: 30px;
+    align-items: center;
+    height: 40px;
   }
 
   .button{
