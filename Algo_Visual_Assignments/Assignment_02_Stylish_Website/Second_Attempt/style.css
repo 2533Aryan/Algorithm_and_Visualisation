@@ -22,7 +22,7 @@
     justify-content: center;
   }
 
-  .nav{
+  nav{
     display: flex;
     justify-content: space-evenly;
   }
@@ -43,6 +43,18 @@
   .container{
     background-color: white;
     width: 800px;
+  }
+
+  .links-list a {
+    background-color: rgb(179,57,81);
+    color: #fff;
+    text-decoration: none;
+    padding: 1em 2em;
+  }
+  
+  .links-list a:hover {
+    background-color: rgb(66, 28, 40);
+    color: #fff;
   }
 
 /*
