@@ -21,10 +21,16 @@
     display: flex;
     justify-content: center;
   }
+  
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+  }
 
   nav{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
   }
 
   .button{
