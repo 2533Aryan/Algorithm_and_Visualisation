@@ -19,6 +19,7 @@
   .title{
     display: flex;
     justify-content: center;
+    height: 75px;
   }
 
   .nav{
@@ -26,15 +27,23 @@
     list-style: none;
     justify-content: center;
     justify-content: space-evenly;
+    height: 30px;
+  }
+
+  .button{
+    background-color: rgb(179,57,81);
+    width: 100px;
+    padding: 15px;
+    border: 1px solid white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .nav a {
-    background-color: rgb(179,57,81);
     color: #fff;
     text-decoration: none;
-    padding: 1em 2em;
-    border: 1px solid white;
-    border-radius: 10px;
   }
   
   .nav a:hover {
