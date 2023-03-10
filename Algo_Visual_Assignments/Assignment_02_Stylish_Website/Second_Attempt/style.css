@@ -33,6 +33,8 @@
     color: #fff;
     text-decoration: none;
     padding: 1em 2em;
+    border: 1px solid white;
+    border-radius: 10px;
   }
   
   .nav a:hover {
