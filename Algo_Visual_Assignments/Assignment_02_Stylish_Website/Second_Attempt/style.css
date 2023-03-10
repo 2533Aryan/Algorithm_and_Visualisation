@@ -25,10 +25,11 @@
   .nav{
     display: flex;
     list-style: none;
-    justify-content: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     height: 40px;
+    border: 1px solid white;
+
   }
 
   .button{
