@@ -2,7 +2,14 @@
     background-color: #BBB6DF;
   }
 
-  .top {
+  .fix-top{
+    position: fixed;
+    top: 0%;
+    left: 20%;
+    right: 20%;
+  }
+
+  .top{
     display: flex;
     justify-content: center;
   }
@@ -63,6 +70,8 @@
   .container{
     background-color: white;
     width: 800px;
+    height: 800px;
+    margin-top: 7%;
   }
 
 /*
