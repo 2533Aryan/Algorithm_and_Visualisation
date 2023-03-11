@@ -66,8 +66,6 @@
     font-weight: bold;
   }
 
-  
-
   .main-center{
     display: flex;
     justify-content: center;
@@ -88,8 +86,6 @@
     margin-right: 100px;
   }
 
-
-
   .project {
     display: flex;
     justify-content: center;
@@ -106,3 +102,4 @@
     text-align: left;
     width: 400px;
   }
+  
