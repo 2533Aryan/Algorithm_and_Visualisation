@@ -82,9 +82,10 @@
   .container{
     background-color: white;
     width: 600px;
-    margin-top: 16%;
+    margin-top: 20%;
     margin-left: 100px;
     margin-right: 100px;
+    margin-bottom: 5%;
   }
 
   .project {
