@@ -60,18 +60,29 @@
     cursor: pointer;
   }
 
+  .button a.active {
+    background-color: #4e86c5;
+    color: #333;
+  }
+
   
 
-  main{
+  .main{
+    background-color: white;
     display: flex;
     justify-content: center;
+    width: 800px;
   }  
 
   .container{
+    border: 1px solid rgb(0, 0, 0);
+
     background-color: white;
-    width: 800px;
+    width: 600px;
     height: 800px;
     margin-top: 7%;
+    margin-left: 100px;
+    margin-right: 100px;
   }
 
 /*
