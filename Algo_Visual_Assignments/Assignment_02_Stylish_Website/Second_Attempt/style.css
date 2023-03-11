@@ -62,13 +62,14 @@
     cursor: pointer;
   }
 
-  .nav a.active .button{
+  .nav .button a.active {
     background-color: #4e86c5;
     color: #fff;
     font-weight: bold;
+    padding: 5px;
   }
   
-  .nav a.active .button:hover {
+  .nav .button:hover a.active {
     background-color: rgb(210, 121, 149);
     text-decoration: underline;
     color: #fff;
