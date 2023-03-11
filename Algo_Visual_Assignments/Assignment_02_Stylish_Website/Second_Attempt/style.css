@@ -67,6 +67,11 @@
 
   
 
+  .main-center{
+    display: flex;
+    justify-content: center;
+  }
+
   .main{
     background-color: white;
     display: flex;
@@ -75,12 +80,10 @@
   }  
 
   .container{
-    border: 1px solid rgb(0, 0, 0);
-
     background-color: white;
     width: 600px;
     height: 800px;
-    margin-top: 7%;
+    margin-top: 16%;
     margin-left: 100px;
     margin-right: 100px;
   }
