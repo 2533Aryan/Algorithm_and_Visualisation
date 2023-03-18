@@ -8,7 +8,7 @@ function applyRule(config, rule) {
         console.log("is Array")
     } else{console.log("Fail")}
 
-    console.log(config.every())
+    console.log(config.every(x => x === 0 || x === 1))
 }
 
 const testConfig = [0,1,0,0,1,1,0,0]
