@@ -11,6 +11,11 @@ function applyRule(config, rule) {
     if (!Number.isInteger(rule) || rule < 0 || rule > 255) {
         throw new Error('Invalid Rule');
     }
+
+    // new array updatedConfig of same size as config 
+    const n = config.length
+    const updatedConfig = new Array(n)
+    
     
 }
 
