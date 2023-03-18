@@ -29,6 +29,8 @@ function applyRule(config, rule) {
 
 }
 
+module.exports = { applyRule };
+
 // const testConfig = [0,1,0,0,1,1,0,0]
 // const testRule = 50
 
