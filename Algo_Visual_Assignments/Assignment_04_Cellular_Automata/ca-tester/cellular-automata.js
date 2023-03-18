@@ -6,13 +6,9 @@ function applyRule(config, rule) {
     // if(config.isArray || config.every() == 0 && config.every() == 1)
     if(Array.isArray(config)) {
         console.log("is Array")
-    }
-    
-    console.log("Fail")
+    } else{console.log("Fail")}
 
-
-
-    module.exports = { applyRule };
+    console.log(config.every())
 }
 
 const testConfig = [0,1,0,0,1,1,0,0]
@@ -21,4 +17,7 @@ const testRule = 50
 const testConfig2 = "string"
 const testRule2 = 350
 
-applyRule(testConfig2, testRule)
+applyRule(testConfig, testRule)
+
+
+module.exports = { applyRule };
