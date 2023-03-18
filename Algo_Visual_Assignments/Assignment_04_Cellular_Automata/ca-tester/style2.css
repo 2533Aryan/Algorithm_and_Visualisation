@@ -1,0 +1,50 @@
+body {
+    background-color: rgb(200,200,200);
+    height: 100vh;
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+h1 {
+    position: relative;
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+p {
+    padding: 10px 50px;
+}
+
+.page {
+    position: relative;
+    width: 720px;
+    margin: 10px auto 20px auto;
+    padding: 10px 0px 50px 0px;
+    background-color: pink;
+}
+
+.container {
+    position: relative;
+    margin: 20px auto;
+    border: 8px solid white;   
+}
+
+.tile {
+    position: absolute;
+    border: 1px solid;
+}
+
+.rule-tile {
+    position: absolute;
+    border: 1px solid gray;
+}
+
+.float-container {
+    position: relative;
+    display: inline-block;
+    background-color: white;
+    margin: 10px;
+}
