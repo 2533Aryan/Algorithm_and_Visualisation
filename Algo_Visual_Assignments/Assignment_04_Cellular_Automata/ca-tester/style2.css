@@ -13,7 +13,6 @@ body {
     background-color: #7CC6FE;
 }
 
-
 h1 {
     position: relative;
     margin: 20px;
@@ -23,4 +22,8 @@ h1 {
     font-family: 'Merriweather Sans', sans-serif;
 }
 
-
+.initial-config {
+    position: relative;
+    margin: 20px 10px;
+    border: 8px solid white;   
+}
