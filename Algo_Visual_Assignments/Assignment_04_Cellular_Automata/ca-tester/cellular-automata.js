@@ -103,46 +103,23 @@ function drawGrid() {
 			box.style.borderColor = "rgb(64, 64, 64)";
 
 
-			// if (j == 0 && i == 15) {
-			// 	box.style.backgroundColor = "black";
-			// }
-			
-
-			// // update tiles
-			// if(i === NUM_COLUMNS - 1){
-			// 	let currentConfig = allConfig[j];
-			// 	currentConfig.forEach(element => {
-			// 		if(element === 1) {
-			// 			tile.style.backgroundColor = "black";
-			// 			console.log(1)
-			// 		} else {
-			// 			tile.style.backgroundColor = "white";
-			// 		}
-			// 		// console.log(element);
-			// 	});
-			// }
+			// update tiles
+			if(i === NUM_COLUMNS - 1){
+				let currentConfig = allConfig[j];
+				currentConfig.forEach(element => {
+					if(element === 1) {
+						box.style.backgroundColor = "black";
+					} else {
+						box.style.backgroundColor = "white";
+					}
+					// console.log(element);
+				});
+			}
 			
 			// make the box a child of container
 			container.appendChild(box);
 		}
     }
-	const tile = document.getElementById("h1").style.color = 'red';
-
-
 }
-
-
-
-// function tileUpdate(e) {
-//     const textBox = document.querySelector("#text-box");
-//     let tile = e.target;
-//     if (tile.style.backgroundColor == "black") {
-// 		tile.style.backgroundColor = "white";
-//     } else {
-// 		tile.style.backgroundColor = "black";	    
-//     }
-// }
-
-
 
 module.exports = { applyRule };
