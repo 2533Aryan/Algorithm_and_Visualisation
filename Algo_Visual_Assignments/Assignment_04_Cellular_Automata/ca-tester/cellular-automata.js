@@ -1,3 +1,4 @@
+// Apply the rule to given config
 function applyRule(config, rule) {
 
     // Check if the input 'config' is an array containing only 0 or 1
@@ -30,8 +31,8 @@ function applyRule(config, rule) {
 }
 
 
-
-const NUM_COLUMNS = 32;
+// Grid and Tiles
+const NUM_COLUMNS = 31;
 const NUM_ROWS = 20;
 const TILE_BORDER = 0.5;
 const TILE_SIZE = 20;
