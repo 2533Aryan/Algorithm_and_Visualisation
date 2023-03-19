@@ -66,12 +66,11 @@ for (let i = 0; i < NUM_ROWS; i++) {
 	}
 }
 
-console.log(allConfig[1]);
+// console.log(allConfig.length);
 
 
 
 function drawGrid() {
-	// let updatedConfig = [];
 
     // make the container the right size
     const container = document.querySelector('#grid-background');
@@ -103,11 +102,25 @@ function drawGrid() {
 			box.style.backgroundColor = "white";
 			box.style.borderColor = "rgb(64, 64, 64)";
 
-			if (j == 0 && i == 15) {
-				box.style.backgroundColor = "black";
-				// initialConfig[i] = 1;
-			}
 
+			// if (j == 0 && i == 15) {
+			// 	box.style.backgroundColor = "black";
+			// }
+
+			if(i === NUM_COLUMNS - 1){
+				let currentConfig = allConfig[j];
+				// console.log(currentConfig);
+				// console.log(allConfig[j])
+				currentConfig.forEach(element => {
+					if(element === 1) {
+						tile.style.backgroundColor = "black";
+						console.log(1)
+					} else {
+						tile.style.backgroundColor = "white";
+					}
+					// console.log(element);
+				});
+			}
 			
 			// initialConfig = applyRule(initialConfig, initialRule);
 			
