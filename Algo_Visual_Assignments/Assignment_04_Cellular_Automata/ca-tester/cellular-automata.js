@@ -42,7 +42,7 @@ const CONTAINER_WIDTH = NUM_COLUMNS * TILE_SIZE;
 const CONTAINER_HEIGHT = NUM_ROWS * TILE_SIZE;
 
 
-// initial configuration => first row
+// Initial configuration => first row
 let initialConfig = []
 for(let i=0; i<NUM_COLUMNS; i++){
 	if(i === 15){
@@ -52,10 +52,10 @@ for(let i=0; i<NUM_COLUMNS; i++){
 	}
 }
 
-// initial rule => 50
+// Initial rule => 50
 const initialRule = 50;
 
-// all configuration
+// All configuration
 const allConfig = [];
 
 for (let i = 0; i < NUM_ROWS; i++) {
@@ -72,39 +72,40 @@ for (let i = 0; i < NUM_ROWS; i++) {
 // All tile div
 const allTile = [];
 
+// Draw Grid
 function drawGrid() {
-    // make the container the right size
+    // Make the container the right size
     const container = document.querySelector('#grid-background');
     container.style.width = CONTAINER_WIDTH + "px";
     container.style.height = CONTAINER_HEIGHT + "px";
 
     for (let i = 0; i < NUM_COLUMNS; i++) {
 		for (let j = 0; j < NUM_ROWS; j++) {
-			// make a new div for a box
+			// Make a new div for a box
 			let box = document.createElement('div');
 
 			box.id = 'tile' + i + '-' + j;
 
-			// make box's class 'tile'
+			// Make box's class 'tile'
 			box.classList.add('tile');
 
-			// compute coordinates for this box
+			// Compute coordinates for this box
 			let x = i * TILE_SIZE;
 			let y = j * TILE_SIZE;
 
 			box.style.left = x + 'px';
 			box.style.top = y + 'px';
 
-			// set the size of the box
+			// Set the size of the box
 			box.style.width = TILE_INNER + 'px';
 			box.style.height = TILE_INNER + 'px';
 
-			// set the color of the box
+			// Set the color of the box
 			box.style.backgroundColor = "white";
 			box.style.borderColor = "rgb(64, 64, 64)";
 
 			
-			// make the box a child of container
+			// Make the box a child of container
 			container.appendChild(box);
 
 			allTile.push(box);
@@ -114,10 +115,13 @@ function drawGrid() {
 }
 
 
+// Update the color of tile
 function updateTile(tile, tileConfig){
 	for (let i=0; i<NUM_COLUMNS; i++){
 		let index = 0;
-		index = index + (NUM_ROWS*i);	
+		index = index + (NUM_ROWS*i);	// Change the row for tile id
+		
+		// Change color of Tile to black
 		tileConfig.forEach(element => {
 			if (element[i] === 1) {
 				tile[index].style.backgroundColor = "black";
