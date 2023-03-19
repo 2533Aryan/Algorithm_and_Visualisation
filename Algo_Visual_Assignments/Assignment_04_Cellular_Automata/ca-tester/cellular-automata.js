@@ -30,7 +30,7 @@ function applyRule(config, rule) {
 }
 
 const NUM_COLUMNS = 32;
-const NUM_ROWS = 16;
+const NUM_ROWS = 20;
 const TILE_BORDER = 0.5;
 const TILE_SIZE = 20;
 const TILE_INNER = TILE_SIZE - 2 * TILE_BORDER; 	
@@ -101,3 +101,4 @@ function tileUpdate(e) {
 
 
 module.exports = { applyRule };
+
