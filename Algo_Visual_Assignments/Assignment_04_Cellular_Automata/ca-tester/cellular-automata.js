@@ -101,19 +101,31 @@ function drawGrid() {
 			box.style.backgroundColor = "white";
 			box.style.borderColor = "rgb(64, 64, 64)";
 
-
-			// update tiles
-			if(i === NUM_ROWS - 1){
-				let currentConfig = allConfig[j];
+			if(j == NUM_ROWS -1){
+				// console.log(allConfig[i]);
+				let currentConfig = allConfig[i];
 				currentConfig.forEach(element => {
 					if(element == 1) {
 						box.style.backgroundColor = "black";
 					} else {
 						box.style.backgroundColor = "white";
 					}
-					console.log(allConfig[j]);
 				});
 			}
+		
+			
+			// update tiles
+			// if(i === NUM_ROWS - 1){
+			// 	let currentConfig = allConfig[j];
+			// 	currentConfig.forEach(element => {
+			// 		if(element == 1) {
+			// 			box.style.backgroundColor = "black";
+			// 		} else {
+			// 			box.style.backgroundColor = "white";
+			// 		}
+			// 		console.log(allConfig[j]);
+			// 	});
+			// }
 			
 			// make the box a child of container
 			container.appendChild(box);
