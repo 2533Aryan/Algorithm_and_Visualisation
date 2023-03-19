@@ -134,16 +134,16 @@ function drawGrid() {
 			allTile.push(box);
 		}
     }
+	updateTile(allTile);
 }
 
-console.log(allTile)
 
 function updateTile(tile){
-	// console.log(tile.length);
+	// console.log(tile[32]);
 	
-	// box.forEach(element => {
-	// 	console.log(element);
-	// });
+	tile.forEach(element => {
+		console.log(element);
+	});
 
 	// if(j == NUM_ROWS -1){
 	// 	// console.log(allConfig[i]);
