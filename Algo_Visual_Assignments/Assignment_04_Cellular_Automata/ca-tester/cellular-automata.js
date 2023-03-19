@@ -67,9 +67,6 @@ function drawGrid() {
 			box.style.height = TILE_INNER + 'px';
 
 			// set the color of the box
-			let h = 32 * (i + 2 * j) / 5 + 150;
-			let s = 100 - 5 * j;
-			let l = 50 + 5 * (i - j) / 2;
 			box.style.backgroundColor = "white";
 			box.style.borderColor = "rgb(64, 64, 64)";
 
