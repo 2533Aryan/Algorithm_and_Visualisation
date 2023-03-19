@@ -38,6 +38,15 @@ const TILE_INNER = TILE_SIZE - 2 * TILE_BORDER;
 const CONTAINER_WIDTH = NUM_COLUMNS * TILE_SIZE;
 const CONTAINER_HEIGHT = NUM_ROWS * TILE_SIZE;
 
+// initial configuration => first row
+const initialConfig = [];
+
+for(let i=0; i<NUM_ROWS; i++){
+	initialConfig.push(0);
+}
+
+console.log(initialConfig)
+
 
 function drawGrid() {
     // make the container the right size
@@ -71,7 +80,8 @@ function drawGrid() {
 			box.style.borderColor = "rgb(64, 64, 64)";
 
 			if (j == 0 && i == 15) {
-			box.style.backgroundColor = "black";
+				box.style.backgroundColor = "black";
+				initialConfig[i] = 1;
 			}
 
 			// make interactions!
