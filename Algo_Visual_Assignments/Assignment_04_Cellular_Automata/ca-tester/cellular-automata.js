@@ -68,7 +68,7 @@ for (let i = 0; i < NUM_ROWS; i++) {
 	}
 }
 
-
+// All tile div
 const allTile = [];
 
 function drawGrid() {
@@ -134,16 +134,26 @@ function drawGrid() {
 			allTile.push(box);
 		}
     }
-	updateTile(allTile);
+	updateTile(allTile, allConfig);
 }
 
 
-function updateTile(tile){
-	// console.log(tile[32]);
+function updateTile(tile, tileConfig){
+	// console.log(tileConfig[0]);
 	
-	tile.forEach(element => {
-		console.log(element);
+	let index = 0;
+	tileConfig.forEach(element => {
+		// console.log(tile[index]);
+		if (element[0] === 1) {
+			// console.log(element[0]);
+			tile[index].style.backgroundColor = "black";
+		}
+		index++;
 	});
+
+	// tile.forEach(element => {
+	// 	console.log(element);
+	// });
 
 	// if(j == NUM_ROWS -1){
 	// 	// console.log(allConfig[i]);
