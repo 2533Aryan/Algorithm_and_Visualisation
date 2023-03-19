@@ -39,52 +39,6 @@ const CONTAINER_WIDTH = NUM_COLUMNS * TILE_SIZE;
 const CONTAINER_HEIGHT = NUM_ROWS * TILE_SIZE;
 
 
-function drawRuleBox() {
-    const ruleBox = document.querySelector("#rules");
-    ruleBox.style.width = CONTAINER_WIDTH + 'px';
-    ruleBox.style.height = 3 * TILE_SIZE + 'px';
-    ruleBox.style.backgroundColor = "white";
-
-    // ruleBox.createElement('p');
-    
-    
-    // for (let j = 7; j >= 0; j--) {
-	// 	let ruleContainer = document.createElement('div');
-	// 	ruleContainer.classList.add('float-container');
-	// 	ruleContainer.style.width = 3 * TILE_SIZE + 'px';
-	// 	ruleContainer.style.height = 2 * TILE_SIZE + 'px';
-
-	// 	for (let i = 0; i < 4; i++) {
-	// 		let tile = document.createElement('div')
-	// 		tile.classList.add('rule-tile');
-	// 		tile.style.left = i * TILE_SIZE + 'px';
-	// 		tile.style.top = '0px';
-	// 		tile.style.width = TILE_INNER + 'px';
-	// 		tile.style.height = TILE_INNER + 'px';
-
-	// 		if (i < 3) {
-	// 			let bit = Math.floor(j / Math.pow(2, 2-i)) % 2;
-	// 		if (bit == 0) {
-	// 			tile.style.backgroundColor = 'white';
-	// 		} else {
-	// 			tile.style.backgroundColor = 'black';		    
-	// 		}
-	// 		}
-			
-
-	// 		if (i == 3) {
-	// 			tile.style.left = TILE_SIZE + 'px';
-	// 			tile.style.top = TILE_SIZE + 'px';
-	// 			tile.style.backgroundColor = 'white';
-	// 			tile.addEventListener("click", tileUpdate);
-	// 		}
-	// 		ruleContainer.appendChild(tile);
-	// 	}
-
-	// 	ruleBox.appendChild(ruleContainer);
-	// }
-}
-
 function drawGrid() {
     // make the container the right size
     const container = document.querySelector('#grid-background');
