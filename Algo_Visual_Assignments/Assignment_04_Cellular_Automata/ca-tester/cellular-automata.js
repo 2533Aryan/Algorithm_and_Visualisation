@@ -49,7 +49,7 @@ for(let i=0; i<NUM_ROWS; i++){
 
 // initial rule => 50
 const initialRule = 50;
-
+// initialConfig[10] = 1;
 // console.log(initialConfig)
 // const updated = applyRule(initialConfig, 150);
 // console.log(updated)
@@ -91,8 +91,16 @@ function drawGrid() {
 				initialConfig[i] = 1;
 			}
 
-			if (j == 1) {
-				initialConfig = applyRule(initialConfig, initialRule);
+			
+			initialConfig = applyRule(initialConfig, initialRule);
+			
+			
+			for (let index = 0; index < NUM_ROWS; index++) {
+				if(initialConfig[index] == 1) {
+					tile.style.backgroundColor = "black";
+				} else {
+					tile.style.backgroundColor = "white";
+				}
 			}
 
 			// make the box a child of container
@@ -107,19 +115,19 @@ function drawGrid() {
 			// box.addEventListener("click", tileUpdate);
 			// }
 
-function tileUpdate(e) {
-    const textBox = document.querySelector("#text-box");
-    let tile = e.target;
-    if (tile.style.backgroundColor == "black") {
-		tile.style.backgroundColor = "white";
-    } else {
-		tile.style.backgroundColor = "black";	    
-    }
-}
+// function tileUpdate(e) {
+//     const textBox = document.querySelector("#text-box");
+//     let tile = e.target;
+//     if (tile.style.backgroundColor == "black") {
+// 		tile.style.backgroundColor = "white";
+//     } else {
+// 		tile.style.backgroundColor = "black";	    
+//     }
+// }
 
 
-window.onload = () => {
-	drawGrid();   
-  }
+// window.onload = () => {
+// 	drawGrid();   
+//   }
 
 module.exports = { applyRule };
