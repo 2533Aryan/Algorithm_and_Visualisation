@@ -69,6 +69,7 @@ for (let i = 0; i < NUM_ROWS; i++) {
 }
 
 
+const allTile = [];
 
 function drawGrid() {
     // make the container the right size
@@ -130,14 +131,20 @@ function drawGrid() {
 			// make the box a child of container
 			container.appendChild(box);
 
-			updateTile(box);
+			allTile.push(box);
 		}
     }
 }
 
-function updateTile(box){
-	// console.log(box.id);
-		
+console.log(allTile)
+
+function updateTile(tile){
+	// console.log(tile.length);
+	
+	// box.forEach(element => {
+	// 	console.log(element);
+	// });
+
 	// if(j == NUM_ROWS -1){
 	// 	// console.log(allConfig[i]);
 	// 	let currentConfig = allConfig[i];
