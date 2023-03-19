@@ -40,11 +40,16 @@ const CONTAINER_HEIGHT = NUM_ROWS * TILE_SIZE;
 
 
 // initial configuration => first row
-const initialConfig = [];
+const allConfig = [];
 
-for(let i=0; i<NUM_ROWS; i++){
-	initialConfig.push(0);
+for (let i = 0; i < NUM_COLUMNS; i++) {
+	for (let j = 0; j < NUM_ROWS; j++) {
+	}
 }
+
+// for(let i=0; i<NUM_ROWS; i++){
+// 	initialConfig.push(0);
+// }
 
 
 // initial rule => 50
@@ -94,11 +99,11 @@ function drawGrid() {
 			}
 
 			
-			updatedConfig = applyRule(initialConfig, initialRule);
+			initialConfig = applyRule(initialConfig, initialRule);
 			
 			if (i == NUM_COLUMNS){
 			for (let index = 0; index < NUM_ROWS; index++) {
-				if(updatedConfig[index] == 1) {
+				if(initialConfig[index] == 1) {
 					tile.style.backgroundColor = "black";
 				} else {
 					tile.style.backgroundColor = "white";
