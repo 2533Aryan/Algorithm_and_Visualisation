@@ -40,26 +40,44 @@ const CONTAINER_HEIGHT = NUM_ROWS * TILE_SIZE;
 
 
 // initial configuration => first row
-const allConfig = [];
-
-for (let i = 0; i < NUM_COLUMNS; i++) {
-	for (let j = 0; j < NUM_ROWS; j++) {
+let initialConfig = []
+for(let i=0; i<NUM_COLUMNS; i++){
+	if(i === 15){
+		initialConfig.push(1);	
+	} else{
+		initialConfig.push(0);
 	}
 }
+
+// initial rule => 50
+const initialRule = 50;
+
+// all configuration
+const allConfig = [];
+
+for (let i = 0; i < NUM_ROWS; i++) {
+	if(i === 0) {
+		allConfig.push(initialConfig);
+	}
+	if(i > 0) {
+		initialConfig = implementRule(initialConfig, initialRule);
+		allConfig.push(newConfig);
+	}
+}
+
+console.log(allConfig);
+// for (let i = 0; i < NUM_ROWS; i++) {
+// 	for (let j = 0; j < NUM_COLUMNS; j++) {
+
+// 	}
+// }
 
 function implementRule(givenConfig, givenRule) {
 	let randConfig = [];
 	randConfig = applyRule(givenConfig, givenRule);
-
+	return randConfig;
 }
 
-// for(let i=0; i<NUM_ROWS; i++){
-// 	initialConfig.push(0);
-// }
-
-
-// initial rule => 50
-const initialRule = 50;
 // initialConfig[10] = 1;
 // console.log(initialConfig)
 // const updated = applyRule(initialConfig, 150);
