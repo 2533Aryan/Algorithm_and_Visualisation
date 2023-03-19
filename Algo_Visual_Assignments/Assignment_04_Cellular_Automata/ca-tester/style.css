@@ -24,6 +24,18 @@ h2 {
     font-family: 'Merriweather Sans', sans-serif;
 }
 
+input {
+    position: relative;
+    padding: 5px;
+    width: 100px;
+    text-align: center;
+    font-size: 70%;
+    font-weight: bolder;
+    color: rgb(0, 0, 0);
+    border: 2px solid black;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
 .page {
     position: relative;
     width: 720px;
