@@ -47,6 +47,12 @@ for (let i = 0; i < NUM_COLUMNS; i++) {
 	}
 }
 
+function implementRule(givenConfig, givenRule) {
+	let randConfig = [];
+	randConfig = applyRule(givenConfig, givenRule);
+
+}
+
 // for(let i=0; i<NUM_ROWS; i++){
 // 	initialConfig.push(0);
 // }
