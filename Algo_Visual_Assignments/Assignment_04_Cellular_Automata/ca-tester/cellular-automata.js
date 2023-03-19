@@ -29,6 +29,8 @@ function applyRule(config, rule) {
 
 }
 
+
+
 const NUM_COLUMNS = 32;
 const NUM_ROWS = 20;
 const TILE_BORDER = 0.5;
@@ -66,8 +68,6 @@ for (let i = 0; i < NUM_ROWS; i++) {
 	}
 }
 
-// console.log(allConfig.length);
-
 
 
 function drawGrid() {
@@ -82,7 +82,7 @@ function drawGrid() {
 			// make a new div for a box
 			let box = document.createElement('div');
 
-			box.id = 'tile' + i + '-' + j;
+			box.id = 'tile' + i + j;
 
 			// make box's class 'tile'
 			box.classList.add('tile');
@@ -107,8 +107,6 @@ function drawGrid() {
 			// 	box.style.backgroundColor = "black";
 			// }
 			
-			let tile = document.querySelector("#tile");
-
 
 			// // update tiles
 			// if(i === NUM_COLUMNS - 1){
@@ -128,6 +126,9 @@ function drawGrid() {
 			container.appendChild(box);
 		}
     }
+	const tile = document.getElementById("h1").style.color = 'red';
+
+
 }
 
 
