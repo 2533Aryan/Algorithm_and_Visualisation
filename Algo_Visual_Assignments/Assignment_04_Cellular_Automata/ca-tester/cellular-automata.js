@@ -106,41 +106,24 @@ function drawGrid() {
 			// if (j == 0 && i == 15) {
 			// 	box.style.backgroundColor = "black";
 			// }
-
-			if(i === NUM_COLUMNS - 1){
-				let currentConfig = allConfig[j];
-				// console.log(currentConfig);
-				// console.log(allConfig[j])
-				currentConfig.forEach(element => {
-					if(element === 1) {
-						tile.style.backgroundColor = "black";
-						console.log(1)
-					} else {
-						tile.style.backgroundColor = "white";
-					}
-					// console.log(element);
-				});
-			}
 			
-			// initialConfig = applyRule(initialConfig, initialRule);
-			
-			// if (i == NUM_COLUMNS){
-			// for (let index = 0; index < NUM_ROWS; index++) {
-			// 	if(initialConfig[index] == 1) {
-			// 		tile.style.backgroundColor = "black";
-			// 	} else {
-			// 		tile.style.backgroundColor = "white";
-			// 	}
-			// }
-			// }
-			// for (let index = 0; index < NUM_ROWS; index++) {
-			// 	if(updatedConfig[index] == 1) {
-			// 		tile.style.backgroundColor = "black";
-			// 	} else {
-			// 		tile.style.backgroundColor = "white";
-			// 	}
-			// }
+			let tile = document.querySelector("#tile");
 
+
+			// // update tiles
+			// if(i === NUM_COLUMNS - 1){
+			// 	let currentConfig = allConfig[j];
+			// 	currentConfig.forEach(element => {
+			// 		if(element === 1) {
+			// 			tile.style.backgroundColor = "black";
+			// 			console.log(1)
+			// 		} else {
+			// 			tile.style.backgroundColor = "white";
+			// 		}
+			// 		// console.log(element);
+			// 	});
+			// }
+			
 			// make the box a child of container
 			container.appendChild(box);
 		}
@@ -148,10 +131,6 @@ function drawGrid() {
 }
 
 
-			// // make interactions!
-			// if (j > 0) {
-			// box.addEventListener("click", tileUpdate);
-			// }
 
 // function tileUpdate(e) {
 //     const textBox = document.querySelector("#text-box");
@@ -164,8 +143,5 @@ function drawGrid() {
 // }
 
 
-// window.onload = () => {
-// 	drawGrid();   
-//   }
 
 module.exports = { applyRule };
