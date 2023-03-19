@@ -101,17 +101,17 @@ function drawGrid() {
 			box.style.backgroundColor = "white";
 			box.style.borderColor = "rgb(64, 64, 64)";
 
-			if(j == NUM_ROWS -1){
-				// console.log(allConfig[i]);
-				let currentConfig = allConfig[i];
-				currentConfig.forEach(element => {
-					if(element == 1) {
-						box.style.backgroundColor = "black";
-					} else {
-						box.style.backgroundColor = "white";
-					}
-				});
-			}
+			// if(j == NUM_ROWS -1){
+			// 	// console.log(allConfig[i]);
+			// 	let currentConfig = allConfig[i];
+			// 	currentConfig.forEach(element => {
+			// 		if(element == 1) {
+			// 			box.style.backgroundColor = "black";
+			// 		} else {
+			// 			box.style.backgroundColor = "white";
+			// 		}
+			// 	});
+			// }
 		
 			
 			// update tiles
