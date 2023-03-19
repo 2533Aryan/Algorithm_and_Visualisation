@@ -38,6 +38,7 @@ const TILE_INNER = TILE_SIZE - 2 * TILE_BORDER;
 const CONTAINER_WIDTH = NUM_COLUMNS * TILE_SIZE;
 const CONTAINER_HEIGHT = NUM_ROWS * TILE_SIZE;
 
+
 // initial configuration => first row
 const initialConfig = [];
 
@@ -45,9 +46,14 @@ for(let i=0; i<NUM_ROWS; i++){
 	initialConfig.push(0);
 }
 
-console.log(initialConfig)
-const updated = applyRule(initialConfig, 150);
-console.log(updated)
+
+// initial rule => 50
+const initialRule = 50;
+
+// console.log(initialConfig)
+// const updated = applyRule(initialConfig, 150);
+// console.log(updated)
+
 
 function drawGrid() {
     // make the container the right size
@@ -85,10 +91,9 @@ function drawGrid() {
 				initialConfig[i] = 1;
 			}
 
-			// // make interactions!
-			// if (j > 0) {
-			// box.addEventListener("click", tileUpdate);
-			// }
+			if (j == 1) {
+				initialConfig = applyRule(initialConfig, initialRule);
+			}
 
 			// make the box a child of container
 			container.appendChild(box);
@@ -96,6 +101,11 @@ function drawGrid() {
     }
 }
 
+
+			// // make interactions!
+			// if (j > 0) {
+			// box.addEventListener("click", tileUpdate);
+			// }
 
 function tileUpdate(e) {
     const textBox = document.querySelector("#text-box");
@@ -107,9 +117,9 @@ function tileUpdate(e) {
     }
 }
 
+
 window.onload = () => {
 	drawGrid();   
   }
-
 
 module.exports = { applyRule };
