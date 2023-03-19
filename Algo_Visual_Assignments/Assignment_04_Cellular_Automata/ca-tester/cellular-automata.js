@@ -66,14 +66,8 @@ for (let i = 0; i < NUM_ROWS; i++) {
 	}
 }
 
-console.log(allConfig);
+console.log(allConfig[1]);
 
-
-
-// initialConfig[10] = 1;
-// console.log(initialConfig)
-// const updated = applyRule(initialConfig, 150);
-// console.log(updated)
 
 
 function drawGrid() {
