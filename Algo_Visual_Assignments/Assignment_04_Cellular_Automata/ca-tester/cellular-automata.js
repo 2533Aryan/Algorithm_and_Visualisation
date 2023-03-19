@@ -46,7 +46,8 @@ for(let i=0; i<NUM_ROWS; i++){
 }
 
 console.log(initialConfig)
-
+const updated = applyRule(initialConfig, 150);
+console.log(updated)
 
 function drawGrid() {
     // make the container the right size
@@ -84,10 +85,10 @@ function drawGrid() {
 				initialConfig[i] = 1;
 			}
 
-			// make interactions!
-			if (j > 0) {
-			box.addEventListener("click", tileUpdate);
-			}
+			// // make interactions!
+			// if (j > 0) {
+			// box.addEventListener("click", tileUpdate);
+			// }
 
 			// make the box a child of container
 			container.appendChild(box);
@@ -106,6 +107,9 @@ function tileUpdate(e) {
     }
 }
 
+window.onload = () => {
+	drawGrid();   
+  }
+
 
 module.exports = { applyRule };
-
