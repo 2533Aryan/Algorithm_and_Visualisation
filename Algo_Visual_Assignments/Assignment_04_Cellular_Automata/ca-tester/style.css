@@ -24,7 +24,7 @@ h2 {
     font-family: 'Merriweather Sans', sans-serif;
 }
 
-input {
+#rule {
     position: relative;
     padding: 5px;
     width: 100px;

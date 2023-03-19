@@ -54,8 +54,8 @@ for(let i=0; i<NUM_COLUMNS; i++){
 
 
 function getRule() {
-	let rule = document.getElementById(rule);
-	console.log(rule.value);
+	const rule = document.forms[0].rule.value;
+	console.log(rule);
 }
 
 
