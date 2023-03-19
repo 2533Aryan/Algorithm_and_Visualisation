@@ -102,31 +102,6 @@ function drawGrid() {
 			box.style.backgroundColor = "white";
 			box.style.borderColor = "rgb(64, 64, 64)";
 
-			// if(j == NUM_ROWS -1){
-			// 	// console.log(allConfig[i]);
-			// 	let currentConfig = allConfig[i];
-			// 	currentConfig.forEach(element => {
-			// 		if(element == 1) {
-			// 			box.style.backgroundColor = "black";
-			// 		} else {
-			// 			box.style.backgroundColor = "white";
-			// 		}
-			// 	});
-			// }
-		
-			
-			// update tiles
-			// if(i === NUM_ROWS - 1){
-			// 	let currentConfig = allConfig[j];
-			// 	currentConfig.forEach(element => {
-			// 		if(element == 1) {
-			// 			box.style.backgroundColor = "black";
-			// 		} else {
-			// 			box.style.backgroundColor = "white";
-			// 		}
-			// 		console.log(allConfig[j]);
-			// 	});
-			// }
 			
 			// make the box a child of container
 			container.appendChild(box);
@@ -139,33 +114,17 @@ function drawGrid() {
 
 
 function updateTile(tile, tileConfig){
-	// console.log(tileConfig[0]);
-	
-	let index = 0;
-	tileConfig.forEach(element => {
-		// console.log(tile[index]);
-		if (element[0] === 1) {
-			// console.log(element[0]);
-			tile[index].style.backgroundColor = "black";
-		}
-		index++;
-	});
-
-	// tile.forEach(element => {
-	// 	console.log(element);
-	// });
-
-	// if(j == NUM_ROWS -1){
-	// 	// console.log(allConfig[i]);
-	// 	let currentConfig = allConfig[i];
-	// 	currentConfig.forEach(element => {
-	// 		if(element == 1) {
-	// 			box.style.backgroundColor = "black";
-	// 		} else {
-	// 			box.style.backgroundColor = "white";
-	// 		}
-	// 	});
-	// }
+	for (let i=0; i<NUM_COLUMNS; i++){
+		let index = 0;
+		index = index + (NUM_ROWS*i);	
+		tileConfig.forEach(element => {
+			if (element[i] === 1) {
+				tile[index].style.backgroundColor = "black";
+			}
+			index++;
+		});
+	}
 }
+
 
 module.exports = { applyRule };
