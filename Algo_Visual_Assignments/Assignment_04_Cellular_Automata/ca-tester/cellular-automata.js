@@ -81,7 +81,7 @@ function drawGrid() {
 			// make a new div for a box
 			let box = document.createElement('div');
 
-			box.id = 'tile' + i + j;
+			box.id = 'tile' + i + '-' + j;
 
 			// make box's class 'tile'
 			box.classList.add('tile');
@@ -129,8 +129,26 @@ function drawGrid() {
 			
 			// make the box a child of container
 			container.appendChild(box);
+
+			updateTile(box);
 		}
     }
+}
+
+function updateTile(box){
+	// console.log(box.id);
+		
+	// if(j == NUM_ROWS -1){
+	// 	// console.log(allConfig[i]);
+	// 	let currentConfig = allConfig[i];
+	// 	currentConfig.forEach(element => {
+	// 		if(element == 1) {
+	// 			box.style.backgroundColor = "black";
+	// 		} else {
+	// 			box.style.backgroundColor = "white";
+	// 		}
+	// 	});
+	// }
 }
 
 module.exports = { applyRule };
