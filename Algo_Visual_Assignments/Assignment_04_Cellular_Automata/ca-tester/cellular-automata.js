@@ -56,6 +56,8 @@ const initialRule = 50;
 
 
 function drawGrid() {
+	let updatedConfig = [];
+
     // make the container the right size
     const container = document.querySelector('#grid-background');
     container.style.width = CONTAINER_WIDTH + "px";
@@ -92,16 +94,24 @@ function drawGrid() {
 			}
 
 			
-			initialConfig = applyRule(initialConfig, initialRule);
+			updatedConfig = applyRule(initialConfig, initialRule);
 			
-			
+			if (i == NUM_COLUMNS){
 			for (let index = 0; index < NUM_ROWS; index++) {
-				if(initialConfig[index] == 1) {
+				if(updatedConfig[index] == 1) {
 					tile.style.backgroundColor = "black";
 				} else {
 					tile.style.backgroundColor = "white";
 				}
 			}
+			}
+			// for (let index = 0; index < NUM_ROWS; index++) {
+			// 	if(updatedConfig[index] == 1) {
+			// 		tile.style.backgroundColor = "black";
+			// 	} else {
+			// 		tile.style.backgroundColor = "white";
+			// 	}
+			// }
 
 			// make the box a child of container
 			container.appendChild(box);
