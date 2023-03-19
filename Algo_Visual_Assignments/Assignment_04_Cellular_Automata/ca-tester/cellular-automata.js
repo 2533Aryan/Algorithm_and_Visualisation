@@ -71,7 +71,6 @@ for (let i = 0; i < NUM_ROWS; i++) {
 
 
 function drawGrid() {
-
     // make the container the right size
     const container = document.querySelector('#grid-background');
     container.style.width = CONTAINER_WIDTH + "px";
@@ -104,15 +103,15 @@ function drawGrid() {
 
 
 			// update tiles
-			if(i === NUM_COLUMNS - 1){
+			if(i === NUM_ROWS - 1){
 				let currentConfig = allConfig[j];
 				currentConfig.forEach(element => {
-					if(element === 1) {
+					if(element == 1) {
 						box.style.backgroundColor = "black";
 					} else {
 						box.style.backgroundColor = "white";
 					}
-					// console.log(element);
+					console.log(allConfig[j]);
 				});
 			}
 			
