@@ -52,6 +52,13 @@ for(let i=0; i<NUM_COLUMNS; i++){
 	}
 }
 
+
+function getRule() {
+	let rule = document.getElementById(rule);
+	console.log(rule.value);
+}
+
+
 // Initial rule => 50
 const initialRule = 50;
 
