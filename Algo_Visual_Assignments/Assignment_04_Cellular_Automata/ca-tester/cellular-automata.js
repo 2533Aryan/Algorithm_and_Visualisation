@@ -59,24 +59,16 @@ for (let i = 0; i < NUM_ROWS; i++) {
 	if(i === 0) {
 		allConfig.push(initialConfig);
 	}
+
 	if(i > 0) {
-		initialConfig = implementRule(initialConfig, initialRule);
-		allConfig.push(newConfig);
+		initialConfig = applyRule(initialConfig, initialRule);
+		allConfig.push(initialConfig);
 	}
 }
 
 console.log(allConfig);
-// for (let i = 0; i < NUM_ROWS; i++) {
-// 	for (let j = 0; j < NUM_COLUMNS; j++) {
 
-// 	}
-// }
 
-function implementRule(givenConfig, givenRule) {
-	let randConfig = [];
-	randConfig = applyRule(givenConfig, givenRule);
-	return randConfig;
-}
 
 // initialConfig[10] = 1;
 // console.log(initialConfig)
