@@ -89,6 +89,7 @@ function getRule() {
 // All tile div
 const allTile = [];
 
+
 // Draw Grid
 function drawGrid() {
     // Make the container the right size
