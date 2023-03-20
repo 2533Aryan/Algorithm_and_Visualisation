@@ -14,12 +14,27 @@ h1 {
     font-family: 'Merriweather Sans', sans-serif;
 }
 
-h2 {
+h2{
     position: relative;
     margin: 20px;
     padding: 10px;
     text-align: center;
     color: rgb(255, 255, 255);
+    border: 2px solid black;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bolder;
     border: 2px solid black;
     font-family: 'Merriweather Sans', sans-serif;
 }
@@ -40,7 +55,7 @@ h2 {
     position: relative;
     width: 720px;
     margin: 10px auto 20px auto;
-    padding: 10px 0px 50px 0px;
+    padding: 10px 0px 10px 0px;
     background-color: #3e9de6;
 }
 
