@@ -129,12 +129,12 @@ function drawGrid() {
 			allTile.push(box);
 		}
     }
-	updateTile(allTile, allConfig);
+	updateTile(allTile, allConfig, initialRule);
 }
 
 
 // Update the color of tile
-function updateTile(tile, tileConfig){
+function updateTile(tile, tileConfig, rule){
 	for (let i=0; i<NUM_COLUMNS; i++){
 		let index = 0;
 		index = index + (NUM_ROWS*i);	// Change the row for tile id
@@ -147,6 +147,12 @@ function updateTile(tile, tileConfig){
 			index++;
 		});
 	}
+
+	// Get the rule header element
+	let ruleHeader = document.getElementById('heading');
+
+	// Update the text content of the rule header element
+	ruleHeader.textContent = "Rule: " + rule;
 }
 
 
