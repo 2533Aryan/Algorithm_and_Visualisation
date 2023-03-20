@@ -53,17 +53,14 @@ for(let i=0; i<NUM_COLUMNS; i++){
 }
 
 
-function getRule() {
-	const rule = document.forms[0].rule.value;
-	console.log(rule);
-}
-
-
-// Initial rule => 50
-const initialRule = 50;
-
 // All configuration
 const allConfig = [];
+
+// // Default rule => 0
+// const initialRule = 50;
+// Default rule => 0
+let initialRule = getRule();
+
 
 for (let i = 0; i < NUM_ROWS; i++) {
 	if(i === 0) {
@@ -74,7 +71,32 @@ for (let i = 0; i < NUM_ROWS; i++) {
 		initialConfig = applyRule(initialConfig, initialRule);
 		allConfig.push(initialConfig);
 	}
+}	
+
+
+function getRule() {
+    // Prompt user for input and parse as integer
+    let rule = parseInt(window.prompt("Enter the rule number (0-255):"), 10);
+
+    // Check if rule is a valid integer in range (0,255)
+    if (!Number.isInteger(rule) || rule < 0 || rule > 255) {
+        alert("Invalid rule number entered. Please enter a number between 0 and 255.");
+        return getRule(); // recursively call getRule() until valid input is entered
+    }
+
+    return rule;
 }
+
+
+// function getRule() {
+// 	const rule = document.forms[0].rule.value;
+// 	console.log(rule);
+	
+// 	const event = document.addEventListener('submit', drawGrid());
+// 	drawGrid();
+// }
+
+
 
 // All tile div
 const allTile = [];
@@ -115,6 +137,7 @@ function drawGrid() {
 			// Make the box a child of container
 			container.appendChild(box);
 
+			// Array with all tiles
 			allTile.push(box);
 		}
     }
