@@ -5,7 +5,7 @@ body {
     padding: 0px 0px;
 }
 
-h1 {
+h1, h2 {
     position: relative;
     margin: 20px;
     padding: 10px;
@@ -15,13 +15,8 @@ h1 {
 }
 
 h2{
-    position: relative;
-    margin: 20px;
-    padding: 10px;
-    text-align: center;
     color: rgb(255, 255, 255);
     border: 2px solid black;
-    font-family: 'Merriweather Sans', sans-serif;
 }
 
 .button {
@@ -35,18 +30,6 @@ input {
     text-align: center;
     font-size: 17px;
     font-weight: bolder;
-    border: 2px solid black;
-    font-family: 'Merriweather Sans', sans-serif;
-}
-
-#rule {
-    position: relative;
-    padding: 5px;
-    width: 100px;
-    text-align: center;
-    font-size: 70%;
-    font-weight: bolder;
-    color: rgb(0, 0, 0);
     border: 2px solid black;
     font-family: 'Merriweather Sans', sans-serif;
 }
@@ -73,11 +56,4 @@ input {
 .rule-tile {
     position: absolute;
     border: 1px solid gray;
-}
-
-.float-container {
-    position: relative;
-    display: inline-block;
-    background-color: white;
-    margin: 10px;
 }
