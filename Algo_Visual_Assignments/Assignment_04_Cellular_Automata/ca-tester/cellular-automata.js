@@ -56,9 +56,7 @@ for(let i=0; i<NUM_COLUMNS; i++){
 // All configuration
 const allConfig = [];
 
-// // Default rule => 0
-// const initialRule = 50;
-// Default rule => 0
+// Set rule given by user
 let initialRule = getRule();
 
 
@@ -86,16 +84,6 @@ function getRule() {
 
     return rule;
 }
-
-
-// function getRule() {
-// 	const rule = document.forms[0].rule.value;
-// 	console.log(rule);
-	
-// 	const event = document.addEventListener('submit', drawGrid());
-// 	drawGrid();
-// }
-
 
 
 // All tile div
