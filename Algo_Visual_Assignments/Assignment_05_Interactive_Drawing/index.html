@@ -2,23 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Cellular Automata Assignment</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="cellular-automata.js"></script>
-    <script>
-      window.onload = () => {
-        drawGrid();  
-      }
-    </script>
+    <title>Interactive Dots</title>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <script src="dots.js" defer></script>
   </head>
   <body>
-    <div class="page">
-      <h1>Cellular Automata</h1>
-      <form class="rules" onload="">
-        <h2 id="heading">Rule: </h2>
-        <div class="button"><input type="submit" value="Click to change the Rule"></div>
-      </form>
-      <div id="grid-background" class="container"></div>
+    <div id=root>
+      <h1>Interactive Dots</h1>
+      <p>Click on the box below to add dots!</p>
+      <svg id="dot-box" version="2.0" xmlns="http://www.w3.org/2000/svg" width="600" height="400">
+	<rect width="100%" height="100%" fill="gray">
+      </svg>
     </div>
   </body>
 </html>
