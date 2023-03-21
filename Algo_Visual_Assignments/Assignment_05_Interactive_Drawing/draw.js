@@ -7,7 +7,7 @@ function drawDot(e) {
     console.log("you drew a dot!");
 
     /* complete this */
-    const para = document.querySelector("#text-box");
+    const para = document.querySelector(".text-box");
     para.innerHTML = para.innerHTML + "you clicked the box!<br/>"
 
 }
