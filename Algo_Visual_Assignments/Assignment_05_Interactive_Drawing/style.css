@@ -1,59 +1,10 @@
-body {
-    background-color: rgb(200,200,200);
-    height: 100vh;
-    margin: 0px 0px;
-    padding: 0px 0px;
-}
-
-h1, h2 {
+svg {
     position: relative;
-    margin: 20px;
-    padding: 10px;
-    text-align: center;
-    color: black;
-    font-family: 'Merriweather Sans', sans-serif;
 }
 
-h2{
-    color: rgb(255, 255, 255);
-    border: 2px solid black;
-}
-
-.button {
-    display: flex;
-    justify-content: center;
-}
-
-input {
-    position: relative;
-    padding: 10px;
-    text-align: center;
-    font-size: 17px;
-    font-weight: bolder;
-    border: 2px solid black;
-    font-family: 'Merriweather Sans', sans-serif;
-}
-
-.page {
-    position: relative;
-    width: 720px;
-    margin: 10px auto 20px auto;
-    padding: 10px 0px 10px 0px;
-    background-color: #3e9de6;
-}
-
-.container {
-    position: relative;
-    margin: 20px auto;
-    border: 8px solid white;   
-}
-
-.tile {
-    position: absolute;
-    border: 1px solid;
-}
-
-.rule-tile {
-    position: absolute;
-    border: 1px solid gray;
+.dot {
+    r: 10px;
+    stroke: black;
+    fill: white;
+    stroke-width: 2;
 }
