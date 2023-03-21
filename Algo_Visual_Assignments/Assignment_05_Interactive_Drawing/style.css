@@ -1,10 +1,19 @@
-svg {
+/* svg {
     position: relative;
 }
 
 .dot {
-    /* r: 10px; */
+    r: 10px;
     stroke: black;
     fill: white;
     stroke-width: 2;
+} */
+
+body {
+	font-family: sans-serif;
+}
+
+svg {
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
 }
