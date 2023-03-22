@@ -16,7 +16,7 @@ let lineStart = null;
 function startDrawing(event) {
 	// set the starting point of the current line
 	lineStart = { x: event.offsetX, y: event.offsetY };
-	
+
 	// set isDrawing to true
 	isDrawing = true;
 }
@@ -27,6 +27,7 @@ function continueDrawing(event) {
 	if (!isDrawing) {
 		return;
 	}
+
 	// create a new line element
 	const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
