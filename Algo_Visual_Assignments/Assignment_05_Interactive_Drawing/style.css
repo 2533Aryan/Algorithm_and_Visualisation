@@ -1,15 +1,5 @@
-/* svg {
-    position: relative;
-}
-
-.dot {
-    r: 10px;
-    stroke: black;
-    fill: white;
-    stroke-width: 2;
-} */
-
 body {
+    background-color: pink;
 	font-family: sans-serif;
 }
 
