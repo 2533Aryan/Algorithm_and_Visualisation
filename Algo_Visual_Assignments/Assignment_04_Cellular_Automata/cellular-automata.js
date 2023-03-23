@@ -56,20 +56,19 @@ for(let i=0; i<NUM_COLUMNS; i++){
 // All configuration
 const allConfig = [];
 
-// // Set rule given by user
-// let initialRule = getRule();
 
+function setAllConfig(initialRule){
+	for (let i = 0; i < NUM_ROWS; i++) {
+		if(i === 0) {
+			allConfig.push(initialConfig);
+		}
 
-for (let i = 0; i < NUM_ROWS; i++) {
-	if(i === 0) {
-		allConfig.push(initialConfig);
-	}
-
-	if(i > 0) {
-		initialConfig = applyRule(initialConfig, initialRule);
-		allConfig.push(initialConfig);
-	}
-}	
+		if(i > 0) {
+			initialConfig = applyRule(initialConfig, initialRule);
+			allConfig.push(initialConfig);
+		}
+	}	
+}
 
 
 function getRule() {
@@ -91,7 +90,7 @@ const allTile = [];
 
 
 // Draw Grid
-function drawGrid() {
+function drawGrid(initialRule) {
     // Make the container the right size
     const container = document.querySelector('#grid-background');
     container.style.width = CONTAINER_WIDTH + "px";
