@@ -57,6 +57,7 @@ for(let i=0; i<NUM_COLUMNS; i++){
 const allConfig = [];
 
 
+// Set allConfig array
 function setAllConfig(initialRule){
 	for (let i = 0; i < NUM_ROWS; i++) {
 		if(i === 0) {
@@ -71,6 +72,7 @@ function setAllConfig(initialRule){
 }
 
 
+// Get rule from user
 function getRule() {
     // Prompt user for input and parse as integer
     let rule = parseInt(window.prompt("Enter the rule number (0-255):"), 10);
@@ -154,6 +156,5 @@ function updateTile(tile, tileConfig, rule){
 	// Update the text content of the rule header element
 	ruleHeader.textContent = "Rule: " + rule;
 }
-
 
 module.exports = { applyRule };
