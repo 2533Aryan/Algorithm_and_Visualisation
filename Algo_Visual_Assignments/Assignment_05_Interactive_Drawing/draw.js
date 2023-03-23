@@ -64,8 +64,8 @@ function continueDrawing(event) {
 	}
 	// if the user is currently drawing a line, create a new line element
 	else {
-	  // create a new line element
-	  const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+		// create a new line element
+		const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
 		// set the stroke color and width
 		line.setAttribute("stroke", "black");
