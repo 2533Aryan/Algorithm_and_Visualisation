@@ -56,8 +56,8 @@ for(let i=0; i<NUM_COLUMNS; i++){
 // All configuration
 const allConfig = [];
 
-// Set rule given by user
-let initialRule = getRule();
+// // Set rule given by user
+// let initialRule = getRule();
 
 
 for (let i = 0; i < NUM_ROWS; i++) {
