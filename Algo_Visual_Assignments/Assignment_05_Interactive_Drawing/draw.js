@@ -3,7 +3,7 @@ const drawingPanel = document.getElementById("drawingPanel");
 
 // set up event listeners for click and mouse movement
 drawingPanel.addEventListener("mousedown", startDrawing);
-drawingPanel.addEventListener("mousemove", continueDrawing);
+// drawingPanel.addEventListener("mousemove", continueDrawing);
 drawingPanel.addEventListener("mouseup", endDrawing);
 
 // variable to keep track of whether the user is currently drawing or not
@@ -64,27 +64,57 @@ function continueDrawing(event) {
 	}
 	// if the user is currently drawing a line, create a new line element
 	else {
-		// create a new line element
-		const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+		// // create a new line element
+		// const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
-		// set the stroke color and width
-		line.setAttribute("stroke", "black");
-		line.setAttribute("stroke-width", "4");
+		// // set the stroke color and width
+		// line.setAttribute("stroke", "black");
+		// line.setAttribute("stroke-width", "4");
 
-		// set the starting and ending points of the line
-		line.setAttribute("x1", lineStart.x);
-		line.setAttribute("y1", lineStart.y);
-		line.setAttribute("x2", event.offsetX);
-		line.setAttribute("y2", event.offsetY);
+		// // set the starting and ending points of the line
+		// line.setAttribute("x1", lineStart.x);
+		// line.setAttribute("y1", lineStart.y);
+		// line.setAttribute("x2", event.offsetX);
+		// line.setAttribute("y2", event.offsetY);
 
-		// add the line to the svg panel
-		drawingPanel.appendChild(line);
+		// // add the line to the svg panel
+		// drawingPanel.appendChild(line);
 
-		// update the starting point of the current line
-		lineStart = { x: event.offsetX, y: event.offsetY };
+		// // update the starting point of the current line
+		// lineStart = { x: event.offsetX, y: event.offsetY };
 	}
 }
+
+// function to draw a line
+function drawLine(start, end) {
+	// create a new line element
+	const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+	// set the stroke color and width
+	line.setAttribute("stroke", "black");
+	line.setAttribute("stroke-width", "4");
+
+	// set the starting and ending points of the line
+	line.setAttribute("x1", start.x);
+	line.setAttribute("y1", start.y);
+	line.setAttribute("x2", end.x);
+	line.setAttribute("y2", end.y);
+
+	// add the line to the svg panel
+	drawingPanel.appendChild(line);
+}
 	  
+// function to end drawing
+function endDrawing(event) {
+	// calculate the ending point of the line
+	const lineEnd = { x: event.offsetX, y: event.offsetY };
+
+	// draw the line
+	drawLine(lineStart, lineEnd);
+
+	// reset the lineStart variable
+	lineStart = null;
+}
 
 // function to end drawing
 function endDrawing(event) {
