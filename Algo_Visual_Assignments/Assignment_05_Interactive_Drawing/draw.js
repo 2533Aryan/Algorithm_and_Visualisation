@@ -16,20 +16,20 @@ function startDrawing(event) {
         // Create a new line element
         currentElement = document.createElementNS("http://www.w3.org/2000/svg", "line");
         currentElement.setAttribute("stroke", "black");
-        currentElement.setAttribute("stroke-width", "2");
+        currentElement.setAttribute("stroke-width", "4");
         break;
       case 'rect':
         // Create a new rectangle element
         currentElement = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         currentElement.setAttribute("stroke", "black");
-        currentElement.setAttribute("stroke-width", "2");
+        currentElement.setAttribute("stroke-width", "4");
         currentElement.setAttribute("fill", "transparent");
         break;
       case 'circle':
         // Create a new circle element
         currentElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
         currentElement.setAttribute("stroke", "black");
-        currentElement.setAttribute("stroke-width", "2");
+        currentElement.setAttribute("stroke-width", "4");
         currentElement.setAttribute("fill", "transparent");
         break;
     }
