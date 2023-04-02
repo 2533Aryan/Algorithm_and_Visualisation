@@ -113,10 +113,23 @@ currentDiv.appendChild(modeButton);
 // Set id for new div element
 modeButton.setAttribute("id", "mode-button");
 
-// Create mode button
-const button = document.createElement("button");
-button.textContent = "Click me!"; // set the text of the button
-modeButton.appendChild(button);
+// Line button
+const lineButton = document.createElement("button");
+lineButton.textContent = "Line";
+
+// Circle button
+const circleButton = document.createElement("button");
+circleButton.textContent = "Circle";
+
+// Rect button
+const rectButton = document.createElement("button");
+rectButton.textContent = "Rect";
+
+modeButton.appendChild(lineButton);
+modeButton.appendChild(circleButton);
+modeButton.appendChild(rectButton);
+
+
 
 
 setDrawingMode();
