@@ -137,6 +137,29 @@ modeButton.appendChild(lineButton);
 modeButton.appendChild(circleButton);
 modeButton.appendChild(rectButton);
 
-setDrawingMode("rect")
-// lineButton.addEventListener("click", setDrawingMode("Line"));
 
+// User clicked line button
+lineButton.addEventListener("click", lineWorking);
+
+function lineWorking(){
+	lineButton.disabled = false;
+	setDrawingMode("line");
+}
+
+
+// User clicked circle button
+lineButton.addEventListener("click", circleWorking);
+
+function circleWorking(){
+	lineButton.disabled = false;
+	setDrawingMode("circle");
+}
+
+
+// User clicked rect button
+lineButton.addEventListener("click", rectWorking);
+
+function rectWorking(){
+	lineButton.disabled = false;
+	setDrawingMode("rect");
+}
