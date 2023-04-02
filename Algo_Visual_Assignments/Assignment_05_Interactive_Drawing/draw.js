@@ -1,12 +1,5 @@
-// Get the SVG element and set up event listeners
-const drawingPanel = document.getElementById("drawingPanel");
-drawingPanel.addEventListener("mousedown", startDrawing);
-drawingPanel.addEventListener("mousemove", continueDrawing);
-drawingPanel.addEventListener("mouseup", stopDrawing);
-
 // Define variables for drawing
 let isDrawing = false;
-let startX, startY;
 let currentLine;
 
 // Function to start drawing
@@ -18,10 +11,12 @@ function startDrawing(event) {
     currentLine.setAttribute("stroke-width", "2");
 
     // Set the start point of the line
-    startX = event.offsetX;
-    startY = event.offsetY;
+    const startX = event.offsetX;
+    const startY = event.offsetY;
     currentLine.setAttribute("x1", startX);
     currentLine.setAttribute("y1", startY);
+    currentLine.setAttribute("x2", startX); // Set the end point to the same as the start point
+    currentLine.setAttribute("y2", startY);
 
     // Add the line to the SVG element
     drawingPanel.appendChild(currentLine);
@@ -47,6 +42,13 @@ function stopDrawing(event) {
   // Unset the drawing flag
   isDrawing = false;
 }
+
+// Add event listeners to the SVG element
+drawingPanel.addEventListener("mousedown", startDrawing);
+drawingPanel.addEventListener("mousemove", continueDrawing);
+drawingPanel.addEventListener("mouseup", stopDrawing);
+
+
 
 
 
