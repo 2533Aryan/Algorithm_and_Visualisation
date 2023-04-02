@@ -143,7 +143,14 @@ modeButton.appendChild(rectButton);
 lineButton.addEventListener("click", lineWorking);
 
 function lineWorking(){
+	// Disable line button
 	lineButton.disabled = true;
+	
+	// Enable circle and rect button
+	circleButton.disabled = false;
+	rectButton.disabled = false;
+
+	// Set mode to line
 	setDrawingMode("line");
 }
 
@@ -152,7 +159,14 @@ function lineWorking(){
 circleButton.addEventListener("click", circleWorking);
 
 function circleWorking(){
+	// Disable circle button
 	circleButton.disabled = true;
+	
+	// Enable circle and rect button
+	lineButton.disabled = false;
+	rectButton.disabled = false;
+
+	// Set mode to circle
 	setDrawingMode("circle");
 }
 
@@ -161,6 +175,13 @@ function circleWorking(){
 rectButton.addEventListener("click", rectWorking);
 
 function rectWorking(){
+	// Disable rect button
 	rectButton.disabled = true;
+	
+	// Enable line and circle button
+	lineButton.disabled = false;
+	circleButton.disabled = false;
+
+	// Set mode to rect
 	setDrawingMode("rect");
 }
