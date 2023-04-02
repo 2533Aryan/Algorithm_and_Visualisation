@@ -103,3 +103,20 @@ function setFillColor(color) {
     currentElement.setAttribute("fill", color);
   }
 }
+
+
+// Create a new div element
+const currentDiv = document.getElementById("root");
+const modeButton = document.createElement("div");
+currentDiv.appendChild(modeButton);
+
+// Set id for new div element
+modeButton.setAttribute("id", "mode-button");
+
+// Create mode button
+const button = document.createElement("button");
+button.textContent = "Click me!"; // set the text of the button
+modeButton.appendChild(button);
+
+
+setDrawingMode();
