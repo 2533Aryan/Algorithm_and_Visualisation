@@ -11,40 +11,48 @@ let currentElement;
 // Function to start drawing
 function startDrawing(event) {
   if (event.button === 0) { // Only start drawing if left mouse button is pressed
-    switch (currentShape) {
+	
+	// Set the start point of the line
+	const startX = event.offsetX;
+	const startY = event.offsetY;
+    
+	switch (currentShape) {
       case 'line':
         // Create a new line element
         currentElement = document.createElementNS("http://www.w3.org/2000/svg", "line");
         currentElement.setAttribute("stroke", "black");
         currentElement.setAttribute("stroke-width", "4");
+		
+		currentElement.setAttribute("x1", startX);
+    	currentElement.setAttribute("y1", startY);
+    	currentElement.setAttribute("x2", startX); // Set the end point to the same as the start point
+    	currentElement.setAttribute("y2", startY);
         break;
+
       case 'rect':
         // Create a new rectangle element
         currentElement = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         currentElement.setAttribute("stroke", "black");
         currentElement.setAttribute("stroke-width", "4");
         currentElement.setAttribute("fill", "transparent");
+		
+		currentElement.setAttribute("x", startX);
+    	currentElement.setAttribute("y", startY);
         break;
+
       case 'circle':
         // Create a new circle element
         currentElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
         currentElement.setAttribute("stroke", "black");
         currentElement.setAttribute("stroke-width", "4");
         currentElement.setAttribute("fill", "transparent");
+
+		currentElement.setAttribute("cx", startX);
+    	currentElement.setAttribute("cy", startY);
         break;
     }
 
-    // Set the start point of the line
-    const startX = event.offsetX;
-    const startY = event.offsetY;
-    currentElement.setAttribute("x1", startX);
-    currentElement.setAttribute("y1", startY);
-    currentElement.setAttribute("x2", startX); // Set the end point to the same as the start point
-    currentElement.setAttribute("y2", startY);
-    currentElement.setAttribute("cx", startX);
-    currentElement.setAttribute("cy", startY);
-
-    // Add the shape to the SVG element
+	// Add the shape to the SVG element
     drawingPanel.appendChild(currentElement);
 
     // Set the drawing flag
@@ -129,7 +137,6 @@ modeButton.appendChild(lineButton);
 modeButton.appendChild(circleButton);
 modeButton.appendChild(rectButton);
 
+setDrawingMode("rect")
+// lineButton.addEventListener("click", setDrawingMode("Line"));
 
-
-
-setDrawingMode();
