@@ -11,22 +11,24 @@ let currentLine;
 
 // Function to start drawing
 function startDrawing(event) {
-  // Create a new line element
-  currentLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  currentLine.setAttribute("stroke", "black");
-  currentLine.setAttribute("stroke-width", "2");
-  
-  // Set the start point of the line
-  startX = event.offsetX;
-  startY = event.offsetY;
-  currentLine.setAttribute("x1", startX);
-  currentLine.setAttribute("y1", startY);
-  
-  // Add the line to the SVG element
-  drawingPanel.appendChild(currentLine);
-  
-  // Set the drawing flag
-  isDrawing = true;
+  if (event.button === 0) { // Only start drawing if left mouse button is pressed
+    // Create a new line element
+    currentLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    currentLine.setAttribute("stroke", "black");
+    currentLine.setAttribute("stroke-width", "2");
+
+    // Set the start point of the line
+    startX = event.offsetX;
+    startY = event.offsetY;
+    currentLine.setAttribute("x1", startX);
+    currentLine.setAttribute("y1", startY);
+
+    // Add the line to the SVG element
+    drawingPanel.appendChild(currentLine);
+
+    // Set the drawing flag
+    isDrawing = true;
+  }
 }
 
 // Function to continue drawing
@@ -45,6 +47,10 @@ function stopDrawing(event) {
   // Unset the drawing flag
   isDrawing = false;
 }
+
+
+
+
 
 // // get the svg panel
 // const drawingPanel = document.getElementById("drawingPanel");
