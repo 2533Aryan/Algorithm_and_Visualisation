@@ -96,6 +96,7 @@ function stopDrawing(event) {
 // Function to switch drawing modes
 function setDrawingMode(mode) {
   currentShape = mode;
+  console.log(mode);
 }
 
 // Function to change the stroke color
@@ -142,24 +143,24 @@ modeButton.appendChild(rectButton);
 lineButton.addEventListener("click", lineWorking);
 
 function lineWorking(){
-	lineButton.disabled = false;
+	lineButton.disabled = true;
 	setDrawingMode("line");
 }
 
 
 // User clicked circle button
-lineButton.addEventListener("click", circleWorking);
+circleButton.addEventListener("click", circleWorking);
 
 function circleWorking(){
-	lineButton.disabled = false;
+	circleButton.disabled = true;
 	setDrawingMode("circle");
 }
 
 
 // User clicked rect button
-lineButton.addEventListener("click", rectWorking);
+rectButton.addEventListener("click", rectWorking);
 
 function rectWorking(){
-	lineButton.disabled = false;
+	rectButton.disabled = true;
 	setDrawingMode("rect");
 }
