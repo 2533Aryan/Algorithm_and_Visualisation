@@ -38,6 +38,8 @@ function startDrawing(event) {
 		
 		currentElement.setAttribute("x", startX);
     	currentElement.setAttribute("y", startY);
+    	// currentElement.setAttribute("x2", startX); // Set the end point to the same as the start point
+    	// currentElement.setAttribute("y2", startY);
         break;
 
       case 'circle':
@@ -71,12 +73,14 @@ function continueDrawing(event) {
         currentElement.setAttribute("x2", currentX);
         currentElement.setAttribute("y2", currentY);
         break;
+
       case 'rect':
         const width = currentX - currentElement.getAttribute("x");
         const height = currentY - currentElement.getAttribute("y");
-        currentElement.setAttribute("width", width);
-        currentElement.setAttribute("height", height);
+		currentElement.setAttribute("width", width);
+		currentElement.setAttribute("height", height);
         break;
+
       case 'circle':
         const dx = currentX - currentElement.getAttribute("cx");
         const dy = currentY - currentElement.getAttribute("cy");
@@ -89,28 +93,27 @@ function continueDrawing(event) {
 
 // Function to stop drawing
 function stopDrawing(event) {
-  // Unset the drawing flag
-  isDrawing = false;
+	// Unset the drawing flag
+	isDrawing = false;
 }
 
 // Function to switch drawing modes
 function setDrawingMode(mode) {
-  currentShape = mode;
-  console.log(mode);
+	currentShape = mode;
 }
 
 // Function to change the stroke color
 function setStrokeColor(color) {
-  if (currentElement) {
-    currentElement.setAttribute("stroke", color);
-  }
+	if (currentElement) {
+		currentElement.setAttribute("stroke", color);	
+	}
 }
 
 // Function to change the fill color (for rectangles and circles)
 function setFillColor(color) {
-  if (currentElement && (currentShape === 'rect' || currentShape === 'circle')) {
-    currentElement.setAttribute("fill", color);
-  }
+	if (currentElement && (currentShape === 'rect' || currentShape === 'circle')) {
+		currentElement.setAttribute("fill", color);
+	}
 }
 
 
