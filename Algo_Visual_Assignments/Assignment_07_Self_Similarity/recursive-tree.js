@@ -52,11 +52,3 @@ let drawIteration = function (x, y, height, depth, parentGroup) {
 
 
 drawIteration(350, 50, TRUNK_HEIGHT, 0, treeGroup);
-
-
-
-
-
-
-
-
