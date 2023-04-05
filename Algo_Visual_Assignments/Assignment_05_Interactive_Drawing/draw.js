@@ -185,7 +185,7 @@ rootDiv.appendChild(fillColor);
 
 // Text for color fill button
 const fillText = document.createElement("p");
-fillText.textContent = "Choose color to fill:";
+fillText.textContent = "Choose color (click shapes to fill): ";
 fillColor.appendChild(fillText);
 
 
