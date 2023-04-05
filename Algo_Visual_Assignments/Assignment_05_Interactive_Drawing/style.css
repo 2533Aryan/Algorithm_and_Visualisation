@@ -25,6 +25,7 @@ svg {
 
 button{
     width: 100px;
+    font-weight: bold;
 }
 
 #fill-color{
