@@ -102,26 +102,6 @@ function setDrawingMode(mode) {
 	currentShape = mode;
 }
 
-// Function to change the stroke color
-// function setStrokeColor(color) {
-// 	if (currentElement) {
-// 		currentElement.setAttribute("stroke", color);	
-// 	}
-// }
-
-// Function to change the fill color (for rectangles and circles)
-// function setFillColor(color) {
-// 	if (currentElement && (currentShape === 'rect' || currentShape === 'circle')) {
-// 		currentElement.setAttribute("fill", color);
-// 	}
-// }
-
-function setStrokeColor(color, elementId) {
-	const element = document.getElementById(elementId);
-	if (element) {
-		element.setAttribute("stroke", color);	
-	}
-}
 
 
 // Create a new div element
