@@ -23,7 +23,7 @@ function startDrawing(event) {
         currentElement.setAttribute("stroke", "black");
         currentElement.setAttribute("stroke-width", "4");
 		
-		currentElement.setAttribute("x1", startX);
+		  currentElement.setAttribute("x1", startX);
     	currentElement.setAttribute("y1", startY);
     	currentElement.setAttribute("x2", startX); // Set the end point to the same as the start point
     	currentElement.setAttribute("y2", startY);
@@ -103,16 +103,23 @@ function setDrawingMode(mode) {
 }
 
 // Function to change the stroke color
-function setStrokeColor(color) {
-	if (currentElement) {
-		currentElement.setAttribute("stroke", color);	
-	}
-}
+// function setStrokeColor(color) {
+// 	if (currentElement) {
+// 		currentElement.setAttribute("stroke", color);	
+// 	}
+// }
 
 // Function to change the fill color (for rectangles and circles)
-function setFillColor(color) {
-	if (currentElement && (currentShape === 'rect' || currentShape === 'circle')) {
-		currentElement.setAttribute("fill", color);
+// function setFillColor(color) {
+// 	if (currentElement && (currentShape === 'rect' || currentShape === 'circle')) {
+// 		currentElement.setAttribute("fill", color);
+// 	}
+// }
+
+function setStrokeColor(color, elementId) {
+	const element = document.getElementById(elementId);
+	if (element) {
+		element.setAttribute("stroke", color);	
 	}
 }
 
@@ -188,3 +195,30 @@ function rectWorking(){
 	// Set mode to rect
 	setDrawingMode("rect");
 }
+
+
+// setStrokeColor('Red', currentElement.id);
+// setFillColor('Red');
+
+// Function to change the fill color (for rectangles and circles)
+function setFillColor(color) {
+	if (currentElement && (currentShape === 'rect' || currentShape === 'circle')) {
+		currentElement.setAttribute("fill", color);
+	}
+}
+
+// Function to fill a shape when it's clicked
+function fillShape(event) {
+  if (event.target.tagName === "rect" || event.target.tagName === "circle") {
+    event.target.setAttribute("fill", fillColorButton.value);
+  }
+}
+
+// Create a new button element for selecting fill color
+const fillColorButton = document.createElement("input");
+fillColorButton.setAttribute("type", "color");
+fillColorButton.setAttribute("value", "#000000");
+currentDiv.appendChild(fillColorButton);
+
+// Add event listener to SVG element for filling a shape
+drawingPanel.addEventListener("click", fillShape);
