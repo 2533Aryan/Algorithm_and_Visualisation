@@ -105,9 +105,9 @@ function setDrawingMode(mode) {
 
 
 // Create a new div element
-const currentDiv = document.getElementById("root");
+const rootDiv = document.getElementById("root");
 const modeButton = document.createElement("div");
-currentDiv.appendChild(modeButton);
+rootDiv.appendChild(modeButton);
 
 // Set id for new div element
 modeButton.setAttribute("id", "mode-button");
@@ -177,15 +177,17 @@ function rectWorking(){
 }
 
 
-// setStrokeColor('Red', currentElement.id);
-// setFillColor('Red');
 
-// Function to change the fill color (for rectangles and circles)
-function setFillColor(color) {
-	if (currentElement && (currentShape === 'rect' || currentShape === 'circle')) {
-		currentElement.setAttribute("fill", color);
-	}
-}
+// Create a new div element - Fill Color Block
+const fillColor = document.createElement("div");
+fillColor.setAttribute("id", "fill-color")
+rootDiv.appendChild(fillColor);
+
+// Text for color fill button
+const fillText = document.createElement("p");
+fillText.textContent = "Choose color to fill:";
+fillColor.appendChild(fillText);
+
 
 // Function to fill a shape when it's clicked
 function fillShape(event) {
@@ -198,7 +200,9 @@ function fillShape(event) {
 const fillColorButton = document.createElement("input");
 fillColorButton.setAttribute("type", "color");
 fillColorButton.setAttribute("value", "#000000");
-currentDiv.appendChild(fillColorButton);
+fillColor.appendChild(fillColorButton);
 
 // Add event listener to SVG element for filling a shape
 drawingPanel.addEventListener("click", fillShape);
+
+
