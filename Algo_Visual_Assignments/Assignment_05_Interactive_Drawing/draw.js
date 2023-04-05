@@ -3,30 +3,32 @@ drawingPanel.addEventListener("mousedown", startDrawing);
 drawingPanel.addEventListener("mousemove", continueDrawing);
 drawingPanel.addEventListener("mouseup", stopDrawing);
 
+
 // Define variables for drawing
 let isDrawing = false;
 let currentShape = 'line'; // Default to drawing lines
 let currentElement;
 
+
 // Function to start drawing
 function startDrawing(event) {
   if (event.button === 0) { // Only start drawing if left mouse button is pressed
-	
-	// Set the start point of the line
-	const startX = event.offsetX;
-	const startY = event.offsetY;
-    
-	switch (currentShape) {
+
+    // Set the start point of the line
+    const startX = event.offsetX;
+    const startY = event.offsetY;
+
+    switch (currentShape) {
       case 'line':
         // Create a new line element
         currentElement = document.createElementNS("http://www.w3.org/2000/svg", "line");
         currentElement.setAttribute("stroke", "black");
         currentElement.setAttribute("stroke-width", "4");
-		
-		  currentElement.setAttribute("x1", startX);
-    	currentElement.setAttribute("y1", startY);
-    	currentElement.setAttribute("x2", startX); // Set the end point to the same as the start point
-    	currentElement.setAttribute("y2", startY);
+
+        currentElement.setAttribute("x1", startX);
+        currentElement.setAttribute("y1", startY);
+        currentElement.setAttribute("x2", startX); // Set the end point to the same as the start point
+        currentElement.setAttribute("y2", startY);
         break;
 
       case 'rect':
@@ -35,9 +37,9 @@ function startDrawing(event) {
         currentElement.setAttribute("stroke", "black");
         currentElement.setAttribute("stroke-width", "4");
         currentElement.setAttribute("fill", "transparent");
-		
-		    currentElement.setAttribute("x", startX);
-    	  currentElement.setAttribute("y", startY);
+
+        currentElement.setAttribute("x", startX);
+        currentElement.setAttribute("y", startY);
         break;
 
       case 'circle':
@@ -47,18 +49,19 @@ function startDrawing(event) {
         currentElement.setAttribute("stroke-width", "4");
         currentElement.setAttribute("fill", "transparent");
 
-		currentElement.setAttribute("cx", startX);
-    	currentElement.setAttribute("cy", startY);
+        currentElement.setAttribute("cx", startX);
+        currentElement.setAttribute("cy", startY);
         break;
     }
 
-	// Add the shape to the SVG element
+    // Add the shape to the SVG element
     drawingPanel.appendChild(currentElement);
 
     // Set the drawing flag
     isDrawing = true;
   }
 }
+
 
 // Function to continue drawing
 function continueDrawing(event) {
@@ -89,11 +92,13 @@ function continueDrawing(event) {
   }
 }
 
+
 // Function to stop drawing
 function stopDrawing(event) {
 	// Unset the drawing flag
 	isDrawing = false;
 }
+
 
 // Function to switch drawing modes
 function setDrawingMode(mode) {
@@ -202,5 +207,3 @@ fillColor.appendChild(fillColorButton);
 
 // Add event listener to SVG element for filling a shape
 drawingPanel.addEventListener("click", fillShape);
-
-
