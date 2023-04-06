@@ -1,40 +1,40 @@
-let x = 0, y = 0;
-setInterval(() => {
-  // Update 20 times every frame
-  for (let i = 0; i < 20; i++) update();
-}, 1000/250); // 250 frames per second
+// let x = 0, y = 0;
+// setInterval(() => {
+//   // Update 20 times every frame
+//   for (let i = 0; i < 20; i++) update();
+// }, 1000/250); // 250 frames per second
 
-function update() {
-  let nextX, nextY;
-  let r = Math.random();
-  if (r < 0.01) {
-      nextX = 0;
-      nextY = 0.16 * y;
-  } else if (r < 0.86) {
-      nextX = 0.85 * x + 0.04 * y;
-      nextY = -0.04 * x + 0.85 * y + 1.6;
-  } else if (r < 0.93) {
-      nextX = 0.20 * x - 0.26 * y;
-      nextY = 0.23 * x + 0.22 * y + 1.6;
-  } else {
-      nextX = -0.15 * x + 0.28 * y;
-      nextY = 0.26 * x + 0.24 * y + 0.44;
-  }
+// function update() {
+//   let nextX, nextY;
+//   let r = Math.random();
+//   if (r < 0.01) {
+//       nextX = 0;
+//       nextY = 0.16 * y;
+//   } else if (r < 0.86) {
+//       nextX = 0.85 * x + 0.04 * y;
+//       nextY = -0.04 * x + 0.85 * y + 1.6;
+//   } else if (r < 0.93) {
+//       nextX = 0.20 * x - 0.26 * y;
+//       nextY = 0.23 * x + 0.22 * y + 1.6;
+//   } else {
+//       nextX = -0.15 * x + 0.28 * y;
+//       nextY = 0.26 * x + 0.24 * y + 0.44;
+//   }
 
-  // Scaling and positioning
-  let plotX = 300 * (x + 3) / 6;
-  let plotY = 400 - 400 * ((y + 2) / 14);
+//   // Scaling and positioning
+//   let plotX = 300 * (x + 3) / 6;
+//   let plotY = 400 - 400 * ((y + 2) / 14);
 
-  let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-  circle.setAttributeNS(null, "cx", plotX);
-  circle.setAttributeNS(null, "cy", plotY);
-  circle.setAttributeNS(null, "r", "1");
-  circle.setAttributeNS(null, "fill", "green");
-  document.querySelector("svg").appendChild(circle);
+//   let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+//   circle.setAttributeNS(null, "cx", plotX);
+//   circle.setAttributeNS(null, "cy", plotY);
+//   circle.setAttributeNS(null, "r", "1");
+//   circle.setAttributeNS(null, "fill", "green");
+//   document.querySelector("svg").appendChild(circle);
 
-  x = nextX;
-  y = nextY;
-}
+//   x = nextX;
+//   y = nextY;
+// }
 
 
 // const SVG_NS = "http://www.w3.org/2000/svg";
