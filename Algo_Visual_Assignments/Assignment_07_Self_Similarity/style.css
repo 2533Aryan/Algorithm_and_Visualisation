@@ -1,3 +1,23 @@
-.branch {
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  #main-svg {
+    display: block;
+    margin: 0 auto;
+    width: 600px;
+    height: 600px;
+    background-color: white;
+    border: 1px solid black;
+  }
+  
+/* .branch {
     stroke-linecap: round;
-}
+} */
