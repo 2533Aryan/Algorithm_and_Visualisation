@@ -9,17 +9,27 @@ function createRect(x, y, width, height, fill) {
   rect.setAttribute("fill", fill);
   svg.appendChild(rect);
 }
-
-function generateImage(x, y, width, height, fill, level) {
-  createRect(x, y, width, height, fill);
-  if (level > 0) {
-    const newWidth = width / 2;
-    const newHeight = height / 2;
-    generateImage(x + newWidth, y, newWidth, newHeight, fill, level - 1);
-    generateImage(x, y + newHeight, newWidth, newHeight, fill, level - 1);
-    generateImage(x + newWidth, y + newHeight, newWidth, newHeight, fill, level - 1);
+function generateImage(x, y, width, height, level) {
+    const hue = level * 10; // hue varies with recursion depth
+    const saturation = 70; // constant saturation
+    const lightness = 50; // constant lightness
+    const fill = `hsl(${hue}, ${saturation}%, ${lightness}%)`; // construct fill color from HSL values
+    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    rect.setAttribute("x", x);
+    rect.setAttribute("y", y);
+    rect.setAttribute("width", width);
+    rect.setAttribute("height", height);
+    rect.setAttribute("fill", fill);
+    svg.appendChild(rect);
+    if (level > 0) {
+      const newWidth = width / 2;
+      const newHeight = height / 2;
+      generateImage(x + newWidth, y, newWidth, newHeight, level - 1);
+      generateImage(x, y + newHeight, newWidth, newHeight, level - 1);
+      generateImage(x + newWidth, y + newHeight, newWidth, newHeight, level - 1);
+    }
   }
-}
+  
 
 generateImage(0, 0, 600, 600, "red", 4);
 
