@@ -29,12 +29,13 @@ function update() {
   let plotX = 300 * (x + 3) / 6;
   let plotY = 400 - 400 * ((y + 2) / 14);
 
-//   let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-//   circle.setAttributeNS(null, "cx", plotX);
-//   circle.setAttributeNS(null, "cy", plotY);
-//   circle.setAttributeNS(null, "r", "1");
-//   circle.setAttributeNS(null, "fill", "green");
-//   document.querySelector("svg").appendChild(circle);
+  // Points as circle
+  let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  circle.setAttributeNS(null, "cx", plotX);
+  circle.setAttributeNS(null, "cy", plotY);
+  circle.setAttributeNS(null, "r", "1");
+  circle.setAttributeNS(null, "fill", "green");
+  document.querySelector("svg").appendChild(circle);
 
 //   x = nextX;
 //   y = nextY;
