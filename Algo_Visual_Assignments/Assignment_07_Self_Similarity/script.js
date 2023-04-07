@@ -61,4 +61,4 @@ function generateFractal(iterations) {
 
 
 // Call the generateFractal function to generate the Barnsley fern fractal with 200 iterations
-// generateFractal(200);
+generateFractal(200);
