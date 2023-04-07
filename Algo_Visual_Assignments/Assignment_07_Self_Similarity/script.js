@@ -1,19 +1,12 @@
 // Initial point
 let x = 0, y = 0;
 
-// setInterval(() => {
-//   // Update 20 times every frame
-//   for (let i = 0; i < 10; i++) {
-//     update();
-//   }
-// }, 100/250); // 250 frames per second
-
+// Draw Barnsley fern
 function draw(){
     // Update 20 times every frame
-    for (let i = 0; i < 100000; i++) {
+    for (let i = 0; i < 60000; i++) {
         update();
     }    
-    console.log(1)
 }
 
 // Coordinate transformations
@@ -57,3 +50,5 @@ function update() {
     x = nextX;
     y = nextY;
 }
+
+draw()
