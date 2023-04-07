@@ -1,4 +1,10 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-/* .branch {
-    stroke-linecap: round;
-} */
+svg {
+    background-color: black;
+}

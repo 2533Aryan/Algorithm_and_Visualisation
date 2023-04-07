@@ -33,8 +33,8 @@ function generatePoint(x, y, iterations) {
     // Draw the point on the canvas
 
     // Scaling and positioning
-    let plotX = 350 * (x + 3) / 6;
-    let plotY = 400 - 300 * ((y + 2) / 10);
+    let plotX = 450 * (x - 1.5) / 15;
+    let plotY = 120 - 100 * ((y + 2) / 10);
 
     // Points as circle
     let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -61,4 +61,4 @@ function generateFractal(iterations) {
 
 
 // Call the generateFractal function to generate the Barnsley fern fractal with 200 iterations
-// generateFractal(200);
+generateFractal(100);
