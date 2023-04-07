@@ -48,6 +48,7 @@ function generatePoint(x, y, iterations) {
     generatePoint(nextX, nextY, iterations - 1);
 }
 
+
 // Generate the entire Barnsley fern fractal using recursion
 function generateFractal(iterations) {
     // Initial point
@@ -57,6 +58,7 @@ function generateFractal(iterations) {
         generatePoint(x, y, iterations);
     }
 }
+
 
 // Call the generateFractal function to generate the Barnsley fern fractal with 200 iterations
 // generateFractal(200);
