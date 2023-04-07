@@ -33,9 +33,9 @@ function generatePoint(x, y, iterations) {
     // Draw the point on the canvas
 
     // Scaling and positioning
-    let plotX = 450 * (x - 1.5) / 15;
-    let plotY = 120 - 100 * ((y + 2) / 10);
-
+    let plotX = 520 * (x + 3.2) / 6;
+    let plotY = 470 - 540 * ((y + 2) / 14);
+    
     // Points as circle
     let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     circle.setAttributeNS(null, "cx", plotX);
