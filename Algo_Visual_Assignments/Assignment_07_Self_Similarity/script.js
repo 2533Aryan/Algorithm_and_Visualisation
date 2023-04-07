@@ -1,4 +1,6 @@
-// let x = 0, y = 0;
+// Initial point
+let x = 0, y = 0;
+
 // setInterval(() => {
 //   // Update 20 times every frame
 //   for (let i = 0; i < 20; i++) update();
