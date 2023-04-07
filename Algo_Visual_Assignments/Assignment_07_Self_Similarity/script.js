@@ -10,17 +10,17 @@ function update() {
   let nextX, nextY;
   let r = Math.random();
 
-  // Function 1
+  // Function 1 (Stem)
   if (r < 0.01) {
       nextX = 0;
       nextY = 0.16 * y;
-  } else if (r < 0.86) {  // Function 2
+  } else if (r < 0.86) {  // Function 2 (Successively smaller leaflets)
       nextX = 0.85 * x + 0.04 * y;
       nextY = -0.04 * x + 0.85 * y + 1.6;
-  } else if (r < 0.93) {  // Function 3
+  } else if (r < 0.93) {  // Function 3 (Largest left-hand leaflet)
       nextX = 0.20 * x - 0.26 * y;
       nextY = 0.23 * x + 0.22 * y + 1.6;
-  } else {  // Function 4
+  } else {  // Function 4 (Largest right-hand leaflet)
       nextX = -0.15 * x + 0.28 * y;
       nextY = 0.26 * x + 0.24 * y + 0.44;
   }
