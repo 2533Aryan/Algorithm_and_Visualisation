@@ -25,9 +25,9 @@ function update() {
       nextY = 0.26 * x + 0.24 * y + 0.44;
   }
 
-//   // Scaling and positioning
-//   let plotX = 300 * (x + 3) / 6;
-//   let plotY = 400 - 400 * ((y + 2) / 14);
+  // Scaling and positioning
+  let plotX = 300 * (x + 3) / 6;
+  let plotY = 400 - 400 * ((y + 2) / 14);
 
 //   let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 //   circle.setAttributeNS(null, "cx", plotX);
