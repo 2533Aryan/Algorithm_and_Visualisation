@@ -13,4 +13,12 @@ body {
 svg {
     background-color: rgb(255, 255, 255);
     border: 5px solid rgb(0, 0, 0);
+    margin-bottom: 1%;
+}
+
+p {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 0%;
+    text-align: justify;
 }
