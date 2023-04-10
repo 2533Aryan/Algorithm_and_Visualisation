@@ -52,7 +52,9 @@ function getSpanWidths (spans) {
 // addtional space so that the width of each line does not exceed
 // TEXT_WIDTH.
 function greedyLines (spans, parent) {
-    
+    for (let s of spans) {
+        parent.appendChild(s);
+    }
 }
 
 
