@@ -51,6 +51,7 @@ function getSpanWidths (spans) {
 // modifying 'style.css', but this method must account for the
 // addtional space so that the width of each line does not exceed
 // TEXT_WIDTH.
+/*Complete this function*/
 function greedyLines (spans, parent) {
     for (let s of spans) {
         parent.appendChild(s);
