@@ -1,0 +1,25 @@
+:root {
+    --light-blue: rgb(200,255,255);
+    --mild-yellow: rgb(255, 255, 200);
+    /* font-family: 'EB Garamond', serif; */
+    font-family: 'Libre Baskerville', serif;
+    /* font-family: 'Roboto', sans-serif; */
+    /* font-family: 'Roboto Mono', monospace; */
+    font-size: 16px;
+
+}
+
+#hidden {
+    position: absolute;
+    visibility: hidden;
+}
+
+#root {
+    max-width: 600px;
+    min-width: 400px;
+}
+
+span {
+    margin: 0em 0em 0em 0em;
+    /* background-color: var(--mild-yellow); */
+}
