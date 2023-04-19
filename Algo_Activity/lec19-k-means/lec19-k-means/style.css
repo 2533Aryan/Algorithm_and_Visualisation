@@ -1,0 +1,82 @@
+:root {
+    font-family: 'Roboto Slab', serif;
+}
+
+body {
+    margin: 0px;
+}
+
+#root {
+    width: 700px;
+    height: 100svh;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: clip;
+}
+
+h1 {
+    top: 0px;
+}
+
+#control-box {
+}
+
+.head, .foot {
+    margin: 0px auto;
+    box-sizing: border-box;
+    z-index: 999;
+    background-color: rgb(255, 255, 255, 0.6);
+    text-align: center;
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+}
+
+.head {
+    top: -10px;
+    padding: 30px 20px 20px 20px;
+}
+
+.foot {
+    top: 10px;
+    padding: 20px 20px 30px 20px;
+}
+
+.dot {
+    r: 5px;
+    stroke-width: 0px;
+}
+
+.mean-point {
+    stroke: black;
+    stroke-width: 3px;
+    opacity: 50%;
+}
+
+.black {
+    fill: black;
+}
+
+.bounding-box {
+    fill: none;
+    stroke-width: 5px;
+    stroke: rgb(100, 100, 100);
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+#k-means {
+    position: fixed;
+    z-index: 0;
+    top: 0px;
+    left: 0px;
+    width: 100svw;
+    height: 100svh;
+    background-color: rgb(220, 220, 255);
+}
+
+
