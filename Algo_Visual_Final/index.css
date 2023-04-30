@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Helvetica;
+    background-color: #33353d;
+    color: white;
+  }
+  a {
+    color: yellow;
+  }
+  h1 {
+    margin-top: 0.4em;
+    margin-bottom: 0;
+  }
+  p {
+    margin-top: 0.5em;
+  }
+  .center {
+    text-align: center;
+  }
+  .d3ml__settings {
+    display: flex;
+    justify-content: space-around;
+  }
+  .d3ml__settings__group:first-of-type {
+    display: flex;
+    flex-direction: column;
+  }
+  .description {
+    width: 80%;
+  }
