@@ -1,5 +1,5 @@
 // Define display dimensions and options
-const displayWidth = window.innerWidth - 25;
+const displayWidth = window.innerWidth - 350;
 const displayHeight = 450;
 const dataSetSize = 250;
 const visualizationOptions = {
