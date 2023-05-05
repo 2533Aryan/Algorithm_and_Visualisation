@@ -317,3 +317,12 @@ function ConvexHull (ps, viewer) {
 	
     }
 }
+
+
+
+  try {
+    exports.PointSet = PointSet;
+    exports.ConvexHull = ConvexHull;
+  } catch (e) {
+    console.log("not running in Node");
+  }
