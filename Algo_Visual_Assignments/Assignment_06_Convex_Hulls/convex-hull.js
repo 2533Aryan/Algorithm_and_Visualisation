@@ -117,6 +117,51 @@ function ConvexHullViewer (svg, ps) {
     this.ps = ps;    // a point set of the points to be visualized
 
     // COMPLETE THIS OBJECT
+
+    // create a circle for each point in the point set
+    this.drawPoints = function () {
+        let radius = 3;
+        let circles = this.svg.selectAll("circle")
+            .data(this.ps.points)
+            .enter().append("circle")
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; })
+            .attr("r", radius)
+            .attr("fill", "black");
+    }
+
+    // draw a line segment between two points
+    this.drawLine = function (p1, p2, color="black") {
+        this.svg.append("line")
+            .attr("x1", p1.x)
+            .attr("y1", p1.y)
+            .attr("x2", p2.x)
+            .attr("y2", p2.y)
+            .attr("stroke-width", 2)
+            .attr("stroke", color);
+    }
+
+    // draw the edges of the convex hull as a closed polygon
+    this.drawConvexHull = function (hullPoints) {
+        // add the first point to the end of the array to close the polygon
+        hullPoints.push(hullPoints[0]);
+
+        // draw the line segments between each pair of adjacent points in the convex hull
+        for (let i = 0; i < hullPoints.length - 1; i++) {
+            let p1 = hullPoints[i];
+            let p2 = hullPoints[i+1];
+            this.drawLine(p1, p2, "red");
+        }
+    }
+
+    // highlight a single point
+    this.highlightPoint = function (pt) {
+        this.svg.append("circle")
+            .attr("cx", pt.x)
+            .attr("cy", pt.y)
+            .attr("r", 5)
+            .attr("fill", "red");
+    }
 }
 
 /*
