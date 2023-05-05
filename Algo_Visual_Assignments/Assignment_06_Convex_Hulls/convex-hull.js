@@ -314,7 +314,61 @@ function ConvexHull (ps, viewer) {
     this.getConvexHull = function () {
 
 	// COMPLETE THIS METHOD
-	
+    // sort the points in ps in non-decreasing order of y-coordinate
+    this.ps.sort();
+
+    // sort the points in ps[1:] in non-decreasing order of the angle
+    // that they and ps[0] make with the x-axis
+    let pivot = this.ps.points[0];
+    let points = this.ps.points.slice(1);
+    points.sort(function (p1, p2) {
+        let dx1 = p1.x - pivot.x;
+        let dy1 = p1.y - pivot.y;
+        let dx2 = p2.x - pivot.x;
+        let dy2 = p2.y - pivot.y;
+
+        if (dy1 >= 0 && dy2 < 0) {
+            return -1;
+        } else if (dy2 >= 0 && dy1 < 0) {
+            return 1;
+        } else if (dy1 == 0 && dy2 == 0) {
+            if (dx1 >= 0 && dx2 < 0) {
+                return -1;
+            } else if (dx2 >= 0 && dx1 < 0) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else {
+            // compute the cross product of vectors (pivot, p1) and (pivot, p2)
+            let cross = dx1 * dy2 - dx2 * dy1;
+            if (cross < 0) {
+                return -1;
+            } else if (cross > 0) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+    });
+
+    // compute the convex hull of ps[0] and the sorted points
+    let stack = [pivot, points[0], points[1]];
+    for (let i = 2; i < points.length; i++) {
+        let top = stack.pop();
+        while (ccw(stack[stack.length - 1], top, points[i]) <= 0) {
+            top = stack.pop();
+        }
+        stack.push(top);
+        stack.push(points[i]);
+    }
+
+    // create a new PointSet containing the points in the convex hull
+    let hull = new PointSet();
+    for (let i = 0; i < stack.length; i++) {
+        hull.addPoint(stack[i]);
+    }
+    return hull;	
     }
 }
 
