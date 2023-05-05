@@ -171,10 +171,129 @@ function ConvexHull (ps, viewer) {
     this.ps = ps;          // a PointSet storing the input to the algorithm
     this.viewer = viewer;  // a ConvexHullViewer for this visualization
 
+
+  // Return a new PointSet consisting of the points along the convex
+  // hull of ps. This method should **not** perform any
+  // visualization. It should **only** return the convex hull of ps
+  // represented as a (new) PointSet. Specifically, the elements in
+  // the returned PointSet should be the vertices of the convex hull
+  // in clockwise order, starting from the left-most point, breaking
+  // ties by minimum y-value.
+  this.getConvexHull = function() {
+    // Start by sorting the points in the point set
+    this.ps.sort();
+
+    // Create two empty stacks: the lower hull and the upper hull
+    var lowerHull = [];
+    var upperHull = [];
+
+    // Process each point in the sorted point set
+    for (var i = 0; i < this.ps.size(); i++) {
+      var p = this.ps.points[i];
+
+      // Build the lower hull
+      while (lowerHull.length >= 2) {
+        var q = lowerHull[lowerHull.length - 1];
+        var r = lowerHull[lowerHull.length - 2];
+        if ((p.y - r.y) * (r.x - q.x) >= (r.y - q.y) * (p.x - r.x)) {
+          lowerHull.pop();
+        } else {
+          break;
+        }
+      }
+      lowerHull.push(p);
+
+      // Build the upper hull
+      while (upperHull.length >= 2) {
+        var q = upperHull[upperHull.length - 1];
+        var r = upperHull[upperHull.length - 2];
+        if ((p.y - r.y) * (r.x - q.x) <= (r.y - q.y) * (p.x - r.x)) {
+          upperHull.pop();
+        } else {
+          break;
+        }
+      }
+      upperHull.push(p);
+    }
+
+    // Combine the lower and upper hulls into a single hull
+    lowerHull.pop();
+    upperHull.pop();
+    var hullPoints = lowerHull.concat(upperHull.reverse());
+
+    // Create a new PointSet to hold the convex hull points
+    var hull = new PointSet();
+    for (var i = 0; i < hullPoints.length; i++) {
+      hull.addPoint(hullPoints[i]);
+    }
+
+    // Return the convex hull PointSet
+    return hull;
+  };
+
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
 	
 	// COMPLETE THIS METHOD
+
+  // Return a new PointSet consisting of the points along the convex
+  // hull of ps. This method should **not** perform any
+  // visualization. It should **only** return the convex hull of ps
+  // represented as a (new) PointSet. Specifically, the elements in
+  // the returned PointSet should be the vertices of the convex hull
+  // in clockwise order, starting from the left-most point, breaking
+  // ties by minimum y-value.
+  this.getConvexHull = function() {
+    // Start by sorting the points in the point set
+    this.ps.sort();
+
+    // Create two empty stacks: the lower hull and the upper hull
+    var lowerHull = [];
+    var upperHull = [];
+
+    // Process each point in the sorted point set
+    for (var i = 0; i < this.ps.size(); i++) {
+      var p = this.ps.points[i];
+
+      // Build the lower hull
+      while (lowerHull.length >= 2) {
+        var q = lowerHull[lowerHull.length - 1];
+        var r = lowerHull[lowerHull.length - 2];
+        if ((p.y - r.y) * (r.x - q.x) >= (r.y - q.y) * (p.x - r.x)) {
+          lowerHull.pop();
+        } else {
+          break;
+        }
+      }
+      lowerHull.push(p);
+
+      // Build the upper hull
+      while (upperHull.length >= 2) {
+        var q = upperHull[upperHull.length - 1];
+        var r = upperHull[upperHull.length - 2];
+        if ((p.y - r.y) * (r.x - q.x) <= (r.y - q.y) * (p.x - r.x)) {
+          upperHull.pop();
+        } else {
+          break;
+        }
+      }
+      upperHull.push(p);
+    }
+
+    // Combine the lower and upper hulls into a single hull
+    lowerHull.pop();
+    upperHull.pop();
+    var hullPoints = lowerHull.concat(upperHull.reverse());
+
+    // Create a new PointSet to hold the convex hull points
+    var hull = new PointSet();
+    for (var i = 0; i < hullPoints.length; i++) {
+      hull.addPoint(hullPoints[i]);
+    }
+
+    // Return the convex hull PointSet
+    return hull;
+  };
 	
     }
 
