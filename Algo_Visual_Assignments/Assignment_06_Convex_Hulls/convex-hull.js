@@ -117,51 +117,6 @@ function ConvexHullViewer (svg, ps) {
     this.ps = ps;    // a point set of the points to be visualized
 
     // COMPLETE THIS OBJECT
-
-    // create a circle for each point in the point set
-    this.drawPoints = function () {
-        let radius = 3;
-        let circles = this.svg.selectAll("circle")
-            .data(this.ps.points)
-            .enter().append("circle")
-            .attr("cx", function(d) { return d.x; })
-            .attr("cy", function(d) { return d.y; })
-            .attr("r", radius)
-            .attr("fill", "black");
-    }
-
-    // draw a line segment between two points
-    this.drawLine = function (p1, p2, color="black") {
-        this.svg.append("line")
-            .attr("x1", p1.x)
-            .attr("y1", p1.y)
-            .attr("x2", p2.x)
-            .attr("y2", p2.y)
-            .attr("stroke-width", 2)
-            .attr("stroke", color);
-    }
-
-    // draw the edges of the convex hull as a closed polygon
-    this.drawConvexHull = function (hullPoints) {
-        // add the first point to the end of the array to close the polygon
-        hullPoints.push(hullPoints[0]);
-
-        // draw the line segments between each pair of adjacent points in the convex hull
-        for (let i = 0; i < hullPoints.length - 1; i++) {
-            let p1 = hullPoints[i];
-            let p2 = hullPoints[i+1];
-            this.drawLine(p1, p2, "red");
-        }
-    }
-
-    // highlight a single point
-    this.highlightPoint = function (pt) {
-        this.svg.append("circle")
-            .attr("cx", pt.x)
-            .attr("cy", pt.y)
-            .attr("r", 5)
-            .attr("fill", "red");
-    }
 }
 
 /*
@@ -171,129 +126,10 @@ function ConvexHull (ps, viewer) {
     this.ps = ps;          // a PointSet storing the input to the algorithm
     this.viewer = viewer;  // a ConvexHullViewer for this visualization
 
-
-  // Return a new PointSet consisting of the points along the convex
-  // hull of ps. This method should **not** perform any
-  // visualization. It should **only** return the convex hull of ps
-  // represented as a (new) PointSet. Specifically, the elements in
-  // the returned PointSet should be the vertices of the convex hull
-  // in clockwise order, starting from the left-most point, breaking
-  // ties by minimum y-value.
-  this.getConvexHull = function() {
-    // Start by sorting the points in the point set
-    this.ps.sort();
-
-    // Create two empty stacks: the lower hull and the upper hull
-    var lowerHull = [];
-    var upperHull = [];
-
-    // Process each point in the sorted point set
-    for (var i = 0; i < this.ps.size(); i++) {
-      var p = this.ps.points[i];
-
-      // Build the lower hull
-      while (lowerHull.length >= 2) {
-        var q = lowerHull[lowerHull.length - 1];
-        var r = lowerHull[lowerHull.length - 2];
-        if ((p.y - r.y) * (r.x - q.x) >= (r.y - q.y) * (p.x - r.x)) {
-          lowerHull.pop();
-        } else {
-          break;
-        }
-      }
-      lowerHull.push(p);
-
-      // Build the upper hull
-      while (upperHull.length >= 2) {
-        var q = upperHull[upperHull.length - 1];
-        var r = upperHull[upperHull.length - 2];
-        if ((p.y - r.y) * (r.x - q.x) <= (r.y - q.y) * (p.x - r.x)) {
-          upperHull.pop();
-        } else {
-          break;
-        }
-      }
-      upperHull.push(p);
-    }
-
-    // Combine the lower and upper hulls into a single hull
-    lowerHull.pop();
-    upperHull.pop();
-    var hullPoints = lowerHull.concat(upperHull.reverse());
-
-    // Create a new PointSet to hold the convex hull points
-    var hull = new PointSet();
-    for (var i = 0; i < hullPoints.length; i++) {
-      hull.addPoint(hullPoints[i]);
-    }
-
-    // Return the convex hull PointSet
-    return hull;
-  };
-
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
 	
 	// COMPLETE THIS METHOD
-
-  // Return a new PointSet consisting of the points along the convex
-  // hull of ps. This method should **not** perform any
-  // visualization. It should **only** return the convex hull of ps
-  // represented as a (new) PointSet. Specifically, the elements in
-  // the returned PointSet should be the vertices of the convex hull
-  // in clockwise order, starting from the left-most point, breaking
-  // ties by minimum y-value.
-  this.getConvexHull = function() {
-    // Start by sorting the points in the point set
-    this.ps.sort();
-
-    // Create two empty stacks: the lower hull and the upper hull
-    var lowerHull = [];
-    var upperHull = [];
-
-    // Process each point in the sorted point set
-    for (var i = 0; i < this.ps.size(); i++) {
-      var p = this.ps.points[i];
-
-      // Build the lower hull
-      while (lowerHull.length >= 2) {
-        var q = lowerHull[lowerHull.length - 1];
-        var r = lowerHull[lowerHull.length - 2];
-        if ((p.y - r.y) * (r.x - q.x) >= (r.y - q.y) * (p.x - r.x)) {
-          lowerHull.pop();
-        } else {
-          break;
-        }
-      }
-      lowerHull.push(p);
-
-      // Build the upper hull
-      while (upperHull.length >= 2) {
-        var q = upperHull[upperHull.length - 1];
-        var r = upperHull[upperHull.length - 2];
-        if ((p.y - r.y) * (r.x - q.x) <= (r.y - q.y) * (p.x - r.x)) {
-          upperHull.pop();
-        } else {
-          break;
-        }
-      }
-      upperHull.push(p);
-    }
-
-    // Combine the lower and upper hulls into a single hull
-    lowerHull.pop();
-    upperHull.pop();
-    var hullPoints = lowerHull.concat(upperHull.reverse());
-
-    // Create a new PointSet to hold the convex hull points
-    var hull = new PointSet();
-    for (var i = 0; i < hullPoints.length; i++) {
-      hull.addPoint(hullPoints[i]);
-    }
-
-    // Return the convex hull PointSet
-    return hull;
-  };
 	
     }
 
@@ -301,29 +137,6 @@ function ConvexHull (ps, viewer) {
     this.step = function () {
 	
 	// COMPLETE THIS METHOD
-  // check if the algorithm is finished
-  if (this.finished) {
-    return;
-  }
-
-  // if we haven't started yet, initialize the algorithm
-  if (this.currentStep === -1) {
-    this.initializeAlgorithm();
-    this.currentStep++;
-    return;
-  }
-
-  // if we finished the last part of the algorithm, go to the next part
-  if (this.subSteps.length === 0) {
-    this.currentStep++;
-    this.initializeSubSteps();
-  }
-
-  // perform the next sub-step
-  let currentSubStep = this.subSteps.shift();
-  this.viewer.highlightPoints(currentSubStep.highlightPoints);
-  this.viewer.drawPolygon(currentSubStep.polygonPoints);
-  this.viewer.drawText(currentSubStep.text);
 	
     }
 
@@ -337,99 +150,6 @@ function ConvexHull (ps, viewer) {
     this.getConvexHull = function () {
 
 	// COMPLETE THIS METHOD
-    // sort the points in ps in non-decreasing order of y-coordinate
-    this.ps.sort();
-
-    // sort the points in ps[1:] in non-decreasing order of the angle
-    // that they and ps[0] make with the x-axis
-    let pivot = this.ps.points[0];
-    let points = this.ps.points.slice(1);
-    points.sort(function (p1, p2) {
-        let dx1 = p1.x - pivot.x;
-        let dy1 = p1.y - pivot.y;
-        let dx2 = p2.x - pivot.x;
-        let dy2 = p2.y - pivot.y;
-
-        if (dy1 >= 0 && dy2 < 0) {
-            return -1;
-        } else if (dy2 >= 0 && dy1 < 0) {
-            return 1;
-        } else if (dy1 == 0 && dy2 == 0) {
-            if (dx1 >= 0 && dx2 < 0) {
-                return -1;
-            } else if (dx2 >= 0 && dx1 < 0) {
-                return 1;
-            } else {
-                return 0;
-            }
-        } else {
-            // compute the cross product of vectors (pivot, p1) and (pivot, p2)
-            let cross = dx1 * dy2 - dx2 * dy1;
-            if (cross < 0) {
-                return -1;
-            } else if (cross > 0) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-    });
-
-    // compute the convex hull of ps[0] and the sorted points
-    let stack = [pivot, points[0], points[1]];
-    for (let i = 2; i < points.length; i++) {
-        let top = stack.pop();
-        while (ccw(stack[stack.length - 1], top, points[i]) <= 0) {
-            top = stack.pop();
-        }
-        stack.push(top);
-        stack.push(points[i]);
-    }
-
-    // create a new PointSet containing the points in the convex hull
-    let hull = new PointSet();
-    for (let i = 0; i < stack.length; i++) {
-        hull.addPoint(stack[i]);
-    }
-    return hull;	
+	
     }
 }
-
-function main() {
-    // create a new point set
-    let pointSet = new PointSet();
-
-    // add some points to the point set
-    pointSet.addNewPoint(10, 20);
-    pointSet.addNewPoint(50, 30);
-    pointSet.addNewPoint(25, 80);
-    pointSet.addNewPoint(70, 90);
-    pointSet.addNewPoint(40, 10);
-
-    // sort the points in the point set
-    pointSet.sort();
-
-    // create a new SVG element
-    let svg = d3.select("body").append("svg")
-        .attr("width", SVG_WIDTH)
-        .attr("height", SVG_HEIGHT)
-        .attr("xmlns", SVG_NS);
-
-    // create a new convex hull viewer and draw the points
-    let viewer = new ConvexHullViewer(svg, pointSet);
-    viewer.drawPoints();
-
-    // compute the convex hull of the point set
-    let hullPoints = computeConvexHull(pointSet);
-
-    // draw the edges of the convex hull
-    viewer.drawConvexHull(hullPoints);
-}
-
-
-  try {
-    exports.PointSet = PointSet;
-    exports.ConvexHull = ConvexHull;
-  } catch (e) {
-    console.log("not running in Node");
-  }
