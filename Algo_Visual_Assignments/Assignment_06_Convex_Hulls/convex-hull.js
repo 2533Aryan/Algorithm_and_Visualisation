@@ -301,6 +301,29 @@ function ConvexHull (ps, viewer) {
     this.step = function () {
 	
 	// COMPLETE THIS METHOD
+  // check if the algorithm is finished
+  if (this.finished) {
+    return;
+  }
+
+  // if we haven't started yet, initialize the algorithm
+  if (this.currentStep === -1) {
+    this.initializeAlgorithm();
+    this.currentStep++;
+    return;
+  }
+
+  // if we finished the last part of the algorithm, go to the next part
+  if (this.subSteps.length === 0) {
+    this.currentStep++;
+    this.initializeSubSteps();
+  }
+
+  // perform the next sub-step
+  let currentSubStep = this.subSteps.shift();
+  this.viewer.highlightPoints(currentSubStep.highlightPoints);
+  this.viewer.drawPolygon(currentSubStep.polygonPoints);
+  this.viewer.drawText(currentSubStep.text);
 	
     }
 
