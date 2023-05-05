@@ -395,6 +395,36 @@ function ConvexHull (ps, viewer) {
     }
 }
 
+function main() {
+    // create a new point set
+    let pointSet = new PointSet();
+
+    // add some points to the point set
+    pointSet.addNewPoint(10, 20);
+    pointSet.addNewPoint(50, 30);
+    pointSet.addNewPoint(25, 80);
+    pointSet.addNewPoint(70, 90);
+    pointSet.addNewPoint(40, 10);
+
+    // sort the points in the point set
+    pointSet.sort();
+
+    // create a new SVG element
+    let svg = d3.select("body").append("svg")
+        .attr("width", SVG_WIDTH)
+        .attr("height", SVG_HEIGHT)
+        .attr("xmlns", SVG_NS);
+
+    // create a new convex hull viewer and draw the points
+    let viewer = new ConvexHullViewer(svg, pointSet);
+    viewer.drawPoints();
+
+    // compute the convex hull of the point set
+    let hullPoints = computeConvexHull(pointSet);
+
+    // draw the edges of the convex hull
+    viewer.drawConvexHull(hullPoints);
+}
 
 
   try {
