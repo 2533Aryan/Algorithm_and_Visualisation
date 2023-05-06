@@ -22,6 +22,10 @@ svg {
     margin-top: 1%;
 }
 
+button {
+    width: 100px;  
+    font-weight: bold;  
+}
 
 /* .vertex {
     r: 10px;
