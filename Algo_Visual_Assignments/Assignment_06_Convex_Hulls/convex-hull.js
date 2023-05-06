@@ -318,9 +318,9 @@ function GraphVisualizer (graph, svg) {
 
 // }
 
-const svg = document.querySelector("#graph-box");
+const svg = document.querySelector("#convex-hull-box");
 const graph = new Graph(0);
-const gv = new GraphVisualizer(graph, svg, text);
+const gv = new GraphVisualizer(graph, svg);
 // const dfs = new Dfs(graph, gv);
 
 
