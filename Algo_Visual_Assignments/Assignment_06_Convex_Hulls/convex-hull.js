@@ -112,54 +112,54 @@ function PointSet () {
 }
 
 
-// function ConvexHullViewer (svg, ps) {
-//     this.svg = svg;  // a n svg object where the visualization is drawn
-//     this.ps = ps;    // a point set of the points to be visualized
+function ConvexHullViewer (svg, ps) {
+    this.svg = svg;  // a n svg object where the visualization is drawn
+    this.ps = ps;    // a point set of the points to be visualized
 
-//     this.ch = null;  // the convex hull of the point set
+    this.ch = null;  // the convex hull of the point set
 
-//     // Compute the convex hull of the point set
-//     this.computeConvexHull = function() {
-//         // IMPLEMENTATION OF CONVEX HULL ALGORITHM
-//         // Store the resulting convex hull in this.ch
-//     }
+    // Compute the convex hull of the point set
+    this.computeConvexHull = function() {
+        // IMPLEMENTATION OF CONVEX HULL ALGORITHM
+        // Store the resulting convex hull in this.ch
+    }
 
-//     // Draw the points in the point set as circles on the SVG object
-//     this.drawPoints = function() {
-//         this.svg.selectAll("circle")
-//             .data(this.ps)
-//             .enter()
-//             .append("circle")
-//             .attr("cx", function(d) { return d.x; })
-//             .attr("cy", function(d) { return d.y; })
-//             .attr("r", 3)
-//             .style("fill", "black");
-//     }
+    // Draw the points in the point set as circles on the SVG object
+    this.drawPoints = function() {
+        this.svg.selectAll("circle")
+            .data(this.ps)
+            .enter()
+            .append("circle")
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; })
+            .attr("r", 3)
+            .style("fill", "black");
+    }
 
-//     // Draw the edges of the convex hull as lines on the SVG object
-//     this.drawConvexHull = function() {
-//         this.svg.selectAll("line")
-//             .data(this.ch)
-//             .enter()
-//             .append("line")
-//             .attr("x1", function(d) { return d.start.x; })
-//             .attr("y1", function(d) { return d.start.y; })
-//             .attr("x2", function(d) { return d.end.x; })
-//             .attr("y2", function(d) { return d.end.y; })
-//             .style("stroke", "black")
-//             .style("stroke-width", 2);
-//     }
+    // Draw the edges of the convex hull as lines on the SVG object
+    this.drawConvexHull = function() {
+        this.svg.selectAll("line")
+            .data(this.ch)
+            .enter()
+            .append("line")
+            .attr("x1", function(d) { return d.start.x; })
+            .attr("y1", function(d) { return d.start.y; })
+            .attr("x2", function(d) { return d.end.x; })
+            .attr("y2", function(d) { return d.end.y; })
+            .style("stroke", "black")
+            .style("stroke-width", 2);
+    }
 
-//     // Update the visualization whenever the point set is modified
-//     this.update = function() {
-//         this.computeConvexHull();
-//         this.drawPoints();
-//         this.drawConvexHull();
-//     }
+    // Update the visualization whenever the point set is modified
+    this.update = function() {
+        this.computeConvexHull();
+        this.drawPoints();
+        this.drawConvexHull();
+    }
 
-//     // Call the update method to initialize the visualization
-//     this.update();
-// }
+    // Call the update method to initialize the visualization
+    this.update();
+}
 
 /*
  * An object representing an instance of the convex hull problem. 
