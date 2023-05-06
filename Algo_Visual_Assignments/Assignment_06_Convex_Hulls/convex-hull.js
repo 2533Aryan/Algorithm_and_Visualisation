@@ -190,31 +190,31 @@ function ConvexHull (ps, viewer) {
 
         // Process each point in the sorted point set
         for (var i = 0; i < this.ps.size(); i++) {
-        var p = this.ps.points[i];
-            
-        // Build the lower hull
-        while (lowerHull.length >= 2) {
-            var q = lowerHull[lowerHull.length - 1];
-            var r = lowerHull[lowerHull.length - 2];
-            if ((p.y - r.y) * (r.x - q.x) >= (r.y - q.y) * (p.x - r.x)) {
-                lowerHull.pop();
-            } else {
-                break;
+            var p = this.ps.points[i];
+                
+            // Build the lower hull
+            while (lowerHull.length >= 2) {
+                var q = lowerHull[lowerHull.length - 1];
+                var r = lowerHull[lowerHull.length - 2];
+                if ((p.y - r.y) * (r.x - q.x) >= (r.y - q.y) * (p.x - r.x)) {
+                    lowerHull.pop();
+                } else {
+                    break;
+                }
             }
-        }
-        lowerHull.push(p);
+            lowerHull.push(p);
 
-        // Build the upper hull
-        while (upperHull.length >= 2) {
-            var q = upperHull[upperHull.length - 1];
-            var r = upperHull[upperHull.length - 2];
-            if ((p.y - r.y) * (r.x - q.x) <= (r.y - q.y) * (p.x - r.x)) {
-                upperHull.pop();
-            } else {
-                break;
+            // Build the upper hull
+            while (upperHull.length >= 2) {
+                var q = upperHull[upperHull.length - 1];
+                var r = upperHull[upperHull.length - 2];
+                if ((p.y - r.y) * (r.x - q.x) <= (r.y - q.y) * (p.x - r.x)) {
+                    upperHull.pop();
+                } else {
+                    break;
+                }
             }
-        }
-        upperHull.push(p);
+            upperHull.push(p);
         }
         
         // Combine the lower and upper hulls into a single hull
