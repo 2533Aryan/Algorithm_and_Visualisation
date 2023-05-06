@@ -121,43 +121,25 @@ function GraphVisualizer (graph, svg) {
     
     // method to be called when a vertex is clicked
     this.clickVertex = function (vtx) {
-	console.log("You clicked vertex " + vtx.id);
+        console.log("You clicked vertex " + vtx.id);
 
-	// check if any other highlighted vertices
-	if (this.highVertices.length == 0) {
-	    this.highVertices.push(vtx);
-	    this.highlightVertex(vtx);
-	} else if (this.highVertices.includes(vtx)) {
-	    this.unhighlightVertex(vtx);
-	    this.highVertices.splice(this.highVertices.indexOf(vtx), 1);
-	} else {
-	    const other = this.highVertices.pop();
-	    let e = this.graph.addEdge(other, vtx);
-	    if (e != null) {
-		this.addEdge(e);
-	    }
-	    this.unhighlightVertex(other);
-	}
+        // check if any other highlighted vertices
+        if (this.highVertices.length == 0) {
+            this.highVertices.push(vtx);
+            this.highlightVertex(vtx);
+        } else if (this.highVertices.includes(vtx)) {
+            this.unhighlightVertex(vtx);
+            this.highVertices.splice(this.highVertices.indexOf(vtx), 1);
+        } else {
+            const other = this.highVertices.pop();
+            let e = this.graph.addEdge(other, vtx);
+            if (e != null) {
+            this.addEdge(e);
+            }
+            this.unhighlightVertex(other);
+        }
     }
 
-    // add an edge to the visualization
-    this.addEdge = function (edge) {
-	const vtx1 = edge.vtx1;
-	const vtx2 = edge.vtx2;
-	const edgeElt = document.createElementNS(SVG_NS, "line");
-	edgeElt.setAttributeNS(null, "x1", vtx1.x);
-	edgeElt.setAttributeNS(null, "y1", vtx1.y);
-	edgeElt.setAttributeNS(null, "x2", vtx2.x);
-	edgeElt.setAttributeNS(null, "y2", vtx2.y);
-	edgeElt.classList.add("edge");
-	this.edgeElts[edge.id] = edgeElt;
-	this.edgeGroup.appendChild(edgeElt);
-	this.updateTextBox(this.graph.adjacencyLists());
-    }
-
-    this.updateTextBox = function (str) {
-	this.text.innerHTML = str;
-    }
 
     /*********************************************************
      * Methods to (un)highlight and (un) mute vertices/edges *
@@ -165,60 +147,53 @@ function GraphVisualizer (graph, svg) {
 
 
     this.highlightVertex = function (vtx) {
-	const elt = this.vertexElts[vtx.id];
-	elt.classList.add("highlight");
+        const elt = this.vertexElts[vtx.id];
+        elt.classList.add("highlight");
     }
 
     this.unhighlightVertex = function (vtx) {
-	const elt = this.vertexElts[vtx.id];
-	elt.classList.remove("highlight");	
+        const elt = this.vertexElts[vtx.id];
+        elt.classList.remove("highlight");	
     }
 
     this.muteVertex = function (vtx) {
-	const elt = this.vertexElts[vtx.id];
-	elt.classList.add("muted");
+        const elt = this.vertexElts[vtx.id];
+        elt.classList.add("muted");
     }
 
     this.unmuteVertex = function (vtx) {
-	const elt = this.vertexElts[vtx.id];
-	elt.classList.remove("muted");
+        const elt = this.vertexElts[vtx.id];
+        elt.classList.remove("muted");
     }
 
     this.highlightEdge = function (e) {
-	const elt = this.edgeElts[e.id];
-	elt.classList.add("highlight");	
+        const elt = this.edgeElts[e.id];
+        elt.classList.add("highlight");	
     }
 
     this.unhighlightEdge = function (e) {
-	const elt = this.edgeElts[e.id];
-	elt.classList.remove("highlight");	
+        const elt = this.edgeElts[e.id];
+        elt.classList.remove("highlight");	
     }
 
     this.muteEdge = function (e) {
-	const elt = this.edgeElts[e.id];
-	elt.classList.add("muted");
+        const elt = this.edgeElts[e.id];
+        elt.classList.add("muted");
     }
 
     this.unmuteEdge = function (e) {
-	const elt = this.edgeElts[e.id];
-	elt.classList.remove("muted");
+        const elt = this.edgeElts[e.id];
+        elt.classList.remove("muted");
     }
 
     this.muteAllVertices = function () {
-	for (vtx of this.graph.vertices) {
-	    this.muteVertex(vtx);
-	}
-    }
-
-    this.muteAllEdges = function () {
-	for (e of this.graph.edges) {
-	    this.muteEdge(e);
-	}
+        for (vtx of this.graph.vertices) {
+            this.muteVertex(vtx);
+        }
     }
 
     this.muteAll = function () {
-	this.muteAllVertices();
-	this.muteAllEdges();
+        this.muteAllVertices();
     }
 
     this.unmuteAllVertices = function () {
@@ -227,15 +202,9 @@ function GraphVisualizer (graph, svg) {
 	}
     }
 
-    this.unmuteAllEdges = function () {
-	for (e of this.graph.edges) {
-	    this.unmuteEdge(e);
-	}
-    }
 
     this.unmuteAll = function () {
-	this.unmuteAllVertices();
-	this.unmuteAllEdges();
+        this.unmuteAllVertices();
     }
         
 }
