@@ -7,15 +7,19 @@ h1 {
     margin-bottom: 0%;
 }
 
-div {
+svg {
+	background-color: #f5f5f5;
+	border: 4px solid #000000;
+}
+
+#root {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-svg {
-	background-color: #f5f5f5;
-	border: 4px solid #000000;
+#buttonAlign {
+    margin-top: 1%;
 }
 
 
