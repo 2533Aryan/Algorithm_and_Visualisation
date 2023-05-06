@@ -596,91 +596,16 @@ function ConvexHull (ps, viewer) {
     };
 }
 
-const clicked = document.getElementById("convex-hull-box");
+// const clicked = document.getElementById("convex-hull-box");
 
-// define the behavior for clicking on the svg element
-clicked.addEventListener("click", (e) => {
-    // create a new vertex
-    // createVertex(e);
-    console.log(1);
-});
+// // define the behavior for clicking on the svg element
+// clicked.addEventListener("click", (e) => {
+//     // create a new vertex
+//     // createVertex(e);
+//     console.log(1);
+// });
 
 
-
-function Graph(id) {
-    this.id = id;            // (unique) ID of this graph
-    this.vertices = [];      // set of vertices in this graph
-    this.edges = [];         // set of edges in this graph
-    this.nextVertexID = 0;   // ID to be assigned to next vtx
-    this.nextEdgeID = 0;     // ID to be assigned to next edge
-    
-    // create a and return a new vertex at a given location
-    this.createVertex = function (x, y) {
-        const vtx = new Vertex(this.nextVertexID, this, x, y);
-        this.nextVertexID++;
-        return vtx;
-    }
-
-    // add vtx to the set of vertices of this graph, if the vtx is not
-    // already stored as a vertex
-    this.addVertex = function(vtx) {
-	if (!this.vertices.includes(vtx)) {
-	    this.vertices.push(vtx);
-	    console.log("added vertex with id " + vtx.id);
-	} else {
-	    console.log("vertex with id " + vtx.id + " not added because it is already a vertex in the graph.");
-	}
-    }
-
-    // create and return an edge between vertices vtx1 and vtx2;
-    // returns existing edge if there is already an edge between the
-    // two vertices
-    this.addEdge = function(vtx1, vtx2) {
-	if (!this.isEdge(vtx1, vtx2)) {
-	    const edge = new Edge(vtx1, vtx2, this.nextEdgeID);
-	    this.nextEdgeID++;
-	    vtx1.addNeighbor(vtx2);
-	    vtx2.addNeighbor(vtx1);
-	    this.edges.push(edge);
-	    console.log("added edge (" + vtx1.id + ", " + vtx2.id + ")");
-	    return edge;
-	} else {
-	    console.log("edge (" + vtx1.id + ", " + vtx2.id + ") not added because it is already in the graph");
-	    return null;
-	}
-    }
-
-    // determine if vtx1 and vtx2 are already an edge in this graph
-    this.isEdge = function (vtx1, vtx2) {
-	return (this.getEdge(vtx1, vtx2) != null);
-    }
-
-    // return the edge object corresponding to a pair (vtx1, vtx2), or
-    // null if no such edge is in the graph
-    this.getEdge = function (vtx1, vtx2) {
-	for(const edge of this.edges) {
-	    if (edge.equals(vtx1, vtx2)) {
-		return edge;
-	    }
-	}
-
-	return null;
-    }
-
-    // return a string representation of the adjacency lists of the
-    // vertices in this graph
-    this.adjacencyLists = function () {
-	let str = '';
-	for (const vtx of this.vertices) {
-	    str += vtx.id + ':';
-	    for (const nbr of vtx.neighbors) {
-		str += (' ' + nbr.id);
-	    }
-	    str += '<br>';
-	}
-	return str;
-    }
-}
 
 
 
