@@ -516,7 +516,6 @@ function ConvexHull (ps, viewer) {
 
 
 
-
 // For tester
   try {
     exports.PointSet = PointSet;
