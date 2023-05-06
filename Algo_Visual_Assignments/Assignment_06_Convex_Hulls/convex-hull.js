@@ -41,12 +41,6 @@ function Graph(id) {
     }
 }
 
-
-
-// an object representing a vertex in a graph
-// each vertex has an associated unique identifier (id), the graph
-// containing the vertex, as well as x,y coordinates of the vertex's
-// physical location
 function Vertex(id, graph, x, y) {
     this.id = id;        // the unique id of this vertex
     this.graph = graph;  // the graph containing this vertex
@@ -77,30 +71,19 @@ function Vertex(id, graph, x, y) {
     }
 }
 
-
-
-// an object to visualize and interact with a graph
-function GraphVisualizer (graph, svg, text) {
+function GraphVisualizer (graph, svg) {
     this.graph = graph;      // the graph we are visualizing
     this.svg = svg;          // the svg element we are drawing on
-    this.text = text;        // a text box
 
     // define the behavior for clicking on the svg element
     this.svg.addEventListener("click", (e) => {
-	// create a new vertex
-	this.createVertex(e);
+        // create a new vertex
+        this.createVertex(e);
     });
 
     // sets of highlighted/muted vertices and edges
     this.highVertices = [];
     this.lowVertices = [];
-    this.highEdges = [];
-    this.lowEdges = [];
-
-    // create svg group for displaying edges
-    this.edgeGroup = document.createElementNS(SVG_NS, "g");
-    this.edgeGroup.id = "graph-" + graph.id + "-edges";
-    this.svg.appendChild(this.edgeGroup);
 
     // create svg group for displaying vertices
     this.vertexGroup = document.createElementNS(SVG_NS, "g");
@@ -109,33 +92,31 @@ function GraphVisualizer (graph, svg, text) {
 
 
     this.vertexElts = [];   // svg elements for vertices
-    this.edgeElts = [];     // svg elements for edges
 
     // create a new vertex 
     this.createVertex = function (e) {
-	const rect = this.svg.getBoundingClientRect();
-	const x = e.clientX - rect.left;
-	const y = e.clientY - rect.top;
-	const vtx = graph.createVertex(x, y);
-	this.addVertex(vtx);
-	this.graph.addVertex(vtx);
-	this.updateTextBox(graph.adjacencyLists());
+        const rect = this.svg.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const vtx = graph.createVertex(x, y);
+        this.addVertex(vtx);
+        this.graph.addVertex(vtx);
     }
 
     // add a vertex to the visualization by creating an svg element
     this.addVertex = function (vtx) {
-	const elt = document.createElementNS(SVG_NS, "circle");
-	elt.classList.add("vertex");
-	elt.setAttributeNS(null, "cx", vtx.x);
-	elt.setAttributeNS(null, "cy", vtx.y);
+        const elt = document.createElementNS(SVG_NS, "circle");
+        elt.classList.add("vertex");
+        elt.setAttributeNS(null, "cx", vtx.x);
+        elt.setAttributeNS(null, "cy", vtx.y);
 
-	elt.addEventListener("click", (e) => {
-	    e.stopPropagation(); // don't create another vertex (i.e., call event listener for the svg element in addition to the vertex
-	    this.clickVertex(vtx);
-	});
+        elt.addEventListener("click", (e) => {
+            e.stopPropagation(); // don't create another vertex (i.e., call event listener for the svg element in addition to the vertex
+            this.clickVertex(vtx);
+        });
 
-	this.vertexGroup.appendChild(elt);
-	this.vertexElts[vtx.id] = elt;
+        this.vertexGroup.appendChild(elt);
+        this.vertexElts[vtx.id] = elt;
     }
     
     // method to be called when a vertex is clicked
