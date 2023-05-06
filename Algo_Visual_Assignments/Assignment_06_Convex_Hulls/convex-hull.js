@@ -1,6 +1,4 @@
 const SVG_NS = "http://www.w3.org/2000/svg";
-// const SVG_WIDTH = 600;
-// const SVG_HEIGHT = 400;
 
 
 function Graph(id) {
@@ -279,11 +277,14 @@ function GraphVisualizer (graph, svg) {
 
 // }
 
-const svg = document.querySelector("#convex-hull-box");
-const graph = new Graph(0);
-const gv = new GraphVisualizer(graph, svg);
-// const dfs = new Dfs(graph, gv);
+function main() {
+    const svg = document.querySelector("#convex-hull-box");
+    const graph = new Graph(0);
+    const gv = new GraphVisualizer(graph, svg);
+    // const dfs = new Dfs(graph, gv);    
+}
 
+main();
 
 // An object that represents a 2-d point, consisting of an
 // x-coordinate and a y-coordinate. The `compareTo` function
