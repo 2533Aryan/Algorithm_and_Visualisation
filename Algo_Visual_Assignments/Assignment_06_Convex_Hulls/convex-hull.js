@@ -1,61 +1,6 @@
 const SVG_NS = "http://www.w3.org/2000/svg";
 
 
-function Graph(id) {
-    this.id = id;            // (unique) ID of this graph
-    this.vertices = [];      // set of vertices in this graph
-    this.nextVertexID = 0;   // ID to be assigned to next vtx
-    
-    // create a and return a new vertex at a given location
-    this.createVertex = function (x, y) {
-        const vtx = new Vertex(this.nextVertexID, this, x, y);
-        this.nextVertexID++;
-        return vtx;
-    }
-
-    // add vtx to the set of vertices of this graph, if the vtx is not
-    // already stored as a vertex
-    this.addVertex = function(vtx) {
-        if (!this.vertices.includes(vtx)) {
-            this.vertices.push(vtx);
-            console.log("added vertex with id " + vtx.id);
-        } else {
-            console.log("vertex with id " + vtx.id + " not added because it is already a vertex in the graph.");
-        }
-    }
-}
-
-function Vertex(id, graph, x, y) {
-    this.id = id;        // the unique id of this vertex
-    this.graph = graph;  // the graph containing this vertex
-    this.x = x;          // x coordinate of location
-    this.y = y;          // y coordinate of location
-    
-    this.neighbors = []; // the adjacency list of this vertex
-
-    // add vtx as a neighbor of this vertex, if it is not already a
-    // neighbor
-    this.addNeighbor = function (vtx) {
-        if (!this.neighbors.includes(vtx)) {
-            this.neighbors.push(vtx);
-        }
-    }
-
-    // remove vtx as a neighbor of this vertex
-    this.removeNeighbor = function (vtx) {
-        const index = this.neighbors.indexOf(vtx);
-        if (index != -1) {
-            this.neighbors.splice(index, 1);
-        }
-    }
-
-    // determine if vtx is a neighbor of this vertex
-    this.hasNeighbor = function (vtx) {
-        return this.neighbors.includes(vtx);
-    }
-}
-
-
 // function Dfs (graph, vis) {
 //     this.graph = graph;
 //     this.vis = vis;
@@ -205,6 +150,7 @@ function Point (x, y, id) {
     }
 }
 
+
 // An object that represents a set of Points in the plane. The `sort`
 // function sorts the points according to the `Point.compareTo`
 // function. The `reverse` function reverses the order of the
@@ -276,6 +222,39 @@ function PointSet () {
 }
 
 
+function Graph(id) {
+    this.id = id;            // (unique) ID of this graph
+    this.vertices = [];      // set of vertices in this graph
+    this.nextVertexID = 0;   // ID to be assigned to next vtx
+    
+    // create a and return a new vertex at a given location
+    this.createVertex = function (x, y) {
+        const vtx = new Vertex(this.nextVertexID, this, x, y);
+        this.nextVertexID++;
+        return vtx;
+    }
+
+    // add vtx to the set of vertices of this graph, if the vtx is not
+    // already stored as a vertex
+    this.addVertex = function(vtx) {
+        if (!this.vertices.includes(vtx)) {
+            this.vertices.push(vtx);
+            console.log("added vertex with id " + vtx.id);
+        } else {
+            console.log("vertex with id " + vtx.id + " not added because it is already a vertex in the graph.");
+        }
+    }
+}
+
+
+function Vertex(id, graph, x, y) {
+    this.id = id;        // the unique id of this vertex
+    this.graph = graph;  // the graph containing this vertex
+    this.x = x;          // x coordinate of location
+    this.y = y;          // y coordinate of location
+}
+
+
 function ConvexHullViewer (svg, ps, graph) {
     this.svg = svg;  // a n svg object where the visualization is drawn
     this.ps = ps;    // a point set of the points to be visualized
@@ -325,6 +304,7 @@ function ConvexHullViewer (svg, ps, graph) {
         this.vertexElts[vtx.id] = elt;
     }
 }
+
 
 /*
  * An object representing an instance of the convex hull problem. 
@@ -440,10 +420,10 @@ function ConvexHull (ps, viewer) {
 }
 
 
+
 function main() {
     const svg = document.querySelector("#convex-hull-box");
     const graph = new Graph(0);
-    // const gv = new GraphVisualizer(graph, svg);
     // const dfs = new Dfs(graph, gv);
     const ps = new PointSet();    
     const gv = new ConvexHullViewer(svg, ps, graph);
