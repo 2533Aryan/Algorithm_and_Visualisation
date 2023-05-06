@@ -317,53 +317,10 @@ function ConvexHull (ps, viewer) {
 
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
-        // Sort the points in ps by x-coordinate (breaking ties by y-coordinate)
-        this.ps.sort();
-
-        // Initialize a stack of points that will be used to compute the convex hull
-        let stack = [];
-
-        // Push the first two points onto the stack
-        stack.push(this.ps.points[0]);
-        stack.push(this.ps.points[1]);
-
-        // Iterate over the remaining points, adding each one to the convex hull
-        // and removing any points that are not part of the convex hull.
-        for (let i = 2; i < this.ps.size(); i++) {
-            let top = stack[stack.length - 1];
-            let second = stack[stack.length - 2];
-            let next = this.ps.points[i];
-
-            // While the last three points in the stack do not form a right turn,
-            // remove the second-to-last point from the stack.
-            while (stack.length > 1 && (next.y - top.y) * (top.x - second.x) <= (next.x - top.x) * (top.y - second.y)) {
-                stack.pop();
-                top = stack[stack.length - 1];
-                second = stack[stack.length - 2];
-            }
-
-            // Add the next point to the stack
-            stack.push(next);
-        }
-
-        
-
-        // Set the convex hull to the stack of points
-        this.convexHull = new PointSet();
-        for (let i = 0; i < stack.length; i++) {
-            this.convexHull.addPoint(stack[i]);
-        }
-
-        // Reverse the order of the points in the convex hull
-        this.convexHull.reverse();
-
-        // Display the initial state of the visualization
-        this.viewer.displayState(this.ps, this.convexHull);
     }
 
     // perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
-        // TODO: Implement this method
     }
 
     // Return a new PointSet consisting of the points along the convex hull of ps
