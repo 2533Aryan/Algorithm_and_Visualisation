@@ -27,6 +27,7 @@ button {
     font-weight: bold;  
 }
 
+
 /* .vertex {
     r: 10px;
     stroke: black;
@@ -37,7 +38,6 @@ button {
 .vertex:hover {
     fill: rgb(200, 200, 255);
 }
-
 
 .edge {
     stroke: black;
@@ -65,3 +65,5 @@ button {
     transition-timing-function: ease;
     transition-delay: 500ms;
 } */
+
+
