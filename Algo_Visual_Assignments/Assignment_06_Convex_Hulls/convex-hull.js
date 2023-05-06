@@ -592,20 +592,9 @@ function ConvexHull (ps, viewer) {
     };
 }
 
-// const clicked = document.getElementById("convex-hull-box");
-
-// // define the behavior for clicking on the svg element
-// clicked.addEventListener("click", (e) => {
-//     // create a new vertex
-//     // createVertex(e);
-//     console.log(1);
-// });
 
 
 
-
-
-        
 // For tester
   try {
     exports.PointSet = PointSet;
