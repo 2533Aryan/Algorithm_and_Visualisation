@@ -140,11 +140,7 @@ function GraphVisualizer (graph, svg) {
         }
     }
 
-
-    /*********************************************************
-     * Methods to (un)highlight and (un) mute vertices/edges *
-     *********************************************************/
-
+    //Methods to (un)highlight and (un) mute vertices/edges
 
     this.highlightVertex = function (vtx) {
         const elt = this.vertexElts[vtx.id];
