@@ -25,20 +25,6 @@ function Graph(id) {
             console.log("vertex with id " + vtx.id + " not added because it is already a vertex in the graph.");
         }
     }
-
-    // return a string representation of the adjacency lists of the
-    // vertices in this graph
-    this.adjacencyLists = function () {
-        let str = '';
-        for (const vtx of this.vertices) {
-            str += vtx.id + ':';
-            for (const nbr of vtx.neighbors) {
-            str += (' ' + nbr.id);
-            }
-            str += '<br>';
-        }
-        return str;
-    }
 }
 
 function Vertex(id, graph, x, y) {
