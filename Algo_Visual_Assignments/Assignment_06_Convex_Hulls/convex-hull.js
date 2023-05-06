@@ -55,118 +55,6 @@ function Vertex(id, graph, x, y) {
     }
 }
 
-function GraphVisualizer (graph, svg) {
-    this.graph = graph;      // the graph we are visualizing
-    this.svg = svg;          // the svg element we are drawing on
-
-    // define the behavior for clicking on the svg element
-    this.svg.addEventListener("click", (e) => {
-        // create a new vertex
-        this.createVertex(e);
-    });
-
-    // sets of highlighted/muted vertices and edges
-    this.highVertices = [];
-    this.lowVertices = [];
-
-    // create svg group for displaying vertices
-    this.vertexGroup = document.createElementNS(SVG_NS, "g");
-    this.vertexGroup.id = "graph-" + graph.id + "-vertices";
-    this.svg.appendChild(this.vertexGroup);
-
-
-    this.vertexElts = [];   // svg elements for vertices
-
-    // create a new vertex 
-    this.createVertex = function (e) {
-        const rect = this.svg.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const vtx = graph.createVertex(x, y);
-        this.addVertex(vtx);
-        this.graph.addVertex(vtx);
-    }
-
-    // add a vertex to the visualization by creating an svg element
-    this.addVertex = function (vtx) {
-        const elt = document.createElementNS(SVG_NS, "circle");
-        elt.classList.add("vertex");
-        elt.setAttributeNS(null, "cx", vtx.x);
-        elt.setAttributeNS(null, "cy", vtx.y);
-
-        elt.addEventListener("click", (e) => {
-            e.stopPropagation(); // don't create another vertex (i.e., call event listener for the svg element in addition to the vertex
-        });
-
-        this.vertexGroup.appendChild(elt);
-        this.vertexElts[vtx.id] = elt;
-    }
-    
-
-    //Methods to (un)highlight and (un) mute vertices/edges
-
-    this.highlightVertex = function (vtx) {
-        const elt = this.vertexElts[vtx.id];
-        elt.classList.add("highlight");
-    }
-
-    this.unhighlightVertex = function (vtx) {
-        const elt = this.vertexElts[vtx.id];
-        elt.classList.remove("highlight");	
-    }
-
-    this.muteVertex = function (vtx) {
-        const elt = this.vertexElts[vtx.id];
-        elt.classList.add("muted");
-    }
-
-    this.unmuteVertex = function (vtx) {
-        const elt = this.vertexElts[vtx.id];
-        elt.classList.remove("muted");
-    }
-
-    this.highlightEdge = function (e) {
-        const elt = this.edgeElts[e.id];
-        elt.classList.add("highlight");	
-    }
-
-    this.unhighlightEdge = function (e) {
-        const elt = this.edgeElts[e.id];
-        elt.classList.remove("highlight");	
-    }
-
-    this.muteEdge = function (e) {
-        const elt = this.edgeElts[e.id];
-        elt.classList.add("muted");
-    }
-
-    this.unmuteEdge = function (e) {
-        const elt = this.edgeElts[e.id];
-        elt.classList.remove("muted");
-    }
-
-    this.muteAllVertices = function () {
-        for (vtx of this.graph.vertices) {
-            this.muteVertex(vtx);
-        }
-    }
-
-    this.muteAll = function () {
-        this.muteAllVertices();
-    }
-
-    this.unmuteAllVertices = function () {
-	for (vtx of this.graph.vertices) {
-	    this.unmuteVertex(vtx);
-	}
-    }
-
-
-    this.unmuteAll = function () {
-        this.unmuteAllVertices();
-    }
-        
-}
 
 // function Dfs (graph, vis) {
 //     this.graph = graph;
@@ -277,14 +165,6 @@ function GraphVisualizer (graph, svg) {
 
 // }
 
-function main() {
-    const svg = document.querySelector("#convex-hull-box");
-    const graph = new Graph(0);
-    const gv = new GraphVisualizer(graph, svg);
-    // const dfs = new Dfs(graph, gv);    
-}
-
-main();
 
 // An object that represents a 2-d point, consisting of an
 // x-coordinate and a y-coordinate. The `compareTo` function
@@ -396,9 +276,54 @@ function PointSet () {
 }
 
 
-function ConvexHullViewer (svg, ps) {
+function ConvexHullViewer (svg, ps, graph) {
     this.svg = svg;  // a n svg object where the visualization is drawn
     this.ps = ps;    // a point set of the points to be visualized
+    
+    this.graph = graph;      // the graph we are visualizing
+    
+    // define the behavior for clicking on the svg element
+    this.svg.addEventListener("click", (e) => {
+        // create a new vertex
+        this.createVertex(e);
+    });
+
+    // sets of highlighted/muted vertices and edges
+    this.highVertices = [];
+    this.lowVertices = [];
+
+    // create svg group for displaying vertices
+    this.vertexGroup = document.createElementNS(SVG_NS, "g");
+    this.vertexGroup.id = "graph-" + graph.id + "-vertices";
+    this.svg.appendChild(this.vertexGroup);
+
+
+    this.vertexElts = [];   // svg elements for vertices
+
+    // create a new vertex 
+    this.createVertex = function (e) {
+        const rect = this.svg.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const vtx = graph.createVertex(x, y);
+        this.addVertex(vtx);
+        this.graph.addVertex(vtx);
+    }
+
+    // add a vertex to the visualization by creating an svg element
+    this.addVertex = function (vtx) {
+        const elt = document.createElementNS(SVG_NS, "circle");
+        elt.classList.add("vertex");
+        elt.setAttributeNS(null, "cx", vtx.x);
+        elt.setAttributeNS(null, "cy", vtx.y);
+
+        elt.addEventListener("click", (e) => {
+            e.stopPropagation(); // don't create another vertex (i.e., call event listener for the svg element in addition to the vertex
+        });
+
+        this.vertexGroup.appendChild(elt);
+        this.vertexElts[vtx.id] = elt;
+    }
 }
 
 /*
@@ -514,6 +439,17 @@ function ConvexHull (ps, viewer) {
     };
 }
 
+
+function main() {
+    const svg = document.querySelector("#convex-hull-box");
+    const graph = new Graph(0);
+    // const gv = new GraphVisualizer(graph, svg);
+    // const dfs = new Dfs(graph, gv);
+    const ps = new PointSet();    
+    const gv = new ConvexHullViewer(svg, ps, graph);
+}
+
+main();
 
 
 // For tester
