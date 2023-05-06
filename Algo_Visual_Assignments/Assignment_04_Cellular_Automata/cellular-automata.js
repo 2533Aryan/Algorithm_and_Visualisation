@@ -157,4 +157,9 @@ function updateTile(tile, tileConfig, rule){
 	ruleHeader.textContent = "Rule: " + rule;
 }
 
-module.exports = { applyRule };
+
+try {
+    exports.applyRule = applyRule;
+  } catch (e) {
+    console.log("not running in Node");
+  }
