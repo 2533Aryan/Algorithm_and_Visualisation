@@ -119,25 +119,93 @@ function ConvexHullViewer (svg, ps) {
     // COMPLETE THIS OBJECT
 }
 
-/*
- * An object representing an instance of the convex hull problem. A ConvexHull stores a PointSet ps that stores the input points, and a ConvexHullViewer viewer that displays interactions between the ConvexHull computation and the 
- */
+// /*
+//  * An object representing an instance of the convex hull problem. A ConvexHull stores a PointSet ps that stores the input points, and a ConvexHullViewer viewer that displays interactions between the ConvexHull computation and the 
+//  */
+// function ConvexHull (ps, viewer) {
+//     this.ps = ps;          // a PointSet storing the input to the algorithm
+//     this.viewer = viewer;  // a ConvexHullViewer for this visualization
+
+//     // start a visualization of the Graham scan algorithm performed on ps
+//     this.start = function () {
+	
+// 	// COMPLETE THIS METHOD
+	
+//     }
+
+//     // perform a single step of the Graham scan algorithm performed on ps
+//     this.step = function () {
+	
+// 	// COMPLETE THIS METHOD
+	
+//     }
+
+//     // Return a new PointSet consisting of the points along the convex
+//     // hull of ps. This method should **not** perform any
+//     // visualization. It should **only** return the convex hull of ps
+//     // represented as a (new) PointSet. Specifically, the elements in
+//     // the returned PointSet should be the vertices of the convex hull
+//     // in clockwise order, starting from the left-most point, breaking
+//     // ties by minimum y-value.
+//     this.getConvexHull = function () {
+
+// 	// COMPLETE THIS METHOD
+	
+//     }
+// }
 function ConvexHull (ps, viewer) {
     this.ps = ps;          // a PointSet storing the input to the algorithm
     this.viewer = viewer;  // a ConvexHullViewer for this visualization
 
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
-	
-	// COMPLETE THIS METHOD
-	
+        // Sort the points in ps by x-coordinate (breaking ties by y-coordinate)
+        this.ps.sort();
+
+        // Initialize a stack of points that will be used to compute the convex hull
+        let stack = [];
+
+        // Push the first two points onto the stack
+        stack.push(this.ps.points[0]);
+        stack.push(this.ps.points[1]);
+
+        // Iterate over the remaining points, adding each one to the convex hull
+        // and removing any points that are not part of the convex hull.
+        for (let i = 2; i < this.ps.size(); i++) {
+            let top = stack[stack.length - 1];
+            let second = stack[stack.length - 2];
+            let next = this.ps.points[i];
+
+            // While the last three points in the stack do not form a right turn,
+            // remove the second-to-last point from the stack.
+            while (stack.length > 1 && (next.y - top.y) * (top.x - second.x) <= (next.x - top.x) * (top.y - second.y)) {
+                stack.pop();
+                top = stack[stack.length - 1];
+                second = stack[stack.length - 2];
+            }
+
+            // Add the next point to the stack
+            stack.push(next);
+        }
+
+        
+
+        // Set the convex hull to the stack of points
+        this.convexHull = new PointSet();
+        for (let i = 0; i < stack.length; i++) {
+            this.convexHull.addPoint(stack[i]);
+        }
+
+        // Reverse the order of the points in the convex hull
+        this.convexHull.reverse();
+
+        // Display the initial state of the visualization
+        this.viewer.displayState(this.ps, this.convexHull);
     }
 
     // perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
-	
-	// COMPLETE THIS METHOD
-	
+        // TODO: Implement this method
     }
 
     // Return a new PointSet consisting of the points along the convex
@@ -148,10 +216,55 @@ function ConvexHull (ps, viewer) {
     // in clockwise order, starting from the left-most point, breaking
     // ties by minimum y-value.
     this.getConvexHull = function () {
+    // Start by sorting the points in the point set
+    this.ps.sort();
+    
+    // Create two empty stacks: the lower hull and the upper hull
+    var lowerHull = [];
+    var upperHull = [];
 
-	// COMPLETE THIS METHOD
-	
+    // Process each point in the sorted point set
+    for (var i = 0; i < this.ps.size(); i++) {
+      var p = this.ps.points[i];
+        
+      // Build the lower hull
+      while (lowerHull.length >= 2) {
+        var q = lowerHull[lowerHull.length - 1];
+        var r = lowerHull[lowerHull.length - 2];
+        if ((p.y - r.y) * (r.x - q.x) >= (r.y - q.y) * (p.x - r.x)) {
+          lowerHull.pop();
+        } else {
+          break;
+        }
+      }
+      lowerHull.push(p);
+
+      // Build the upper hull
+      while (upperHull.length >= 2) {
+        var q = upperHull[upperHull.length - 1];
+        var r = upperHull[upperHull.length - 2];
+        if ((p.y - r.y) * (r.x - q.x) <= (r.y - q.y) * (p.x - r.x)) {
+          upperHull.pop();
+        } else {
+          break;
+        }
+      }
+      upperHull.push(p);
     }
+    
+    // Combine the lower and upper hulls into a single hull
+    upperHull.pop();
+    var hullPoints = upperHull.concat(lowerHull.reverse());
+
+    // Create a new PointSet to hold the convex hull points
+    var hull = new PointSet();
+    for (var i = 0; i < hullPoints.length; i++) {
+      hull.addPoint(hullPoints[i]);
+    }
+
+    // Return the convex hull PointSet
+    return hull;
+  };
 }
 
 
@@ -162,4 +275,3 @@ function ConvexHull (ps, viewer) {
   } catch (e) {
     console.log("not running in Node");
   }
-  
