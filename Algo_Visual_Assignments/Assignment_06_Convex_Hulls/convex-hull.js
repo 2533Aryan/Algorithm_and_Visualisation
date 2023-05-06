@@ -112,33 +112,12 @@ function GraphVisualizer (graph, svg) {
 
         elt.addEventListener("click", (e) => {
             e.stopPropagation(); // don't create another vertex (i.e., call event listener for the svg element in addition to the vertex
-            this.clickVertex(vtx);
         });
 
         this.vertexGroup.appendChild(elt);
         this.vertexElts[vtx.id] = elt;
     }
     
-    // method to be called when a vertex is clicked
-    this.clickVertex = function (vtx) {
-        console.log("You clicked vertex " + vtx.id);
-
-        // check if any other highlighted vertices
-        if (this.highVertices.length == 0) {
-            this.highVertices.push(vtx);
-            this.highlightVertex(vtx);
-        } else if (this.highVertices.includes(vtx)) {
-            this.unhighlightVertex(vtx);
-            this.highVertices.splice(this.highVertices.indexOf(vtx), 1);
-        } else {
-            const other = this.highVertices.pop();
-            let e = this.graph.addEdge(other, vtx);
-            if (e != null) {
-            this.addEdge(e);
-            }
-            this.unhighlightVertex(other);
-        }
-    }
 
     //Methods to (un)highlight and (un) mute vertices/edges
 
