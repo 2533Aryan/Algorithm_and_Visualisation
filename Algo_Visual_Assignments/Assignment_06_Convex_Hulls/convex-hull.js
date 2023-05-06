@@ -41,6 +41,8 @@ function Graph(id) {
     }
 }
 
+
+
 // an object representing a vertex in a graph
 // each vertex has an associated unique identifier (id), the graph
 // containing the vertex, as well as x,y coordinates of the vertex's
@@ -56,36 +58,26 @@ function Vertex(id, graph, x, y) {
     // add vtx as a neighbor of this vertex, if it is not already a
     // neighbor
     this.addNeighbor = function (vtx) {
-	if (!this.neighbors.includes(vtx)) {
-	    this.neighbors.push(vtx);
-	}
+        if (!this.neighbors.includes(vtx)) {
+            this.neighbors.push(vtx);
+        }
     }
 
     // remove vtx as a neighbor of this vertex
     this.removeNeighbor = function (vtx) {
-	const index = this.neighbors.indexOf(vtx);
-	if (index != -1) {
-	    this.neighbors.splice(index, 1);
-	}
+        const index = this.neighbors.indexOf(vtx);
+        if (index != -1) {
+            this.neighbors.splice(index, 1);
+        }
     }
 
     // determine if vtx is a neighbor of this vertex
     this.hasNeighbor = function (vtx) {
-	return this.neighbors.includes(vtx);
+        return this.neighbors.includes(vtx);
     }
 }
 
-// an object representing an edge in a graph
-function Edge (vtx1, vtx2, id) {
-    this.vtx1 = vtx1;   // first endpoint of the edge
-    this.vtx2 = vtx2;   // second endpoint of the edge
-    this.id = id;       // the unique identifier of this edge
 
-    // determine if this edge has vtx1 and vtx2 as endpoints
-    this.equals = function (vtx1, vtx2) {
-	return (this.vtx1 == vtx1 && this.vtx2 == vtx2) || (this.vtx1 == vtx2 && this.vtx2 == vtx1);
-    }
-}
 
 // an object to visualize and interact with a graph
 function GraphVisualizer (graph, svg, text) {
