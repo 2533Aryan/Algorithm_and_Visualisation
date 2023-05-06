@@ -119,40 +119,11 @@ function ConvexHullViewer (svg, ps) {
     // COMPLETE THIS OBJECT
 }
 
-// /*
-//  * An object representing an instance of the convex hull problem. A ConvexHull stores a PointSet ps that stores the input points, and a ConvexHullViewer viewer that displays interactions between the ConvexHull computation and the 
-//  */
-// function ConvexHull (ps, viewer) {
-//     this.ps = ps;          // a PointSet storing the input to the algorithm
-//     this.viewer = viewer;  // a ConvexHullViewer for this visualization
-
-//     // start a visualization of the Graham scan algorithm performed on ps
-//     this.start = function () {
-	
-// 	// COMPLETE THIS METHOD
-	
-//     }
-
-//     // perform a single step of the Graham scan algorithm performed on ps
-//     this.step = function () {
-	
-// 	// COMPLETE THIS METHOD
-	
-//     }
-
-//     // Return a new PointSet consisting of the points along the convex
-//     // hull of ps. This method should **not** perform any
-//     // visualization. It should **only** return the convex hull of ps
-//     // represented as a (new) PointSet. Specifically, the elements in
-//     // the returned PointSet should be the vertices of the convex hull
-//     // in clockwise order, starting from the left-most point, breaking
-//     // ties by minimum y-value.
-//     this.getConvexHull = function () {
-
-// 	// COMPLETE THIS METHOD
-	
-//     }
-// }
+/*
+ * An object representing an instance of the convex hull problem. 
+ * A ConvexHull stores a PointSet ps that stores the input points, 
+ * and a ConvexHullViewer viewer that displays interactions between the ConvexHull computation and the 
+ */
 function ConvexHull (ps, viewer) {
     this.ps = ps;          // a PointSet storing the input to the algorithm
     this.viewer = viewer;  // a ConvexHullViewer for this visualization
