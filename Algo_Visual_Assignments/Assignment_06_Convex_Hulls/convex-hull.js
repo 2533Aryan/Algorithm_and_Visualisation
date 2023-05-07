@@ -365,6 +365,86 @@ function ConvexHullViewer (svg, ps, graph) {
         elt.setAttributeNS(null, "cy", vtx.y);
         this.overlayGroup.appendChild(elt);
         this.overlayVertices[vtx.id] = elt;
+    }
+    
+    
+    /*********************************************************
+     * Methods to (un)highlight and (un) mute vertices/edges *
+     *********************************************************/
+
+
+    this.highlightVertex = function (vtx) {
+        const elt = this.vertexElts[vtx.id];
+        elt.classList.add("highlight");
+    }
+    
+    this.unhighlightVertex = function (vtx) {
+        const elt = this.vertexElts[vtx.id];
+        elt.classList.remove("highlight");	
+    }
+    
+    this.muteVertex = function (vtx) {
+        const elt = this.vertexElts[vtx.id];
+        elt.classList.add("muted");
+    }
+    
+    this.unmuteVertex = function (vtx) {
+        const elt = this.vertexElts[vtx.id];
+        elt.classList.remove("muted");
+    }
+    
+    this.highlightEdge = function (e) {
+    const elt = this.edgeElts[e.id];
+    elt.classList.add("highlight");	
+    }
+
+    this.unhighlightEdge = function (e) {
+    const elt = this.edgeElts[e.id];
+    elt.classList.remove("highlight");	
+    }
+
+    this.muteEdge = function (e) {
+    const elt = this.edgeElts[e.id];
+    elt.classList.add("muted");
+    }
+
+    this.unmuteEdge = function (e) {
+    const elt = this.edgeElts[e.id];
+    elt.classList.remove("muted");
+    }
+
+    this.muteAllVertices = function () {
+    for (vtx of this.graph.vertices) {
+        this.muteVertex(vtx);
+    }
+    }
+
+    this.muteAllEdges = function () {
+    for (e of this.graph.edges) {
+        this.muteEdge(e);
+    }
+    }
+
+    this.muteAll = function () {
+    this.muteAllVertices();
+    this.muteAllEdges();
+    }
+
+    this.unmuteAllVertices = function () {
+    for (vtx of this.graph.vertices) {
+        this.unmuteVertex(vtx);
+    }
+    }
+
+    this.unmuteAllEdges = function () {
+    for (e of this.graph.edges) {
+        this.unmuteEdge(e);
+    }
+    }
+
+    this.unmuteAll = function () {
+    this.unmuteAllVertices();
+    this.unmuteAllEdges();
     }    
 }
 
@@ -415,6 +495,7 @@ function ConvexHull (ps, viewer) {
             this.start();
             this.curAnimation = setInterval(() => {
                 this.step();
+                console.log(1);
             }, 1000);
         }
     }
