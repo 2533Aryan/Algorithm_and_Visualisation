@@ -397,9 +397,14 @@ function ConvexHull (ps, viewer) {
     // perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
         if (this.index > 0 && this.index < this.startVertex.points.length - 1) {
+            // overlay
             this.viewer.addOverlayVertex(this.startVertex.points[this.index]);
-            // const edge = this.viewer.addEdge(this.startVertex.points[this.index-1], this.startVertex.points[this.index]);
-            this.viewer.addEdge(this.startVertex.points, this.startVertex.points[this.index]);
+            
+            // edge
+            const currentEdge = this.viewer.addEdge(this.startVertex.points[this.index-1], this.startVertex.points[this.index]);
+            this.viewer.visEdge(currentEdge);
+            
+            // increment index
             this.index++;
         }
     }
