@@ -278,6 +278,12 @@ function ConvexHullViewer (svg, ps, graph) {
     });
 
 
+    // create svg group for displaying edges
+    this.edgeGroup = document.createElementNS(SVG_NS, "g");
+    this.edgeGroup.id = "graph-" + graph.id + "-edges";
+    this.svg.appendChild(this.edgeGroup);
+
+
     // create svg group for displaying vertices
     this.vertexGroup = document.createElementNS(SVG_NS, "g");
     this.vertexGroup.id = "graph-" + graph.id + "-vertices";
@@ -285,7 +291,9 @@ function ConvexHullViewer (svg, ps, graph) {
 
 
     this.vertexElts = [];   // svg elements for vertices
+    this.edgeElts = [];     // svg elements for edges
 
+    
     // create a new vertex 
     this.createVertex = function (e) {
         const rect = this.svg.getBoundingClientRect();
