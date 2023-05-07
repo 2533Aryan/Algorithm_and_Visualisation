@@ -411,7 +411,12 @@ function ConvexHull (ps, viewer) {
 
     // perform animation
     this.animate = function () {
-
+        if (this.curAnimation == null) {
+            this.start();
+            this.curAnimation = setInterval(() => {
+                this.step();
+            }, 1000);
+        }
     }
 
     // Return a new PointSet consisting of the points along the convex hull of ps
