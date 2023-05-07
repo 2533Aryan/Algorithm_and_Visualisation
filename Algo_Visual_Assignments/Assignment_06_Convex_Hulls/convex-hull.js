@@ -487,7 +487,7 @@ function ConvexHull (ps, viewer) {
         this.active.push(this.startVertex);
         this.visited.push(this.startVertex);
     
-        
+
         // mute and unmute vertex
         this.viewer.muteAllVertices();
         this.viewer.unmuteVertex(this.cur);    
@@ -497,6 +497,11 @@ function ConvexHull (ps, viewer) {
 
     // perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
+        // check if execution is finished
+        if (this.active.length == 0) {
+            return;
+        }
+
         if (this.index > 0 && this.index < this.startVertex.points.length) {
             // overlay
             this.viewer.addOverlayVertex(this.startVertex.points[this.index]);
