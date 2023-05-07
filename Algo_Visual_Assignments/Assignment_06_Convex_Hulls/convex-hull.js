@@ -303,6 +303,24 @@ function ConvexHullViewer (svg, ps, graph) {
         // Add points
         ps.addNewPoint(vtx.x, vtx.y);
     }
+
+
+    // overlay vertices
+    this.overlayVertices = [];
+
+    // create svg group for displaying overlays
+    this.overlayGroup = document.createElementNS(SVG_NS, "g");
+    this.overlayGroup.id = "graph-" + graph.id + "-overlay";
+    this.svg.appendChild(this.overlayGroup);
+
+    this.addOverlayVertex = function (vtx) {
+        const elt = document.createElementNS(SVG_NS, "circle");
+        elt.classList.add("overlay-vertex");
+        elt.setAttributeNS(null, "cx", vtx.x);
+        elt.setAttributeNS(null, "cy", vtx.y);
+        this.overlayGroup.appendChild(elt);
+        this.overlayVertices[vtx.id] = elt;
+    }    
 }
 
 
@@ -328,6 +346,8 @@ function ConvexHull (ps, viewer) {
         ps = this.getConvexHull();
         this.startVertex = ps;
         console.log(this.startVertex.points);
+
+        this.viewer.addOverlayVertex(this.startVertex.points[0]);
     }
 
     // perform a single step of the Graham scan algorithm performed on ps
