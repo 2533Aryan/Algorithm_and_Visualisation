@@ -335,6 +335,11 @@ function ConvexHull (ps, viewer) {
 
     }
 
+    // perform animation
+    this.animate = function () {
+        
+    }
+
     // Return a new PointSet consisting of the points along the convex hull of ps
     this.getConvexHull = function () {
         // Start by sorting the points in the point set
