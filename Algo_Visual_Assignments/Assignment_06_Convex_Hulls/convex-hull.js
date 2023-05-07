@@ -322,25 +322,21 @@ function ConvexHullViewer (svg, ps, graph) {
         ps.addNewPoint(vtx.x, vtx.y);
     }
 
-    
+
     // create and return an edge between vertices vtx1 and vtx2;
     // returns existing edge if there is already an edge between the
     // two vertices
-    this.addEdge = function(vtx1, vtx2) {
-        if (!this.isEdge(vtx1, vtx2)) {
-            const edge = new Edge(vtx1, vtx2, this.nextEdgeID);
-            this.nextEdgeID++;
-            this.edges.push(edge);
-            console.log("added edge (" + vtx1.id + ", " + vtx2.id + ")");
-            return edge;
-        } else {
-            console.log("edge (" + vtx1.id + ", " + vtx2.id + ") not added because it is already in the graph");
-            return null;
-        }
-    }    
+    this.addEdge = function(vtx1, vtx2) { 
+        const edge = new Edge(vtx1, vtx2, this.nextEdgeID);
+        this.nextEdgeID++;
+        this.edges.push(edge);
+        console.log("added edge (" + vtx1.id + ", " + vtx2.id + ")");
+        return edge;
+    } 
+       
     
     // add an edge to the visualization
-    this.addEdge = function (edge) {
+    this.visEdge = function (edge) {
         const vtx1 = edge.vtx1;
         const vtx2 = edge.vtx2;
         const edgeElt = document.createElementNS(SVG_NS, "line");
@@ -403,7 +399,7 @@ function ConvexHull (ps, viewer) {
         if (this.index > 0 && this.index < this.startVertex.points.length - 1) {
             this.viewer.addOverlayVertex(this.startVertex.points[this.index]);
             // const edge = this.viewer.addEdge(this.startVertex.points[this.index-1], this.startVertex.points[this.index]);
-            this.viewer.addEdge(this.viewer.addEdge(this.startVertex.points[this.index-1], this.startVertex.points[this.index]));
+            this.viewer.addEdge(this.startVertex.points, this.startVertex.points[this.index]);
             this.index++;
         }
     }
