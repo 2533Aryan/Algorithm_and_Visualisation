@@ -519,15 +519,39 @@ function ConvexHull (ps, viewer) {
     }
 
     // perform animation
+    // this.animate = function () {
+    //     if (this.curAnimation == null) {
+    //         this.start();
+    //         this.curAnimation = setInterval(() => {
+    //             this.step();
+    //             console.log(1);
+    //         }, 1000);
+    //     }
+    // }
+
     this.animate = function () {
         if (this.curAnimation == null) {
             this.start();
             this.curAnimation = setInterval(() => {
-                this.step();
-                console.log(1);
+                this.animateStep();
             }, 1000);
         }
     }
+    
+    this.animateStep = function () {
+        if (this.active.length > 0) {
+            console.log("taking a step from vertex " + this.cur.id);
+            this.step();
+        } else {
+            this.stopAnimation();
+        }
+    }
+    
+    this.stopAnimation = function () {
+        clearInterval(this.curAnimation);
+        this.curAnimation = null;
+        console.log("animation completed");
+    }    
 
     // Return a new PointSet consisting of the points along the convex hull of ps
     this.getConvexHull = function () {
