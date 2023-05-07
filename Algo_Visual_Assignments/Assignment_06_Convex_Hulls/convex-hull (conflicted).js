@@ -302,11 +302,9 @@ function ConvexHullViewer (svg, ps, graph) {
 
         // Add points
         ps.addNewPoint(vtx.x, vtx.y);
-        
-        // solve the current convex hull
-        const hull = new ConvexHull(ps, null);
-        const solved = hull.getConvexHull().points; 
-        console.log(solved);
+        console.log(ps.points);
+        const hull = ConvexHull(ps, null);
+        console.log(hull.getConvexHull(ps);)
     }
 }
 
