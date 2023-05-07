@@ -265,7 +265,6 @@ function ConvexHullViewer (svg, ps, graph) {
     this.svg.addEventListener("click", (e) => {
         // create a new vertex
         this.createVertex(e);
-        console.log(graph.vertices[e].x, graph.vertices[e].y);
     });
 
     // sets of highlighted/muted vertices and edges
