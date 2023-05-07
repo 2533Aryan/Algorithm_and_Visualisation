@@ -267,9 +267,6 @@ function ConvexHullViewer (svg, ps, graph) {
         this.createVertex(e);
     });
 
-    // sets of highlighted/muted vertices and edges
-    this.highVertices = [];
-    this.lowVertices = [];
 
     // create svg group for displaying vertices
     this.vertexGroup = document.createElementNS(SVG_NS, "g");
@@ -301,7 +298,9 @@ function ConvexHullViewer (svg, ps, graph) {
         });
 
         this.vertexGroup.appendChild(elt);
-        this.vertexElts[vtx.id] = elt;
+        this.vertexElts[vtx.id] = elt; 
+
+        console.log(vtx);   
     }
 }
 
@@ -314,9 +313,33 @@ function ConvexHullViewer (svg, ps, graph) {
 function ConvexHull (ps, viewer) {
     this.ps = ps;          // a PointSet storing the input to the algorithm
     this.viewer = viewer;  // a ConvexHullViewer for this visualization
+    
+    this.startVertex = null;
+    this.curAnimation = null;
+    
+    this.visited = [];
+    this.active = [];
+    this.cur = null;
 
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
+        this.startVertex = vis.highVertices.pop();
+        
+
+        this.visited = [];
+        this.active = [];
+            
+        this.cur = this.startVertex;
+        this.vis.addOverlayVertex(this.cur);
+
+        this.active.push(this.startVertex);
+        this.visited.push(this.startVertex);
+
+        
+        this.vis.muteAll();
+        this.vis.unmuteVertex(this.startVertex);
+        
+        console.log("Starting DFS from vertex " + this.startVertex.id);
     }
 
     // perform a single step of the Graham scan algorithm performed on ps
@@ -381,9 +404,9 @@ function ConvexHull (ps, viewer) {
 function main() {
     const svg = document.querySelector("#convex-hull-box");
     const graph = new Graph(0);
-    // const dfs = new Dfs(graph, gv);
     const ps = new PointSet();    
     const gv = new ConvexHullViewer(svg, ps, graph);
+    const convexHull = new ConvexHull(ps, gv);
 }
 
 main();
