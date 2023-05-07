@@ -319,12 +319,12 @@ function ConvexHull (ps, viewer) {
     this.ps = ps;          // a PointSet storing the input to the algorithm
     this.viewer = viewer;  // a ConvexHullViewer for this visualization
     
-    // this.startVertex = null;
-    // this.curAnimation = null;
+    this.startVertex = null;
+    this.curAnimation = null;
     
-    // this.visited = [];
-    // this.active = [];
-    // this.cur = null;
+    this.visited = [];
+    this.active = [];
+    this.cur = null;
 
     // actually solve problem
     this.solveConvexHull = function () {
@@ -334,25 +334,11 @@ function ConvexHull (ps, viewer) {
 
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
-        console.log(1);
-        // this.startVertex = vis.highVertices.pop();
-        
-
-        // this.visited = [];
-        // this.active = [];
-            
-        // this.cur = this.startVertex;
-        // this.vis.addOverlayVertex(this.cur);
-
-        // this.active.push(this.startVertex);
-        // this.visited.push(this.startVertex);
-
-        
-        // this.vis.muteAll();
-        // this.vis.unmuteVertex(this.startVertex);
-        
-        // console.log("Starting DFS from vertex " + this.startVertex.id);
+        ps = this.getConvexHull();
+        this.startVertex = ps;
+        console.log(this.startVertex);
     }
+
 
     // perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
