@@ -327,7 +327,7 @@ function ConvexHull (ps, viewer) {
     this.start = function () {
         ps = this.getConvexHull();
         this.startVertex = ps;
-        console.log(this.startVertex.points[0].x);
+        console.log(this.startVertex.points);
     }
 
     // perform a single step of the Graham scan algorithm performed on ps
