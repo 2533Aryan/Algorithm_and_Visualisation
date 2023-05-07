@@ -462,6 +462,13 @@ function ConvexHull (ps, viewer) {
     this.startVertex = null;
     this.index = 0;
 
+    this.curAnimation = null;
+    
+    this.visited = [];
+    this.active = [];
+    this.cur = null;
+
+
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
         // solve convex hull
@@ -469,8 +476,23 @@ function ConvexHull (ps, viewer) {
         this.startVertex = ps;
         console.log(this.startVertex.points);
 
+        
+        this.visited = [];
+        this.active = [];
+            
+        this.cur = this.startVertex.points[0];
+        this.viewer.addOverlayVertex(this.cur);
+
+
+        this.active.push(this.startVertex);
+        this.visited.push(this.startVertex);
+    
+        
+        this.viewer.muteAll();
+        this.viewer.unmuteVertex(this.startVertex);
+    
         // add overlay to first vertex
-        this.viewer.addOverlayVertex(this.startVertex.points[0]);
+        // this.viewer.addOverlayVertex(this.startVertex.points[0]);
         this.index++;
     }
 
