@@ -270,7 +270,7 @@ function ConvexHullViewer (svg, ps, graph) {
     this.edges = [];         // set of edges in this graph    
     this.nextEdgeID = 0;     // ID to be assigned to next edge
 
-    
+
     // define the behavior for clicking on the svg element
     this.svg.addEventListener("click", (e) => {
         // create a new vertex
@@ -328,20 +328,7 @@ function ConvexHullViewer (svg, ps, graph) {
             console.log("edge (" + vtx1.id + ", " + vtx2.id + ") not added because it is already in the graph");
             return null;
         }
-    }
-
-    // return the edge object corresponding to a pair (vtx1, vtx2), or
-    // null if no such edge is in the graph
-    this.getEdge = function (vtx1, vtx2) {
-        for(const edge of this.edges) {
-            if (edge.equals(vtx1, vtx2)) {
-                return edge;
-            }
-        }
-
-        return null;
     }    
-    
     
     // add an edge to the visualization
     this.addEdge = function (edge) {
@@ -406,7 +393,8 @@ function ConvexHull (ps, viewer) {
     this.step = function () {
         if (this.index > 0 && this.index < this.startVertex.points.length - 1) {
             this.viewer.addOverlayVertex(this.startVertex.points[this.index]);
-            const edge = this.viewer.addEdge(this.startVertex.points[this.index-1], this.startVertex.points[this.index]);
+            // const edge = this.viewer.addEdge(this.startVertex.points[this.index-1], this.startVertex.points[this.index]);
+            this.viewer.addEdge(this.viewer.addEdge(this.startVertex.points[this.index-1], this.startVertex.points[this.index]));
             this.index++;
         }
     }
