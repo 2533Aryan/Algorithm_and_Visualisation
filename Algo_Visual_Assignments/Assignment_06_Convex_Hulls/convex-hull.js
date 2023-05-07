@@ -225,8 +225,11 @@ function PointSet () {
 function Graph(id) {
     this.id = id;            // (unique) ID of this graph
     this.vertices = [];      // set of vertices in this graph
+    this.edges = [];         // set of edges in this graph    
     this.nextVertexID = 0;   // ID to be assigned to next vtx
-    
+    this.nextEdgeID = 0;     // ID to be assigned to next edge
+
+
     // create a and return a new vertex at a given location
     this.createVertex = function (x, y) {
         const vtx = new Vertex(this.nextVertexID, this, x, y);
@@ -244,6 +247,35 @@ function Graph(id) {
             console.log("vertex with id " + vtx.id + " not added because it is already a vertex in the graph.");
         }
     }
+
+    // create and return an edge between vertices vtx1 and vtx2;
+    // returns existing edge if there is already an edge between the
+    // two vertices
+    this.addEdge = function(vtx1, vtx2) {
+        if (!this.isEdge(vtx1, vtx2)) {
+            const edge = new Edge(vtx1, vtx2, this.nextEdgeID);
+            this.nextEdgeID++;
+            this.edges.push(edge);
+            console.log("added edge (" + vtx1.id + ", " + vtx2.id + ")");
+            return edge;
+        } else {
+            console.log("edge (" + vtx1.id + ", " + vtx2.id + ") not added because it is already in the graph");
+            return null;
+        }
+    }
+    
+
+    // return the edge object corresponding to a pair (vtx1, vtx2), or
+    // null if no such edge is in the graph
+    this.getEdge = function (vtx1, vtx2) {
+        for(const edge of this.edges) {
+            if (edge.equals(vtx1, vtx2)) {
+                return edge;
+            }
+        }
+
+        return null;
+    }    
 }
 
 
@@ -254,6 +286,12 @@ function Vertex(id, graph, x, y) {
     this.y = y;          // y coordinate of location
 }
 
+// an object representing an edge in a graph
+function Edge (vtx1, vtx2, id) {
+    this.vtx1 = vtx1;   // first endpoint of the edge
+    this.vtx2 = vtx2;   // second endpoint of the edge
+    this.id = id;       // the unique identifier of this edge
+}
 
 function ConvexHullViewer (svg, ps, graph) {
     this.svg = svg;  // a n svg object where the visualization is drawn
@@ -302,6 +340,20 @@ function ConvexHullViewer (svg, ps, graph) {
 
         // Add points
         ps.addNewPoint(vtx.x, vtx.y);
+    }
+
+    // add an edge to the visualization
+    this.addEdge = function (edge) {
+        const vtx1 = edge.vtx1;
+        const vtx2 = edge.vtx2;
+        const edgeElt = document.createElementNS(SVG_NS, "line");
+        edgeElt.setAttributeNS(null, "x1", vtx1.x);
+        edgeElt.setAttributeNS(null, "y1", vtx1.y);
+        edgeElt.setAttributeNS(null, "x2", vtx2.x);
+        edgeElt.setAttributeNS(null, "y2", vtx2.y);
+        edgeElt.classList.add("edge");
+        this.edgeElts[edge.id] = edgeElt;
+        this.edgeGroup.appendChild(edgeElt);
     }
 
 
@@ -355,6 +407,8 @@ function ConvexHull (ps, viewer) {
             this.viewer.addOverlayVertex(this.startVertex.points[this.index]);
             this.index++;
         }
+
+        const edge = this.graph.getEdge(this.cur, next);
     }
 
     // perform animation
