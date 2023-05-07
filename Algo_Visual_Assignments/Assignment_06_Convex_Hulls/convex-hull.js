@@ -487,10 +487,10 @@ function ConvexHull (ps, viewer) {
         this.active.push(this.startVertex);
         this.visited.push(this.startVertex);
     
-        
+            
         this.viewer.muteAllVertices();
-        this.viewer.unmuteVertex(this.startVertex);
-    
+        // this.viewer.unmuteVertex(this.startVertex);    
+
         // add overlay to first vertex
         // this.viewer.addOverlayVertex(this.startVertex.points[0]);
         this.index++;
