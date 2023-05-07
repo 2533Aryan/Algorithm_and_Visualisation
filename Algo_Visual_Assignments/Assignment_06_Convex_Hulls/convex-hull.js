@@ -333,13 +333,8 @@ function ConvexHull (ps, viewer) {
     this.ps = ps;          // a PointSet storing the input to the algorithm
     this.viewer = viewer;  // a ConvexHullViewer for this visualization
     
+    // initial vertex
     this.startVertex = null;
-    this.curAnimation = null;
-    
-    this.visited = [];
-    this.active = [];
-    this.cur = null;
-
     this.index = 0;
 
     // start a visualization of the Graham scan algorithm performed on ps
