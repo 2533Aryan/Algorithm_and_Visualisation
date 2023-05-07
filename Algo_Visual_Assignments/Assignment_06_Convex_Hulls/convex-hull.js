@@ -293,7 +293,7 @@ function ConvexHullViewer (svg, ps, graph) {
     this.vertexElts = [];   // svg elements for vertices
     this.edgeElts = [];     // svg elements for edges
 
-    
+
     // create a new vertex 
     this.createVertex = function (e) {
         const rect = this.svg.getBoundingClientRect();
@@ -322,6 +322,7 @@ function ConvexHullViewer (svg, ps, graph) {
         ps.addNewPoint(vtx.x, vtx.y);
     }
 
+    
     // create and return an edge between vertices vtx1 and vtx2;
     // returns existing edge if there is already an edge between the
     // two vertices
