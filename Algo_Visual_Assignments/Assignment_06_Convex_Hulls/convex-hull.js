@@ -305,7 +305,7 @@ function ConvexHullViewer (svg, ps, graph) {
         
         // solve the current convex hull
         const hull = new ConvexHull(ps, null);
-        hull.step();
+        hull.start();
     }
 }
 
@@ -328,6 +328,10 @@ function ConvexHull (ps, viewer) {
 
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
+        // ps = this.getConvexHull();
+        // console.log(ps.points);
+
+        console.log(1);
         // this.startVertex = vis.highVertices.pop();
         
 
@@ -349,8 +353,7 @@ function ConvexHull (ps, viewer) {
 
     // perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
-        ps = this.getConvexHull();
-        console.log(ps.points);
+
     }
 
     // Return a new PointSet consisting of the points along the convex hull of ps
