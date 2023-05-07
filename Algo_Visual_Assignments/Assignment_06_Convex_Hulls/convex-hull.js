@@ -260,7 +260,7 @@ function ConvexHullViewer (svg, ps, graph) {
     this.ps = ps;    // a point set of the points to be visualized
     
     this.graph = graph;      // the graph we are visualizing
-    
+
     // define the behavior for clicking on the svg element
     this.svg.addEventListener("click", (e) => {
         // create a new vertex
@@ -305,8 +305,7 @@ function ConvexHullViewer (svg, ps, graph) {
         
         // solve the current convex hull
         const hull = new ConvexHull(ps, null);
-        const solved = hull.getConvexHull().points; 
-        console.log(solved);
+        hull.step();
     }
 }
 
@@ -320,36 +319,37 @@ function ConvexHull (ps, viewer) {
     this.ps = ps;          // a PointSet storing the input to the algorithm
     this.viewer = viewer;  // a ConvexHullViewer for this visualization
     
-    this.startVertex = null;
-    this.curAnimation = null;
+    // this.startVertex = null;
+    // this.curAnimation = null;
     
-    this.visited = [];
-    this.active = [];
-    this.cur = null;
+    // this.visited = [];
+    // this.active = [];
+    // this.cur = null;
 
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
-        this.startVertex = vis.highVertices.pop();
+        // this.startVertex = vis.highVertices.pop();
         
 
-        this.visited = [];
-        this.active = [];
+        // this.visited = [];
+        // this.active = [];
             
-        this.cur = this.startVertex;
-        this.vis.addOverlayVertex(this.cur);
+        // this.cur = this.startVertex;
+        // this.vis.addOverlayVertex(this.cur);
 
-        this.active.push(this.startVertex);
-        this.visited.push(this.startVertex);
+        // this.active.push(this.startVertex);
+        // this.visited.push(this.startVertex);
 
         
-        this.vis.muteAll();
-        this.vis.unmuteVertex(this.startVertex);
+        // this.vis.muteAll();
+        // this.vis.unmuteVertex(this.startVertex);
         
-        console.log("Starting DFS from vertex " + this.startVertex.id);
+        // console.log("Starting DFS from vertex " + this.startVertex.id);
     }
 
     // perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
+        ps = this.getConvexHull();
         console.log(ps.points);
     }
 
@@ -413,7 +413,7 @@ function main() {
     const graph = new Graph(0);
     const ps = new PointSet();    
     const viewer = new ConvexHullViewer(svg, ps, graph);
-    const hull = new ConvexHull(ps, viewer);
+    const ch = new ConvexHull(ps, viewer);
 }
 
 main();
