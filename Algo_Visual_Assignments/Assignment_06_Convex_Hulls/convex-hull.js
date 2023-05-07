@@ -399,13 +399,13 @@ function ConvexHull (ps, viewer) {
 }
 
 
-
-const svg = document.querySelector("#convex-hull-box");
-const graph = new Graph(0);
-const ps = new PointSet();    
-const viewer = new ConvexHullViewer(svg, ps, graph);
-const ch = new ConvexHull(ps, viewer);
-
+function main() {
+    const svg = document.querySelector("#convex-hull-box");
+    const graph = new Graph(0);
+    const ps = new PointSet();    
+    const viewer = new ConvexHullViewer(svg, ps, graph);
+    const ch = new ConvexHull(ps, viewer);    
+}
 
 
 // For tester
