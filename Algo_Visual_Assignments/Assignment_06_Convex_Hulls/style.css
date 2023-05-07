@@ -55,7 +55,7 @@ button {
 
 .overlay-vertex {
     r: 15px;
-    stroke: yellow;
+    stroke: rgb(0, 162, 255);
     fill: rgb(0, 0, 0, 20%);
     stroke-width: 5;
 
