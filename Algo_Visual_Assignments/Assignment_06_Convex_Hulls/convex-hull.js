@@ -501,8 +501,12 @@ function ConvexHull (ps, viewer) {
         if (this.active.length == 0) {
             return;
         }
+        
+        // pop
+        this.active.pop();
 
         if (this.index > 0 && this.index < this.startVertex.points.length) {
+            
             // unmute vertex
             this.viewer.unmuteVertex(this.startVertex.points[this.index]);    
 
@@ -512,6 +516,8 @@ function ConvexHull (ps, viewer) {
             // edge
             const currentEdge = this.viewer.addEdge(this.startVertex.points[this.index-1], this.startVertex.points[this.index]);
             this.viewer.visEdge(currentEdge);
+            
+            this.active.push(this.startVertex.points[this.index]);
             
             // increment index
             this.index++;
