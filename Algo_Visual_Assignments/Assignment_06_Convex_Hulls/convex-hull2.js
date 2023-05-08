@@ -471,8 +471,10 @@ function ConvexHull (ps, viewer) {
 
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
-        // solve convex hull
-        ps = this.getConvexHull();
+        // Start by sorting the points in the point set
+        this.ps.sort();
+
+        
         this.startVertex = ps;
         console.log(this.startVertex.points);
 
@@ -501,27 +503,77 @@ function ConvexHull (ps, viewer) {
         if (this.active.length == 0) {
             return;
         }
+
+
+        // Create two empty stacks: the lower hull and the upper hull
+        var lowerHull = [];
+        var upperHull = [];
+
+                
+        // Process each point in the sorted point set
+        for (var i = 0; i < this.ps.size(); i++) {
+            var p = this.ps.points[i];
+            
+            // Build the lower hull
+            while (lowerHull.length >= 2) {
+                var q = lowerHull[lowerHull.length - 1];
+                var r = lowerHull[lowerHull.length - 2];
+                if ((p.y - r.y) * (r.x - q.x) >= (r.y - q.y) * (p.x - r.x)) {
+                    lowerHull.pop();
+                    this.viewer.addOverlayVertex(q);
+                    this.viewer.addOverlayVertex(r);
+                } else {
+                    this.viewer.addOverlayVertex(q);
+                    this.viewer.addOverlayVertex(r);
+                    break;
+                }
+            }
+            lowerHull.push(p);
+
+
+            // Build the upper hull
+            while (upperHull.length >= 2) {
+                var q = upperHull[upperHull.length - 1];
+                var r = upperHull[upperHull.length - 2];
+                if ((p.y - r.y) * (r.x - q.x) <= (r.y - q.y) * (p.x - r.x)) {
+                    upperHull.pop();
+                } else {
+                    break;
+                }
+            }
+            upperHull.push(p);
+        }
+        
+        // Combine the lower and upper hulls into a single hull
+        upperHull.pop();
+        var hullPoints = upperHull.concat(lowerHull.reverse());
+
+        // Create a new PointSet to hold the convex hull points
+        var hull = new PointSet();
+        for (var i = 0; i < hullPoints.length; i++) {
+            hull.addPoint(hullPoints[i]);
+        }
         
         // pop
-        this.active.pop();
+        // this.active.pop();
 
-        if (this.index > 0 && this.index < this.startVertex.points.length) {
+        // if (this.index > 0 && this.index < this.startVertex.points.length) {
             
-            // unmute vertex
-            this.viewer.unmuteVertex(this.startVertex.points[this.index]);    
+        //     // unmute vertex
+        //     this.viewer.unmuteVertex(this.startVertex.points[this.index]);    
 
-            // overlay
-            this.viewer.addOverlayVertex(this.startVertex.points[this.index]);
+        //     // overlay
+        //     this.viewer.addOverlayVertex(this.startVertex.points[this.index]);
             
-            // edge
-            const currentEdge = this.viewer.addEdge(this.startVertex.points[this.index-1], this.startVertex.points[this.index]);
-            this.viewer.visEdge(currentEdge);
+        //     // edge
+        //     const currentEdge = this.viewer.addEdge(this.startVertex.points[this.index-1], this.startVertex.points[this.index]);
+        //     this.viewer.visEdge(currentEdge);
             
-            this.active.push(this.startVertex.points[this.index]);
+        //     this.active.push(this.startVertex.points[this.index]);
             
-            // increment index
-            this.index++;
-        }
+        //     // increment index
+        //     this.index++;
+        // }
     }
 
     // perform animation
