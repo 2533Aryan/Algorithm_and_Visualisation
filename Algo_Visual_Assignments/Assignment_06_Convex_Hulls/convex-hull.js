@@ -1,116 +1,6 @@
 const SVG_NS = "http://www.w3.org/2000/svg";
 
 
-// function Dfs (graph, vis) {
-//     this.graph = graph;
-//     this.vis = vis;
-//     this.startVertex = null;
-//     this.curAnimation = null;
-    
-//     this.visited = [];
-//     this.active = [];
-//     this.cur = null;
-
-//     this.start = function () {
-// 	this.startVertex = vis.highVertices.pop();
-	
-// 	if (this.startVertex == null) {
-// 	    vis.updateTextBox("Please select a starting vertex and start again.");
-// 	    return;
-// 	}
-
-// 	// todo: un-highlight previously highlighted stuff
-
-// 	this.visited = [];
-// 	this.active = [];
-		
-// 	this.cur = this.startVertex;
-// 	this.vis.addOverlayVertex(this.cur);
-
-// 	this.active.push(this.startVertex);
-// 	this.visited.push(this.startVertex);
-
-	
-// 	this.vis.muteAll();
-// 	this.vis.unmuteVertex(this.startVertex);
-	
-// 	console.log("Starting DFS from vertex " + this.startVertex.id);
-
-//     }
-
-//     this.step = function () {
-	
-// 	// check if execution is finished
-// 	if (this.active.length == 0) {
-// 	    return;
-// 	}
-
-// 	// find the next unvisited neighbor of this.cur
-// 	const next = this.nextUnvisitedNeighbor();
-	
-// 	if (next == null) {
-// 	    // if no next neighbor, cur is no longer active
-// 	    const prev = this.active.pop();
-// 	    this.vis.unhighlightVertex(prev);
-// 	    if (this.active.length > 0) {
-// 		this.cur = this.active[this.active.length - 1];
-// 		const edge = this.graph.getEdge(prev, this.cur);
-// 		this.vis.unhighlightEdge(edge);
-// 		this.vis.moveOverlayVertex(prev, this.cur);
-// 	    } else {
-// 		this.vis.removeOverlayVertex(this.cur);
-// 		this.cur = null;
-// 	    }
-// 	} else {
-// 	    const edge = this.graph.getEdge(this.cur, next);
-// 	    vis.unmuteEdge(edge);
-// 	    vis.highlightEdge(edge);
-// 	    vis.unmuteVertex(next);
-// 	    vis.highlightVertex(next);
-// 	    this.vis.moveOverlayVertex(this.cur, next);
-// 	    this.cur = next;
-// 	    this.active.push(next);
-// 	    this.visited.push(next);
-// 	}
-//     }
-
-//     this.nextUnvisitedNeighbor = function () {
-// 	for (vtx of this.cur.neighbors) {
-// 	    if (!this.visited.includes(vtx)) {
-// 		return vtx;
-// 	    }
-// 	}
-// 	return null;
-//     }
-
-//     this.animate = function () {
-// 	if (this.curAnimation == null) {
-// 	    this.start();
-// 	    this.curAnimation = setInterval(() => {
-// 		this.animateStep();
-// 	    }, 1000);
-// 	}
-//     }
-
-//     this.animateStep = function () {
-// 	if (this.active.length > 0) {
-// 	    console.log("taking a step from vertex " + this.cur.id);
-// 	    this.step();
-// 	} else {
-// 	    this.stopAnimation();
-// 	}
-//     }
-
-//     this.stopAnimation = function () {
-// 	clearInterval(this.curAnimation);
-// 	this.curAnimation = null;
-// 	console.log("animation completed");
-//     }
-
-
-// }
-
-
 // An object that represents a 2-d point, consisting of an
 // x-coordinate and a y-coordinate. The `compareTo` function
 // implements a comparison for sorting with respect to x-coordinates,
@@ -602,13 +492,14 @@ function ConvexHull (ps, viewer) {
     };
 }
 
-function main() {
+try {
     const svg = document.querySelector("#convex-hull-box");
     const graph = new Graph(0);
     const ps = new PointSet();    
-    const viewer = new ConvexHullViewer(svg, ps, graph);
-    const ch = new ConvexHull(ps, viewer);     
-}
+    const viewer = new ConvexHullViewer(svg, ps, graph);     
+    const hull = new ConvexHull(ps, viewer);
+  } catch (e) {
+  }
 
 // For tester
   try {
@@ -617,4 +508,3 @@ function main() {
   } catch (e) {
     console.log("not running in Node");
   }
-  
