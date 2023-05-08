@@ -471,8 +471,14 @@ function ConvexHull (ps, viewer) {
 
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
-        // solve convex hull
-        ps = this.getConvexHull();
+        // Start by sorting the points in the point set
+        this.ps.sort();
+
+        // Create two empty stacks: the lower hull and the upper hull
+        var lowerHull = [];
+        var upperHull = [];
+
+        
         this.startVertex = ps;
         console.log(this.startVertex.points);
 
