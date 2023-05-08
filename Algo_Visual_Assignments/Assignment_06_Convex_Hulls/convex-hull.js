@@ -284,57 +284,57 @@ function ConvexHullViewer (svg, ps, graph) {
     }
     
     this.highlightEdge = function (e) {
-    const elt = this.edgeElts[e.id];
-    elt.classList.add("highlight");	
+        const elt = this.edgeElts[e.id];
+        elt.classList.add("highlight");	
     }
 
     this.unhighlightEdge = function (e) {
-    const elt = this.edgeElts[e.id];
-    elt.classList.remove("highlight");	
+        const elt = this.edgeElts[e.id];
+        elt.classList.remove("highlight");	
     }
 
     this.muteEdge = function (e) {
-    const elt = this.edgeElts[e.id];
-    elt.classList.add("muted");
+        const elt = this.edgeElts[e.id];
+        elt.classList.add("muted");
     }
 
     this.unmuteEdge = function (e) {
-    const elt = this.edgeElts[e.id];
-    elt.classList.remove("muted");
+        const elt = this.edgeElts[e.id];
+        elt.classList.remove("muted");
     }
 
     this.muteAllVertices = function () {
-    for (vtx of this.graph.vertices) {
-        this.muteVertex(vtx);
-    }
+        for (vtx of this.graph.vertices) {
+            this.muteVertex(vtx);
+        }
     }
 
     this.muteAllEdges = function () {
-    for (e of this.graph.edges) {
-        this.muteEdge(e);
-    }
+        for (e of this.graph.edges) {
+            this.muteEdge(e);
+        }
     }
 
     this.muteAll = function () {
-    this.muteAllVertices();
-    this.muteAllEdges();
+        this.muteAllVertices();
+        this.muteAllEdges();
     }
 
     this.unmuteAllVertices = function () {
-    for (vtx of this.graph.vertices) {
-        this.unmuteVertex(vtx);
-    }
+        for (vtx of this.graph.vertices) {
+            this.unmuteVertex(vtx);
+        }
     }
 
     this.unmuteAllEdges = function () {
-    for (e of this.graph.edges) {
-        this.unmuteEdge(e);
-    }
+        for (e of this.graph.edges) {
+            this.unmuteEdge(e);
+        }
     }
 
     this.unmuteAll = function () {
-    this.unmuteAllVertices();
-    this.unmuteAllEdges();
+        this.unmuteAllVertices();
+        this.unmuteAllEdges();
     }    
 }
 
