@@ -58,12 +58,7 @@ button {
     stroke: rgb(0, 160, 255);
     fill: rgb(0, 0, 0, 20%);
     stroke-width: 5;
-
-    transition-property: cx, cy;
-    transition-duration: 500ms;
-    
-    transition-timing-function: ease;
-    transition-delay: 500ms;
 }
+
 
 
