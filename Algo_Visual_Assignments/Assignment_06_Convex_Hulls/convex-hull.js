@@ -474,10 +474,6 @@ function ConvexHull (ps, viewer) {
         // Start by sorting the points in the point set
         this.ps.sort();
 
-        // Create two empty stacks: the lower hull and the upper hull
-        var lowerHull = [];
-        var upperHull = [];
-
         
         this.startVertex = ps;
         console.log(this.startVertex.points);
@@ -506,6 +502,52 @@ function ConvexHull (ps, viewer) {
         // check if execution is finished
         if (this.active.length == 0) {
             return;
+        }
+
+        
+        // Create two empty stacks: the lower hull and the upper hull
+        var lowerHull = [];
+        var upperHull = [];
+
+                
+        // Process each point in the sorted point set
+        for (var i = 0; i < this.ps.size(); i++) {
+            var p = this.ps.points[i];
+            
+            // Build the lower hull
+            while (lowerHull.length >= 2) {
+                var q = lowerHull[lowerHull.length - 1];
+                var r = lowerHull[lowerHull.length - 2];
+                if ((p.y - r.y) * (r.x - q.x) >= (r.y - q.y) * (p.x - r.x)) {
+                    lowerHull.pop();
+                } else {
+                    break;
+                }
+            }
+            lowerHull.push(p);
+
+
+            // Build the upper hull
+            while (upperHull.length >= 2) {
+                var q = upperHull[upperHull.length - 1];
+                var r = upperHull[upperHull.length - 2];
+                if ((p.y - r.y) * (r.x - q.x) <= (r.y - q.y) * (p.x - r.x)) {
+                    upperHull.pop();
+                } else {
+                    break;
+                }
+            }
+            upperHull.push(p);
+        }
+        
+        // Combine the lower and upper hulls into a single hull
+        upperHull.pop();
+        var hullPoints = upperHull.concat(lowerHull.reverse());
+
+        // Create a new PointSet to hold the convex hull points
+        var hull = new PointSet();
+        for (var i = 0; i < hullPoints.length; i++) {
+            hull.addPoint(hullPoints[i]);
         }
         
         // pop
