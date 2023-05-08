@@ -474,7 +474,7 @@ function ConvexHull (ps, viewer) {
         // solve convex hull
         ps = this.getConvexHull();
         this.startVertex = ps;
-        // console.log(this.startVertex.points);
+        console.log(this.startVertex.points);
 
         
         this.visited = [];
@@ -572,7 +572,7 @@ function ConvexHull (ps, viewer) {
                 }
             }
             lowerHull.push(p);
-            
+
 
             // Build the upper hull
             while (upperHull.length >= 2) {
