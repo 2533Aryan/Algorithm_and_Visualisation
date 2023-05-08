@@ -492,14 +492,24 @@ function ConvexHull (ps, viewer) {
     };
 }
 
-try {
-    const svg = document.querySelector("#convex-hull-box");
-    const graph = new Graph(0);
-    const ps = new PointSet();    
-    const viewer = new ConvexHullViewer(svg, ps, graph);     
-    const hull = new ConvexHull(ps, viewer);
-  } catch (e) {
-  }
+
+var svg;
+var graph;
+var ps;    
+var viewer;
+var hull;
+
+
+function main() {
+    svg = document.querySelector("#convex-hull-box");
+    graph = new Graph(0);
+    ps = new PointSet();    
+    viewer = new ConvexHullViewer(svg, ps, graph);     
+    hull = new ConvexHull(ps, viewer);
+}
+
+
+
 
 // For tester
   try {
