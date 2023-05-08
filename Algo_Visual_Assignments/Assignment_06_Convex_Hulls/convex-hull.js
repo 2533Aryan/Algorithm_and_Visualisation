@@ -373,7 +373,6 @@ function ConvexHull (ps, viewer) {
         this.cur = this.startVertex.points[0];
         this.viewer.addOverlayVertex(this.cur);
 
-
         this.active.push(this.startVertex);
         this.visited.push(this.startVertex);
     
@@ -435,6 +434,7 @@ function ConvexHull (ps, viewer) {
     this.stopAnimation = function () {
         clearInterval(this.curAnimation);
         this.curAnimation = null;
+        this.viewer.unmuteAllVertices();
         console.log("animation completed");
     }    
 
