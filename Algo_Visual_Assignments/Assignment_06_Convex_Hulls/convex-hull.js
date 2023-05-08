@@ -458,6 +458,9 @@ function ConvexHull (ps, viewer) {
     this.ps = ps;          // a PointSet storing the input to the algorithm
     this.viewer = viewer;  // a ConvexHullViewer for this visualization
     
+    //all points in seq
+    this.allPoint = [];
+    
     // initial vertex
     this.startVertex = null;
     this.index = 0;
@@ -550,6 +553,7 @@ function ConvexHull (ps, viewer) {
 
     // Return a new PointSet consisting of the points along the convex hull of ps
     this.getConvexHull = function () {
+        //
         // Start by sorting the points in the point set
         this.ps.sort();
         
