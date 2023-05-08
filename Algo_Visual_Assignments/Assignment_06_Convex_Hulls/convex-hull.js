@@ -524,16 +524,6 @@ function ConvexHull (ps, viewer) {
         }
     }
 
-    // perform animation
-    // this.animate = function () {
-    //     if (this.curAnimation == null) {
-    //         this.start();
-    //         this.curAnimation = setInterval(() => {
-    //             this.step();
-    //             console.log(1);
-    //         }, 1000);
-    //     }
-    // }
 
     this.animate = function () {
         if (this.curAnimation == null) {
