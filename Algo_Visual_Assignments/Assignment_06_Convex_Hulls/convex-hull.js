@@ -474,7 +474,7 @@ function ConvexHull (ps, viewer) {
         // solve convex hull
         ps = this.getConvexHull();
         this.startVertex = ps;
-        console.log(this.startVertex.points);
+        // console.log(this.startVertex.points);
 
         
         this.visited = [];
@@ -554,7 +554,7 @@ function ConvexHull (ps, viewer) {
         this.ps.sort();
         
         //all points in seq
-        this.allPoint = [];
+        var allPoint = [];
 
         // Create two empty stacks: the lower hull and the upper hull
         var lowerHull = [];
@@ -563,7 +563,7 @@ function ConvexHull (ps, viewer) {
         // Process each point in the sorted point set
         for (var i = 0; i < this.ps.size(); i++) {
             var p = this.ps.points[i];
-                
+            
             // Build the lower hull
             while (lowerHull.length >= 2) {
                 var q = lowerHull[lowerHull.length - 1];
@@ -575,8 +575,7 @@ function ConvexHull (ps, viewer) {
                 }
             }
             lowerHull.push(p);
-            // this.allpoint = this.allPoint + 1;
-            // console.log(allPoint);
+            // allPoint.push(p);
 
             // Build the upper hull
             while (upperHull.length >= 2) {
