@@ -524,7 +524,7 @@ function ConvexHull (ps, viewer) {
         }
     }
 
-
+    // perform animation
     this.animate = function () {
         if (this.curAnimation == null) {
             this.start();
