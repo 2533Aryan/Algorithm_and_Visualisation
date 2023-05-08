@@ -536,7 +536,6 @@ function ConvexHull (ps, viewer) {
     
     this.animateStep = function () {
         if (this.active.length > 0) {
-            console.log("taking a step from vertex " + this.cur.id);
             this.step();
         } else {
             this.stopAnimation();
