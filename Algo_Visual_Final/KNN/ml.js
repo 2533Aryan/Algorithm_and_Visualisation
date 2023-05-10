@@ -73,7 +73,7 @@ function createRandomData() {
 
 // Generate random data and visualize with k-NN algorithm
 const data = createRandomData();
-const k = 3;
+const k = 5;
 const visualization = new d3ml.KNNVisualization(data, visualizationOptions, dataPointTypes, k);
 visualization.draw();
 
