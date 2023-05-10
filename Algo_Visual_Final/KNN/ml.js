@@ -1,6 +1,8 @@
 // Define display dimensions and options
 const displayWidth = window.innerWidth - 350;
 const displayHeight = 450;
+
+// Size
 const dataSetSize = 250;
 
 // Visulization
@@ -13,13 +15,16 @@ const visualizationOptions = {
   circleStroke: 'white' 
 };
 
+
 // Define types of data points
 const dataPointTypes = ['A', 'B'];
+
 
 // Generate a random integer between min and max values
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 
 // Generate random coordinates for an ellipsoid shape
 function createRandomEllipsoidCoordinates(width, height, cx, cy) {
@@ -35,6 +40,7 @@ function createRandomEllipsoidCoordinates(width, height, cx, cy) {
   
   return {x, y};
 }
+
 
 // Generate a dataset with random coordinates for each type of data point
 function createRandomData() {
@@ -64,8 +70,10 @@ function createRandomData() {
   return data;
 }
 
+
 // Generate random data and visualize with k-NN algorithm
 const data = createRandomData();
 const k = 3;
 const visualization = new d3ml.KNNVisualization(data, visualizationOptions, dataPointTypes, k);
 visualization.draw();
+
