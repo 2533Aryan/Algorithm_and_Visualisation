@@ -2,6 +2,8 @@
 const displayWidth = window.innerWidth - 350;
 const displayHeight = 450;
 const dataSetSize = 250;
+
+// Visulization
 const visualizationOptions = {
   rootNode: '#knn',
   width: displayWidth,
