@@ -15,5 +15,5 @@ To run the project, simply execute the index.html file. The visualization will b
 
 # Note:
 
-- This project utilizes the <strong>d3ml</strong> library for visualization purposes.
+- This project utilizes the d3ml library for visualization purposes.
 
