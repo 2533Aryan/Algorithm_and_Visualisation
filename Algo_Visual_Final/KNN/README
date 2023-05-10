@@ -11,6 +11,9 @@ This project involves generating a dataset and visualizing it using the k-Neares
 
 The resulting visualization shows the data points as circles on a black background, with different fill colors representing each type. The k-NN algorithm determines the classification of each data point based on its nearest neighbors.
 
-To run the project, simply execute the provided code. The visualization will be displayed in the specified dimensions and options.
+To run the project, simply execute the index.html file. The visualization will be displayed in the specified dimensions and options.
 
-Note: This project utilizes the d3ml library for visualization purposes. Make sure to include the necessary dependencies before running the code.
+# Note:
+
+- This project utilizes the <strong>d3ml</strong> library for visualization purposes.
+
