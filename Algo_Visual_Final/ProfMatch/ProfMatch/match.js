@@ -200,7 +200,7 @@ const app = {
 
     // Button Link
     var linkSubmitButton = document.createElement('a');
-    linkSubmitButton.href  = "main-page.html";
+    linkSubmitButton.href  = "index.html";
     divSubmitButton.appendChild(linkSubmitButton);
 
     // Button
