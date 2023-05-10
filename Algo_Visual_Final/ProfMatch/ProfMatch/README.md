@@ -22,8 +22,8 @@ The project consists of the following main components:
 - run function: Handles the click event of the "Match" button and retrieves the student's input data.
 - getPosts function: Sends a GET request to the professor.json file and calls the matchProfessors function.
 - matchProfessors function: Calculates a matching score for each professor based on their areas of study and the student's input. The top three matching professors are stored in the matchedProf variable.
-- switch function: Switches the view from the main page to the results page.
 - showResults function: Builds the results page by creating HTML elements dynamically.
 - matchProf function: Displays the selected professors' information on the results page.
 - err function: Handles errors by displaying an error message to the user.
+
 
