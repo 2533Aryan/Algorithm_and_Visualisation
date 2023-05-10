@@ -1,0 +1,183 @@
+  @font-face {
+    font-family: 'Bernard MT Condensed';
+    src: url('BERNHC.ttf') format('truetype');
+
+    font-family: 'Britannic Bold';
+    src: url('BRITANIC.ttf') format('truetype');
+  }
+
+
+  /* Style for first page */
+  body {
+    font-family: 'Bernard MT Condensed', sans-serif;
+    padding: 20px;
+    background-color: #D4CDE4;
+  }
+
+  h1 {
+    text-align: center;
+    color: #3C003E;
+  }
+
+  h2 {
+    text-align: center;
+    color: #2A0E8C;
+  }
+
+  #big {
+    font-size: xx-large;
+  }
+
+  #outer-box {
+    background-color: #AF8FC7;
+    width: 450px;
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    align-items: end;
+    justify-content: right;
+  }
+
+  #inter-box {
+    background-color: #C66CA8;
+    width: 350px;
+    height: 35px;
+  }
+
+  #outer-text {
+    font-family: 'Britannic Bold', sans-serif;
+    font-size: x-large;
+    color: #2A0E8C;
+    margin: auto;
+  }
+  
+  input[type="text"], select {
+    font-family: 'Britannic Bold', sans-serif;
+    font-size: large;
+    background-color: #C66CA8;
+    width: 343px;
+    height: 30px;
+    border: none;
+    color: #69117F;
+  }
+  
+  button {
+    width: 100px;
+    height: 40px;
+    font-family: 'Bernard MT Condensed', sans-serif;
+    font-size: x-large;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e6c597;
+    color: #2e17a1;
+    border: 1pt solid black;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #13aec0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+
+  
+  /* Style for second page */
+  .container {
+    display: flex;
+    justify-content:space-evenly;
+    margin-bottom: 2%;
+    margin-left: 6%;
+    margin-right: 6%;
+  }
+
+  .outer-box2 {
+    background-color: #AF8FC7;
+    width: 350px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .inner-box2 {
+    background-color: #C66CA8;
+    width: 300px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #content {
+    background-color: #C66CA8;
+    width: 300px;
+    height: 200px;
+    margin-top: 50%;
+  }
+
+
+
+  /* Professor details */
+  .prof-name{
+    font-family: 'Britannic Bold', sans-serif;
+    font-size: xx-large;
+    color: #69117F;
+  }
+
+  img{
+    width: 150px;
+    height: 150px;
+  }
+
+  .img-content{
+    background-color: #2e17a1;
+    margin-top: 3%;
+    margin-bottom: 0%;
+    width: 155px;
+    height: 155px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .area-heading{
+    margin-top: 4%;
+    margin-bottom: 2%;
+    font-size: x-large;
+    color: #69117F;
+  }
+
+  .prof-area{
+    font-family: 'Britannic Bold', sans-serif;
+    font-size: large;
+    width: 300px;
+    height: 100px;
+  }
+
+  .email-heading{
+    margin-top: 0%;
+    margin-bottom: 0%;
+    font-size: x-large;
+    color: #69117F;
+  }
+
+  .email-content{
+    margin: 0%;
+    font-size: large;
+    color: #000000;
+  }
+
+  .prof-email {
+    font-family: 'Britannic Bold', sans-serif;
+    font-size: x-large;
+    color: #69117F;
+    margin-top: 5%;
+    width: 300px;
+    height: 40px;
+  }
