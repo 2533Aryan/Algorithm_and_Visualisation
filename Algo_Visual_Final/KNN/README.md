@@ -1,4 +1,4 @@
-# Interactive KNN:
+# Interactive KNN
 
 This project involves generating a dataset and visualizing it using the k-Nearest Neighbors (k-NN) algorithm. The code provided performs the following steps:
 
@@ -13,7 +13,7 @@ The resulting visualization shows the data points as circles on a black backgrou
 
 To run the project, simply execute the index.html file. The visualization will be displayed in the specified dimensions and options.
 
-# Note:
+# Note
 
 - This project utilizes the d3ml library for visualization purposes.
 
