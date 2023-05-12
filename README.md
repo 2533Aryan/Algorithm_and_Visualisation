@@ -17,3 +17,4 @@ Professor: Will Rosenbaum
  - Algorithmic efficiency in performing computationally intensive tasks. 
  - Investigate topics from both theoretical and applied perspectives. 
  - Code projects using standard web development tools: HTML, CSS, and JavaScript.
+ 
