@@ -1,6 +1,7 @@
 # Course: Algorithm and Visualisation
 
 By: Aryan Raval
+
 Taught By: Professor Will Rosenbaum
 
 # In this course
