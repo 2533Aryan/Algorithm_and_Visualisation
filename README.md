@@ -20,4 +20,5 @@ Taught By: Professor Will Rosenbaum
  - Investigate topics from both theoretical and applied perspectives. 
  - Code projects using standard web development tools: HTML, CSS, and JavaScript.
 
+
  
