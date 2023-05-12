@@ -1,7 +1,7 @@
 # Course: Algorithm and Visualisation
 
 By: Aryan Raval
-Professor: Will Rosenbaum
+Taught By: Will Rosenbaum
 
 # In this course
  - Explore algorithmic and aesthetic principles to create interactive graphical content on the web.
