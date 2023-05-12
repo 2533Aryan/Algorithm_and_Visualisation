@@ -1,5 +1,6 @@
 # Course: Algorithm and Visualisation
 
+By: Aryan
 Professor: Will Rosenbaum
 
 # In this course
