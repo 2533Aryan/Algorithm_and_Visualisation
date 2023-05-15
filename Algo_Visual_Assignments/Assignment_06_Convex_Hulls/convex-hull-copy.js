@@ -418,7 +418,7 @@ function ConvexHull (ps, viewer) {
         // Right turn
         if(this.allPoints.length > 2) {
             // Check if the current point is on the right of the line connecting the two previous points.
-            if (this.allPoints[counter].x > this.hullStack[this.hullStack - 1].x || (this.allPoints[counter].x == this.hullStack[this.hullStack.length - 1].x && this.allPoints[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
+            if (this.allPoints[counter].x > this.hullStack[this.hullStack.length - 1].x || (this.allPoints[counter].x == this.hullStack[this.hullStack.length - 1].x && this.allPoints[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
                 this.hullStack.push(this.allPoints[counter]);
             }
         }
