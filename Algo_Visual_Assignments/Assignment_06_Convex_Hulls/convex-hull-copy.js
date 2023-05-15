@@ -359,9 +359,7 @@ function ConvexHull (ps, viewer) {
     // this.cur = null;
 
     // Stack
-    var allPoints = [];
-    allPoints = this.ps.points;
-    allPoints = allPoints.sort();
+    this.ps.sort();
 
     // Counter for all points stack
     var counter = 2;
@@ -392,7 +390,8 @@ function ConvexHull (ps, viewer) {
         // Right turn
         if((allPoints.length > 2) && (allPoints.length < counter)) {
             // Check if the current point is on the right of the line connecting the two previous points.
-            if (allPoints[counter].x > this.hullStack[this.hullStack.length - 1].x || (allPoints[counter].x == this.hullStack[this.hullStack.length - 1].x && allPoints[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
+            if (allPoints[counter].x > this.hullStack[this.hullStack.length - 1].x ){
+                //allPoints[counter].x > this.hullStack[this.hullStack.length - 1].x || (allPoints[counter].x == this.hullStack[this.hullStack.length - 1].x && allPoints[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
                 this.hullStack.push(allPoints[counter]);
             }
         
@@ -400,32 +399,6 @@ function ConvexHull (ps, viewer) {
         }
 
         console.log(this.hullStack);
-
-        // check if execution is finished
-        // if (this.active.length == 0) {
-        //     return;
-        // }
-        
-        // // pop
-        // this.active.pop();
-
-        // if (this.index > 0 && this.index < this.startVertex.points.length) {
-            
-        //     // unmute vertex
-        //     this.viewer.unmuteVertex(this.startVertex.points[this.index]);    
-
-        //     // overlay
-        //     this.viewer.addOverlayVertex(this.startVertex.points[this.index]);
-            
-        //     // edge
-        //     const currentEdge = this.viewer.addEdge(this.startVertex.points[this.index-1], this.startVertex.points[this.index]);
-        //     this.viewer.visEdge(currentEdge);
-            
-        //     this.active.push(this.startVertex.points[this.index]);
-            
-        //     // increment index
-        //     this.index++;
-        // }
     }
 
     // perform animation
