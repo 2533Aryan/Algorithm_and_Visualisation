@@ -364,15 +364,17 @@ function ConvexHull (ps, viewer) {
     this.allPoints.sort;
 
 
-
-
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
         if (this.allPoints.length == 0) {
             console.log("empty");
         } 
+        
+        // Initialize Hull
+        this.hullStack = [this.allPoints[0], this.allPoints[1]];
 
-        this.viewer.addOverlayVertex(this.allPoints[0]);
+        // Overlay
+        this.viewer.addOverlayVertex(this.hullStack[0]);
 
         // console.log(this.allPoints[0]);
         // console.log(this.allPoints);
