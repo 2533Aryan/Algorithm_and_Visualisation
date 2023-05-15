@@ -366,12 +366,13 @@ function ConvexHull (ps, viewer) {
 
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
-        if (allPoints.length == 0) {
+        if (this.ps.size == 0) {
             console.log("empty");
         } 
-        console.log(allPoints);
+        console.log(this.ps.points);
+
         // Initialize Hull
-        this.hullStack = [allPoints[0], allPoints[1]];
+        this.hullStack = [this.ps.points[0], this.ps.points[1]];
 
         // Overlay
         this.viewer.addOverlayVertex(this.hullStack[0]);
@@ -388,17 +389,19 @@ function ConvexHull (ps, viewer) {
         }
 
         // Right turn
-        if((allPoints.length > 2) && (allPoints.length < counter)) {
-            // Check if the current point is on the right of the line connecting the two previous points.
-            if (allPoints[counter].x > this.hullStack[this.hullStack.length - 1].x ){
-                //allPoints[counter].x > this.hullStack[this.hullStack.length - 1].x || (allPoints[counter].x == this.hullStack[this.hullStack.length - 1].x && allPoints[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
-                this.hullStack.push(allPoints[counter]);
-            }
+        // if((this.ps.points.size > 2) && (this.ps.points.size < counter)) {
+        //     console.log(1);
+        // }
+        //     // Check if the current point is on the right of the line connecting the two previous points.
+        //     if (this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x ){
+        //         //this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x || (this.ps.points[counter].x == this.hullStack[this.hullStack.length - 1].x && this.ps.points[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
+        //         this.hullStack.push(this.ps.points[counter]);
+        //     }
         
-            counter++;
-        }
+        //     counter++;
+        // }
 
-        console.log(this.hullStack);
+        // console.log(this.hullStack);
     }
 
     // perform animation
