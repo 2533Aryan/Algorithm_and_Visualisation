@@ -438,6 +438,10 @@ function ConvexHull (ps, viewer) {
         // }
     }
 
+    // Right turn
+    this.rightTurn = function() {
+        points[i][0] > hull[hull.length - 1][0] || (points[i][0] == hull[hull.length - 1][0] && points[i][1] > hull[hull.length - 1][1])
+    }
     
     // perform animation
     this.animate = function () {
