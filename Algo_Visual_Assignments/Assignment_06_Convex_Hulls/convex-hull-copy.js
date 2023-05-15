@@ -359,21 +359,21 @@ function ConvexHull (ps, viewer) {
     // this.cur = null;
 
     // Stack
-    this.allPoints = [];
-    this.allPoints = this.ps.points;
-    this.points = this.allPoints.sort();
+    var allPoints = [];
+    allPoints = this.ps.points;
+    allPoints = allPoints.sort();
 
     // Counter for all points stack
     var counter = 2;
 
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
-        if (this.allPoints.length == 0) {
+        if (allPoints.length == 0) {
             console.log("empty");
         } 
-        
+        console.log(allPoints);
         // Initialize Hull
-        this.hullStack = [this.allPoints[0], this.allPoints[1]];
+        this.hullStack = [allPoints[0], allPoints[1]];
 
         // Overlay
         this.viewer.addOverlayVertex(this.hullStack[0]);
@@ -390,10 +390,10 @@ function ConvexHull (ps, viewer) {
         }
 
         // Right turn
-        if((this.allPoints.length > 2) && (this.allPoints.length < counter)) {
+        if((allPoints.length > 2) && (allPoints.length < counter)) {
             // Check if the current point is on the right of the line connecting the two previous points.
-            if (this.allPoints[counter].y > this.hullStack[this.hullStack.length - 1].y || (this.allPoints[counter].y == this.hullStack[this.hullStack.length - 1].y && this.allPoints[counter].x > this.hullStack[this.hullStack.length - 1].x)) {
-                this.hullStack.push(this.allPoints[counter]);
+            if (allPoints[counter].x > this.hullStack[this.hullStack.length - 1].x || (allPoints[counter].x == this.hullStack[this.hullStack.length - 1].x && allPoints[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
+                this.hullStack.push(allPoints[counter]);
             }
         
             counter++;
