@@ -366,9 +366,9 @@ function ConvexHull (ps, viewer) {
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
         if (this.allPoints.length == 0) {
-            console.log(1)
+            console.log("empty");
         } 
-        
+
         console.log(this.allPoints[0]);
         console.log(this.allPoints);
         // solve convex hull
