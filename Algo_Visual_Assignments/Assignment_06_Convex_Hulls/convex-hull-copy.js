@@ -363,7 +363,9 @@ function ConvexHull (ps, viewer) {
     this.allPoints = ps.points;
     this.allPoints.sort;
 
-
+    // Counter for all points stack
+    this.counter = 2;
+    
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
         if (this.allPoints.length == 0) {
