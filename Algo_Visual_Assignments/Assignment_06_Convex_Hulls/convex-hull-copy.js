@@ -371,7 +371,7 @@ function ConvexHull (ps, viewer) {
         if (this.allPoints.length == 0) {
             console.log("empty");
         } 
-        console.log(this.allPoints);
+        
         // Initialize Hull
         this.hullStack = [this.allPoints[0], this.allPoints[1]];
 
