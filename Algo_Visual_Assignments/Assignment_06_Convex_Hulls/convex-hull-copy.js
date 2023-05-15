@@ -361,7 +361,7 @@ function ConvexHull (ps, viewer) {
     // Stack
     this.allPoints = [];
     this.allPoints = this.ps.points;
-    this.allPoints.sort();
+    this.points = this.allPoints.sort();
 
     // Counter for all points stack
     var counter = 2;
@@ -371,7 +371,7 @@ function ConvexHull (ps, viewer) {
         if (this.allPoints.length == 0) {
             console.log("empty");
         } 
-        
+        console.log(this.allPoints);
         // Initialize Hull
         this.hullStack = [this.allPoints[0], this.allPoints[1]];
 
