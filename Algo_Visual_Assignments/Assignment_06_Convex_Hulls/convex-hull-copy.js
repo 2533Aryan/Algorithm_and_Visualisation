@@ -363,26 +363,26 @@ function ConvexHull (ps, viewer) {
     this.start = function () {
         console.log(ps);
         // solve convex hull
-        ps = this.getConvexHull();
-        this.startVertex = ps;
-        console.log(this.startVertex.points);
+        // ps = this.getConvexHull();
+        // this.startVertex = ps;
+        // console.log(this.startVertex.points);
 
         
-        this.visited = [];
-        this.active = [];
+        // this.visited = [];
+        // this.active = [];
             
-        this.cur = this.startVertex.points[0];
-        this.viewer.addOverlayVertex(this.cur);
+        // this.cur = this.startVertex.points[0];
+        // this.viewer.addOverlayVertex(this.cur);
 
-        this.active.push(this.startVertex);
-        this.visited.push(this.startVertex);
+        // this.active.push(this.startVertex);
+        // this.visited.push(this.startVertex);
     
 
-        // mute and unmute vertex
-        this.viewer.muteAllVertices();
-        this.viewer.unmuteVertex(this.cur);    
+        // // mute and unmute vertex
+        // this.viewer.muteAllVertices();
+        // this.viewer.unmuteVertex(this.cur);    
 
-        this.index++;
+        // this.index++;
     }
 
     // perform a single step of the Graham scan algorithm performed on ps
