@@ -501,7 +501,6 @@ function main() {
 
 
 
-
 // For tester
   try {
     exports.PointSet = PointSet;
