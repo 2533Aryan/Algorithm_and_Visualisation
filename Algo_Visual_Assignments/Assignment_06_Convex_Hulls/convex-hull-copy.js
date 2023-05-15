@@ -405,12 +405,21 @@ function ConvexHull (ps, viewer) {
     this.step = function () {
         if(this.hullStack.length > 1) {
             this.viewer.highlightVertex(this.hullStack[1]);    
+            
+            // edge
+            const currentEdge = this.viewer.addEdge(this.hullStack[0], this.hullStack[1]);
+            this.viewer.visEdge(currentEdge);            
         }
-        // Check if the current point is on the right of the line connecting the two previous points.
-        // if (points[i][0] > hull[hull.length - 1][0] || (points[i][0] == hull[hull.length - 1][0] && points[i][1] > hull[hull.length - 1][1])) {
-        //     // If so, add the point to the hull.
-        //     hull.push(points[i]);
-        // }
+
+        // Right turn
+        if(this.hullStack.length > 2) {
+            // Check if the current point is on the right of the line connecting the two previous points.
+            if (points[i][0] > hull[hull.length - 1][0] || (points[i][0] == hull[hull.length - 1][0] && points[i][1] > hull[hull.length - 1][1])) {
+                // If so, add the point to the hull.
+                hull.push(points[i]);
+            }
+        }
+
         // check if execution is finished
         // if (this.active.length == 0) {
         //     return;
@@ -438,11 +447,6 @@ function ConvexHull (ps, viewer) {
         // }
     }
 
-    // Right turn
-    this.rightTurn = function() {
-        points[i][0] > hull[hull.length - 1][0] || (points[i][0] == hull[hull.length - 1][0] && points[i][1] > hull[hull.length - 1][1])
-    }
-    
     // perform animation
     this.animate = function () {
         if (this.curAnimation == null) {
