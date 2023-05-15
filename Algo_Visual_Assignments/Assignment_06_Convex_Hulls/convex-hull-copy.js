@@ -369,8 +369,10 @@ function ConvexHull (ps, viewer) {
             console.log("empty");
         } 
 
-        console.log(this.allPoints[0]);
-        console.log(this.allPoints);
+        this.viewer.addOverlayVertex(this.allPoints[0]);
+
+        // console.log(this.allPoints[0]);
+        // console.log(this.allPoints);
         // solve convex hull
         // ps = this.getConvexHull();
         // this.startVertex = ps;
