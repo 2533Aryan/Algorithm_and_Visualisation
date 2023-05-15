@@ -360,8 +360,8 @@ function ConvexHull (ps, viewer) {
 
     // Stack
     this.allPoints = [];
-    this.allPoints = ps.points;
-    this.allPoints.sort;
+    this.allPoints = this.ps.points;
+    this.allPoints.sort();
 
     // Counter for all points stack
     var counter = 2;
@@ -378,7 +378,7 @@ function ConvexHull (ps, viewer) {
         // Overlay
         this.viewer.addOverlayVertex(this.hullStack[0]);
 
-        // console.log(this.allPoints[0].x);
+        console.log(this.allPoints  );
 
         // console.log(this.allPoints[0]);
         // console.log(this.allPoints);
@@ -416,12 +416,16 @@ function ConvexHull (ps, viewer) {
         }
 
         // Right turn
-        if(this.allPoints.length > 2) {
+        if((this.allPoints.length > 2) && (this.allPoints.length < counter)) {
             // Check if the current point is on the right of the line connecting the two previous points.
-            if (this.allPoints[counter].x > this.hullStack[this.hullStack.length - 1].x || (this.allPoints[counter].x == this.hullStack[this.hullStack.length - 1].x && this.allPoints[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
+            if (this.allPoints[counter].y > this.hullStack[this.hullStack.length - 1].y || (this.allPoints[counter].y == this.hullStack[this.hullStack.length - 1].y && this.allPoints[counter].x > this.hullStack[this.hullStack.length - 1].x)) {
                 this.hullStack.push(this.allPoints[counter]);
             }
+        
+            counter++;
         }
+
+        console.log(this.hullStack);
 
         // check if execution is finished
         // if (this.active.length == 0) {
