@@ -419,8 +419,7 @@ function ConvexHull (ps, viewer) {
         if(this.allPoints.length > 2) {
             // Check if the current point is on the right of the line connecting the two previous points.
             if (this.allPoints[counter].x > this.hullStack[this.hullStack - 1].x || (this.allPoints[counter].x == this.hullStack[this.hullStack.length - 1].x && this.allPoints[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
-                // If so, add the point to the hull.
-                hull.push(points[i]);
+                this.hullStack.push(this.allPoints[counter]);
             }
         }
 
