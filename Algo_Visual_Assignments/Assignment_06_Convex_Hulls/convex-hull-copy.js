@@ -403,31 +403,36 @@ function ConvexHull (ps, viewer) {
 
     // perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
+            // Check if the current point is on the right of the line connecting the two previous points.
+        if (points[i][0] > hull[hull.length - 1][0] || (points[i][0] == hull[hull.length - 1][0] && points[i][1] > hull[hull.length - 1][1])) {
+        // If so, add the point to the hull.
+        hull.push(points[i]);
+        }
         // check if execution is finished
-        if (this.active.length == 0) {
-            return;
-        }
+        // if (this.active.length == 0) {
+        //     return;
+        // }
         
-        // pop
-        this.active.pop();
+        // // pop
+        // this.active.pop();
 
-        if (this.index > 0 && this.index < this.startVertex.points.length) {
+        // if (this.index > 0 && this.index < this.startVertex.points.length) {
             
-            // unmute vertex
-            this.viewer.unmuteVertex(this.startVertex.points[this.index]);    
+        //     // unmute vertex
+        //     this.viewer.unmuteVertex(this.startVertex.points[this.index]);    
 
-            // overlay
-            this.viewer.addOverlayVertex(this.startVertex.points[this.index]);
+        //     // overlay
+        //     this.viewer.addOverlayVertex(this.startVertex.points[this.index]);
             
-            // edge
-            const currentEdge = this.viewer.addEdge(this.startVertex.points[this.index-1], this.startVertex.points[this.index]);
-            this.viewer.visEdge(currentEdge);
+        //     // edge
+        //     const currentEdge = this.viewer.addEdge(this.startVertex.points[this.index-1], this.startVertex.points[this.index]);
+        //     this.viewer.visEdge(currentEdge);
             
-            this.active.push(this.startVertex.points[this.index]);
+        //     this.active.push(this.startVertex.points[this.index]);
             
-            // increment index
-            this.index++;
-        }
+        //     // increment index
+        //     this.index++;
+        // }
     }
 
     // perform animation
