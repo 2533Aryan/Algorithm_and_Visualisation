@@ -378,6 +378,8 @@ function ConvexHull (ps, viewer) {
         // Overlay
         this.viewer.addOverlayVertex(this.hullStack[0]);
 
+        // console.log(this.allPoints[0].x);
+
         // console.log(this.allPoints[0]);
         // console.log(this.allPoints);
         // solve convex hull
@@ -416,7 +418,7 @@ function ConvexHull (ps, viewer) {
         // Right turn
         if(this.allPoints.length > 2) {
             // Check if the current point is on the right of the line connecting the two previous points.
-            if (points[i][0] > hull[hull.length - 1][0] || (points[i][0] == hull[hull.length - 1][0] && points[i][1] > hull[hull.length - 1][1])) {
+            if (this.allPoints[counter].x > this.hullStack[this.hullStack - 1].x || (this.allPoints[counter].x == this.hullStack[this.hullStack.length - 1].x && this.allPoints[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
                 // If so, add the point to the hull.
                 hull.push(points[i]);
             }
