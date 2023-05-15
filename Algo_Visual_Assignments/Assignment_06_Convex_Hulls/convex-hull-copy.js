@@ -403,11 +403,14 @@ function ConvexHull (ps, viewer) {
 
     // perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
-        // Check if the current point is on the right of the line connecting the two previous points.
-        if (points[i][0] > hull[hull.length - 1][0] || (points[i][0] == hull[hull.length - 1][0] && points[i][1] > hull[hull.length - 1][1])) {
-        // If so, add the point to the hull.
-        hull.push(points[i]);
+        if(this.hullStack.length > 1) {
+            this.viewer.highlightVertex(this.hullStack[1]);    
         }
+        // Check if the current point is on the right of the line connecting the two previous points.
+        // if (points[i][0] > hull[hull.length - 1][0] || (points[i][0] == hull[hull.length - 1][0] && points[i][1] > hull[hull.length - 1][1])) {
+        //     // If so, add the point to the hull.
+        //     hull.push(points[i]);
+        // }
         // check if execution is finished
         // if (this.active.length == 0) {
         //     return;
@@ -435,6 +438,7 @@ function ConvexHull (ps, viewer) {
         // }
     }
 
+    
     // perform animation
     this.animate = function () {
         if (this.curAnimation == null) {
