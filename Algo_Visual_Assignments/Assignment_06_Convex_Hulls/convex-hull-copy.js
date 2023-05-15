@@ -359,11 +359,12 @@ function ConvexHull (ps, viewer) {
     // this.cur = null;
 
     this.allPoints = [];
+    this.allPoints = ps.points;
 
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
         
-        console.log(ps);
+        console.log(this.allPoints);
         // solve convex hull
         // ps = this.getConvexHull();
         // this.startVertex = ps;
