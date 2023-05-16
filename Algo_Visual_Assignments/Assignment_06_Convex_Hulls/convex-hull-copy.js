@@ -404,6 +404,10 @@ function ConvexHull (ps, viewer) {
             this.hullStack.push(q);
 
             //draw
+        } else {
+            this.hullStack.pop();
+
+            //draw
         }
 
         console.log(this.rightTurn(p, q, r));
