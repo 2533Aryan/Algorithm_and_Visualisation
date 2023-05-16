@@ -365,7 +365,7 @@ function ConvexHull (ps, viewer) {
     this.start = function () {
         // Stack
         this.ps.sort();
-        
+
         if (this.ps.size == 0) {
             console.log("empty");
         } 
@@ -375,7 +375,7 @@ function ConvexHull (ps, viewer) {
         // this.hullStack = [this.ps.points[0], this.ps.points[1]];
 
         // Overlay
-        this.viewer.addOverlayVertex(this.ps.points);
+        this.viewer.addOverlayVertex(this.ps.points[0]);
         // console.log(this.hullStack[0]);
     }
 
