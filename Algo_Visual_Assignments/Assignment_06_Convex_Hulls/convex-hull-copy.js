@@ -384,7 +384,7 @@ function ConvexHull (ps, viewer) {
 
         // Hull Stack just has two element
         if (this.hullStack.length == 2) {
-            this.hullStack.push(this.ps.points[1]);
+            this.hullStack.push(this.ps.points[2]);
         }
 
         var length = this.hullStack.length;
@@ -402,6 +402,8 @@ function ConvexHull (ps, viewer) {
         // if (this.rightTurn(p, q, r)){
 
         // }
+        console.log(p);
+        console.log(q);
         console.log(r);
         console.log(this.rightTurn(p, q, r));
 
