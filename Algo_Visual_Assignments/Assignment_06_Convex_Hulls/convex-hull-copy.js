@@ -391,13 +391,16 @@ function ConvexHull (ps, viewer) {
             this.viewer.visEdge(currentEdge);            
         } 
 
+
+        console.log(this.rightTurn(this.ps.points[0], this.ps.points[1], this.ps.points[2]));
+
         // Check if the current point is on the right of the line connecting the two previous points.
-        if (this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x || (this.ps.points[counter].x == this.hullStack[this.hullStack.length - 1].x && this.ps.points[counter].y > this.hullStack[this.hullStack.length - 1].y)){
-            //this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x || (this.ps.points[counter].x == this.hullStack[this.hullStack.length - 1].x && this.ps.points[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
-            this.hullStack.push(this.ps.points[counter]);
-            this.viewer.addOverlayVertex(this.hullStack[this.hullStack.length - 1]);    
-        }
-        counter++;
+        // if (this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x || (this.ps.points[counter].x == this.hullStack[this.hullStack.length - 1].x && this.ps.points[counter].y > this.hullStack[this.hullStack.length - 1].y)){
+        //     //this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x || (this.ps.points[counter].x == this.hullStack[this.hullStack.length - 1].x && this.ps.points[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
+        //     this.hullStack.push(this.ps.points[counter]);
+        //     this.viewer.addOverlayVertex(this.hullStack[this.hullStack.length - 1]);    
+        // }
+        // counter++;
     
         
 
@@ -414,7 +417,7 @@ function ConvexHull (ps, viewer) {
         var orientation = (q.y - p.y)*(r.x - q.x) - (q.x - p.x)*(r.y-q.y);
 
         // Clockwise orientation (right turn)
-        if(orientation > 0) {
+        if(orientation < 0) {
             return true;
         } else{  // Counterclockwise orientation (left turn)
             return false;
