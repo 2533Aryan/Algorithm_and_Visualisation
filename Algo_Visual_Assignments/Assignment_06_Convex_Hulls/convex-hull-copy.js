@@ -394,11 +394,6 @@ function ConvexHull (ps, viewer) {
         var q = this.ps.points[index - 1];
         var r = this.ps.points[index];
 
-        // For current point - r
-        // if (this.ps .size() > 3 && length == 3) {
-        //     r = this.ps.points[length];
-        // }
-
         // Right turn
         if (this.rightTurn(p, q, r)){
             this.hullStack.push(q);
