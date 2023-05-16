@@ -413,10 +413,10 @@ function ConvexHull (ps, viewer) {
     this.rightTurn = function(p, q, r) {
         var orientation = (q.y - p.y)*(r.x - q.x) - (q.x - p.x)*(r.y-q.y);
 
-        
+        // Clockwise orientation (right turn)
         if(orientation > 0) {
             return true;
-        } else{
+        } else{  // Counterclockwise orientation (left turn)
             return false;
         }
     }
