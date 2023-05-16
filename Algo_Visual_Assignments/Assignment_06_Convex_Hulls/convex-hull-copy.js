@@ -386,15 +386,16 @@ function ConvexHull (ps, viewer) {
         if (this.ps.size() == 0) {
             console.log("empty");
         } else {
-            // Initialize Hull
-            this.hullStack = [this.ps.points[0], this.ps.points[1]];
+            if (this.ps.size() > 1) {
+                // Initialize Hull
+                this.hullStack = [this.ps.points[0], this.ps.points[1]];
 
-            // highlight initial vertex
-            this.viewer.highlightVertex(ps.points[0]);
+                // highlight initial vertex
+                this.viewer.highlightVertex(ps.points[0]);
 
-            // overlay
-            this.viewer.addOverlayVertex(ps.points[1]);
-
+                // overlay
+                this.viewer.addOverlayVertex(ps.points[1]);
+            }
         } 
     }
 
