@@ -360,7 +360,10 @@ function ConvexHull (ps, viewer) {
 
     // Counter for all points stack
     var counter = 2;
-
+    
+    // index
+    var index = 2;
+    
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
         // Sort pointset 
@@ -381,41 +384,34 @@ function ConvexHull (ps, viewer) {
 
     // perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
-        // index
-        var index = this.hullStack.length;
-
         // Hull Stack just has two element
         if (index == 2) {
             // highlight vertex
             this.viewer.highlightVertex(this.hullStack[1]);
-            index++;
+        } else{
+            // Set three points
+            var p = this.ps.points[index - 2];
+            var q = this.ps.points[index - 1];
+            var r = this.ps.points[index];
+
+            // Right turn
+            if (this.rightTurn(p, q, r)){
+                this.hullStack.push(q);
+
+                //draw
+                this.viewer.highlightVertex(this.hullStack[this.hullStack.length - 1]);
+            } else {
+                this.hullStack.pop();
+
+                //draw
+                this.viewer.unhighlightVertex(this.hullStack[this.hullStack.length - 1]);
+            }
         }
 
-        // Set three points
-        var p = this.ps.points[index - 2];
-        var q = this.ps.points[index - 1];
-        var r = this.ps.points[index];
+        // increment index
+        index++;
 
-        // Right turn
-        if (this.rightTurn(p, q, r)){
-            this.hullStack.push(q);
-
-            //draw
-            this.viewer.highlightVertex(this.hullStack[this.hullStack.length - 1]);
-
-            // increment index
-            index++;
-        } else {
-            this.hullStack.pop();
-
-            //draw
-            this.viewer.unhighlightVertex(this.hullStack[this.hullStack.length - 1]);
-
-            // increment index
-            index++;
-        }
-
-        console.log(this.rightTurn(p, q, r));
+        // console.log(this.rightTurn(p, q, r));
 
         // Hull stack has more than one vertex - join first edge
         // if(this.hullStack.length == 2 ) {
