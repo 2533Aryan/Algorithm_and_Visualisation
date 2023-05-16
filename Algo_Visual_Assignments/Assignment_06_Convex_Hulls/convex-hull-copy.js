@@ -378,7 +378,7 @@ function ConvexHull (ps, viewer) {
             this.hullStack = [this.ps.points[0], this.ps.points[1]];
 
             // Overlay
-            this.viewer.highlightVertex(this.hullStack[0]);
+            this.viewer.highlightVertex(ps.points[0]);
         } 
     }
 
@@ -387,8 +387,19 @@ function ConvexHull (ps, viewer) {
         // Hull Stack just has two element
         if (index == 2) {
             // highlight vertex
-            this.viewer.highlightVertex(this.hullStack[1]);
+            this.viewer.highlightVertex(ps.points[1]);
         } else{
+
+            // For last element
+            if (index == ps.size()){
+                this.hullStack.push(ps.points[index-1]);
+
+                //draw
+                this.viewer.highlightVertex(ps.points[index-1]);                
+                
+                return;
+            }
+
             // Set three points
             var p = this.ps.points[index - 2];
             var q = this.ps.points[index - 1];
@@ -399,12 +410,12 @@ function ConvexHull (ps, viewer) {
                 this.hullStack.push(q);
 
                 //draw
-                this.viewer.highlightVertex(this.hullStack[this.hullStack.length - 1]);
+                this.viewer.highlightVertex(ps.points[index - 1]);
             } else {
-                this.hullStack.pop();
-
                 //draw
-                this.viewer.unhighlightVertex(this.hullStack[this.hullStack.length - 1]);
+                this.viewer.unhighlightVertex(ps.points[index - 1]);
+
+                this.hullStack.pop();
             }
         }
 
