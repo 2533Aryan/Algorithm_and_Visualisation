@@ -411,12 +411,14 @@ function ConvexHull (ps, viewer) {
 
     // Orientation
     this.rightTurn = function(p, q, r) {
-        var orientation = (q.y - p.y);
-        // (q[1] - p[1]) * (r[0] - q[0]) - (q[0] - p[0]) * (r[1] - q[1])
-        if(p1) {
+        var orientation = (q.y - p.y)*(r.x - q.x) - (q.x - p.x)*(r.y-q.y);
 
+        
+        if(orientation > 0) {
+            return true;
+        } else{
+            return false;
         }
-        return -1;
     }
 
     // perform animation
