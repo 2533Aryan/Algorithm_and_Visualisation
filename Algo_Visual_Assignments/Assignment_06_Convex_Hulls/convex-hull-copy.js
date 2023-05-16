@@ -383,28 +383,29 @@ function ConvexHull (ps, viewer) {
     this.step = function () {
 
         // Hull Stack just has two element
-        if (this.hullStack.length == 2) {
-            this.hullStack.push(this.ps.points[2]);
-        }
+        // if (this.hullStack.length == 2) {
+        //     this.hullStack.push(this.ps.points[2]);
+        // }
 
-        var length = this.hullStack.length;
+        var index = this.hullStack.length + 1;
 
         // Set three points
-        var p = this.hullStack[length - 2];
-        var q = this.hullStack[length - 1];
-        var r = this.ps.points[length];
+        var p = this.ps.points[index - 2];
+        var q = this.ps.points[index - 1];
+        var r = this.ps.points[index];
 
         // For current point - r
         // if (this.ps .size() > 3 && length == 3) {
         //     r = this.ps.points[length];
         // }
 
-        // if (this.rightTurn(p, q, r)){
+        // Right turn
+        if (this.rightTurn(p, q, r)){
+            this.hullStack.push(q);
 
-        // }
-        console.log(p);
-        console.log(q);
-        console.log(r);
+            //draw
+        }
+
         console.log(this.rightTurn(p, q, r));
 
         // Hull stack has more than one vertex - join first edge
