@@ -407,7 +407,7 @@ function ConvexHull (ps, viewer) {
 
             // move overlay
             if(this.ps.size() > 2){
-                this.viewer.moveOverlayVertex(ps.points[2]);                       
+                this.viewer.moveOverlayVertex(ps.points[1], ps.points[2]);                       
             }
         } else{
             // For last element
