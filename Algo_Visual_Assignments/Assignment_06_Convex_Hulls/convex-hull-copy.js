@@ -422,18 +422,6 @@ function ConvexHull (ps, viewer) {
         // increment index
         index++;
 
-        // console.log(this.rightTurn(p, q, r));
-
-        // Hull stack has more than one vertex - join first edge
-        // if(this.hullStack.length == 2 ) {
-        //     // this.viewer.highlightVertex(this.hullStack[1]);    
-        //     this.viewer.addOverlayVertex(this.hullStack[1]);    
-            
-        //     // edge
-        //     const currentEdge = this.viewer.addEdge(this.hullStack[0], this.hullStack[1]);
-        //     this.viewer.visEdge(currentEdge);            
-        // } 
-
         console.log(this.hullStack);
     }
 
