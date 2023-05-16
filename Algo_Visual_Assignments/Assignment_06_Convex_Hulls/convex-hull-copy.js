@@ -371,11 +371,11 @@ function ConvexHull (ps, viewer) {
         if (this.ps.size() == 0) {
             console.log("empty");
         } else {
-        // Initialize Hull
-        this.hullStack = [this.ps.points[0], this.ps.points[1]];
+            // Initialize Hull
+            this.hullStack = [this.ps.points[0], this.ps.points[1]];
 
-        // Overlay
-        this.viewer.addOverlayVertex(this.hullStack[0]);
+            // Overlay
+            this.viewer.addOverlayVertex(this.hullStack[0]);
         } 
     }
 
