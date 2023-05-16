@@ -365,7 +365,7 @@ function ConvexHull (ps, viewer) {
     this.start = function () {
         // Sort pointset 
         this.ps.sort();
-        console.log(this.ps.points);
+        // console.log(this.ps.points);
         
         // Empty
         if (this.ps.size() == 0) {
@@ -392,9 +392,10 @@ function ConvexHull (ps, viewer) {
         }
 
         // Right turn
-        if((this.ps.points.size > 2) && (this.ps.points.size < counter)) {
-            console.log(1);
-        }
+        // if((this.ps.size() > 2) && (this.ps.size() < counter+2)) {
+        //     console.log(1);
+        // }
+
         // Check if the current point is on the right of the line connecting the two previous points.
         if (this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x ){
             //this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x || (this.ps.points[counter].x == this.hullStack[this.hullStack.length - 1].x && this.ps.points[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
@@ -403,7 +404,7 @@ function ConvexHull (ps, viewer) {
     
         counter++;
 
-        // console.log(this.hullStack);
+        console.log(this.hullStack);
     }
 
     // perform animation
