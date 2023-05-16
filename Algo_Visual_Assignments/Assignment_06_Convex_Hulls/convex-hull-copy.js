@@ -382,22 +382,24 @@ function ConvexHull (ps, viewer) {
     // perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
         // Hull stack has more than one vertex - join first edge
-        if(this.hullStack.length > 1 && this.hullStack.length < 3) {
+        if(this.hullStack.length == 2 ) {
             // this.viewer.highlightVertex(this.hullStack[1]);    
             this.viewer.addOverlayVertex(this.hullStack[1]);    
             
             // edge
             const currentEdge = this.viewer.addEdge(this.hullStack[0], this.hullStack[1]);
             this.viewer.visEdge(currentEdge);            
-        } else {
-            // Check if the current point is on the right of the line connecting the two previous points.
-            if (this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x ){
-                //this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x || (this.ps.points[counter].x == this.hullStack[this.hullStack.length - 1].x && this.ps.points[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
-                this.hullStack.push(this.ps.points[counter]);
-                this.viewer.addOverlayVertex(this.hullStack[this.hullStack.length - 1]);    
-            }
-            counter++;
+        } 
+
+        // Check if the current point is on the right of the line connecting the two previous points.
+        if (this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x || (this.ps.points[counter].x == this.hullStack[this.hullStack.length - 1].x && this.ps.points[counter].y > this.hullStack[this.hullStack.length - 1].y)){
+            //this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x || (this.ps.points[counter].x == this.hullStack[this.hullStack.length - 1].x && this.ps.points[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
+            this.hullStack.push(this.ps.points[counter]);
+            this.viewer.addOverlayVertex(this.hullStack[this.hullStack.length - 1]);    
         }
+        counter++;
+    
+        
 
         // Right turn
         // if((this.ps.size() > 2) && (this.ps.size() < counter+2)) {
@@ -405,6 +407,10 @@ function ConvexHull (ps, viewer) {
         // }
 
         console.log(this.hullStack);
+    }
+
+    this.rightTurn = function(p1, p2, p3) {
+        return -1;
     }
 
     // perform animation
