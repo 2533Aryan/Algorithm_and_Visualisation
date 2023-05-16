@@ -422,22 +422,6 @@ function ConvexHull (ps, viewer) {
         //     this.viewer.visEdge(currentEdge);            
         // } 
 
-
-        // Check if the current point is on the right of the line connecting the two previous points.
-        // if (this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x || (this.ps.points[counter].x == this.hullStack[this.hullStack.length - 1].x && this.ps.points[counter].y > this.hullStack[this.hullStack.length - 1].y)){
-        //     //this.ps.points[counter].x > this.hullStack[this.hullStack.length - 1].x || (this.ps.points[counter].x == this.hullStack[this.hullStack.length - 1].x && this.ps.points[counter].y > this.hullStack[this.hullStack.length - 1].y)) {
-        //     this.hullStack.push(this.ps.points[counter]);
-        //     this.viewer.addOverlayVertex(this.hullStack[this.hullStack.length - 1]);    
-        // }
-        // counter++;
-    
-        
-
-        // Right turn
-        // if((this.ps.size() > 2) && (this.ps.size() < counter+2)) {
-        //     console.log(1);
-        // }
-
         console.log(this.hullStack);
     }
 
