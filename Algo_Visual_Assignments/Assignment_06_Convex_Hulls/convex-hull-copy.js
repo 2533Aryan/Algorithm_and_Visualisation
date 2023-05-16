@@ -381,16 +381,21 @@ function ConvexHull (ps, viewer) {
 
     // perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
-        console.log(this.rightTurn(this.ps.points[0], this.ps.points[1], this.ps.points[2]));
+
+        var length = this.hullStack.length;
 
         // Set three points
-        var p = this.hullStack[this.hullStack.length - 2];
-        var q = this.hullStack[this.hullStack.length - 1];
+        var p = this.hullStack[length - 2];
+        var q = this.hullStack[length - 1];
+        var r;
 
         // For current point - r
-        if (this.ps .size() > 2 && this.hullStack.length == 2 ){
-            
+        if (this.ps .size() > 2 && length == 2 ){
+            r = this.ps.points[length];
         }
+
+        console.log(this.rightTurn(p, q, r));
+        
         // Hull stack has more than one vertex - join first edge
         // if(this.hullStack.length == 2 ) {
         //     // this.viewer.highlightVertex(this.hullStack[1]);    
