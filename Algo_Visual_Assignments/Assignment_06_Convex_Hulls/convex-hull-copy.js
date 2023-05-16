@@ -409,7 +409,13 @@ function ConvexHull (ps, viewer) {
         console.log(this.hullStack);
     }
 
-    this.rightTurn = function(p1, p2, p3) {
+    // Orientation
+    this.rightTurn = function(p, q, r) {
+        var orientation = (q.y - p.y);
+        // (q[1] - p[1]) * (r[0] - q[0]) - (q[0] - p[0]) * (r[1] - q[1])
+        if(p1) {
+
+        }
         return -1;
     }
 
