@@ -256,7 +256,19 @@ function ConvexHullViewer (svg, ps, graph) {
         this.overlayGroup.appendChild(elt);
         this.overlayVertices[vtx.id] = elt;
     }
+
+    this.moveOverlayVertex = function (vtx1, vtx2) {
+        const elt = this.overlayVertices[vtx1.id];
+        this.overlayVertices[vtx1.id] = null;
+        this.overlayVertices[vtx2.id] = elt;
+        elt.setAttributeNS(null, "cx", vtx2.x);
+        elt.setAttributeNS(null, "cy", vtx2.y);
+    }
     
+    this.removeOverlayVertex = function (vtx) {
+        const elt = this.overlayVertices[vtx.id];
+        this.overlayGroup.removeChild(elt);	
+    }    
     
     /*********************************************************
      * Methods to (un)highlight and (un) mute vertices/edges *
@@ -377,8 +389,12 @@ function ConvexHull (ps, viewer) {
             // Initialize Hull
             this.hullStack = [this.ps.points[0], this.ps.points[1]];
 
-            // Overlay
+            // highlight initial vertex
             this.viewer.highlightVertex(ps.points[0]);
+
+            // overlay
+            this.viewer.addOverlayVertex(ps.points[1]);
+
         } 
     }
 
@@ -389,7 +405,6 @@ function ConvexHull (ps, viewer) {
             // highlight vertex
             this.viewer.highlightVertex(ps.points[1]);
         } else{
-
             // For last element
             if (index == ps.size()){
                 this.hullStack.push(ps.points[index-1]);
