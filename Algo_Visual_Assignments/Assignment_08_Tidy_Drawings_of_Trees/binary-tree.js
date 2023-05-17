@@ -334,14 +334,14 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 	this.setLayoutTidy = function () {
 
 		// initialize the x and y coordinates of all vertices to 0
-		this.xCoords = new Map();
-		this.yCoords = new Map();
+		// this.xCoords = new Map();
+		// this.yCoords = new Map();
 	
 		// get the root vertex
 		let root = this.tree.root;
 	
 		// recursively traverse the tree and set the x and y coordinates of each vertex
-		this.setLayoutTidyRecursive(root, 0, 0);
+		this.setLayoutTidyRecursive(root, 200, 200);
 	
 		// update the positions of all vertices in the SVG elements
 		this.update();
