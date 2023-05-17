@@ -335,7 +335,7 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 
 		// get the root vertex
 		let root = this.tree.root;
-
+		
 		// recursively traverse the tree and set the x and y coordinates of each vertex
 		this.setLayoutTidyRecursive(root, 250, 200);
 	
