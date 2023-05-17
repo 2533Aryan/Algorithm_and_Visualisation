@@ -372,7 +372,7 @@ function ConvexHull (ps, viewer) {
 
     var originalPS;
     var reversePS;
-    
+
     // Counter for overlay
     var overlayCounter = 0;
     
@@ -386,8 +386,9 @@ function ConvexHull (ps, viewer) {
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
         // Sort pointset 
-        this.ps.sort();
-        // console.log(this.ps.points);
+        originalPS = this.ps.sort();
+        reversePS = this.ps.sort().reverse();
+
         
         // Empty
         if (this.ps.size() == 0) {
