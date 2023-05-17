@@ -341,7 +341,6 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 	
 		// update the positions of all vertices in the SVG elements
 		this.update();
-	
 	}
 	
 	// recursively traverse the tree and set the x and y coordinates of each vertex
