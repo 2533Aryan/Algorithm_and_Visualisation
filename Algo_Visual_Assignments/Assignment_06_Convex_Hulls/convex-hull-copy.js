@@ -370,6 +370,9 @@ function ConvexHull (ps, viewer) {
     // this.active = [];
     // this.cur = null;
 
+    var originalPS;
+    var reversePS;
+    
     // Counter for overlay
     var overlayCounter = 0;
     
@@ -391,7 +394,7 @@ function ConvexHull (ps, viewer) {
             console.log("empty");
         } else if (this.ps.size() > 1) {
             // Initialize Hull
-            this.hullStack = [this.ps.points[0], this.ps.points[1]];
+            this.upperHullStack = [this.ps.points[0], this.ps.points[1]];
 
             // highlight initial vertex
             this.viewer.highlightVertex(ps.points[0]);
