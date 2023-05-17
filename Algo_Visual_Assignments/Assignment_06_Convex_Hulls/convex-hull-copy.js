@@ -370,8 +370,8 @@ function ConvexHull (ps, viewer) {
     // this.active = [];
     // this.cur = null;
 
-    // Counter for all points stack
-    var counter = 2;
+    // Counter for overlay
+    var overlayCounter = 0;
     
     // index
     var index = 2;
@@ -436,13 +436,20 @@ function ConvexHull (ps, viewer) {
                 this.viewer.highlightVertex(ps.points[index - 1]);
 
                 // overlay
-                this.viewer.moveOverlayVertex(q, r);
+                if (overlayCounter == 1){
+                    this.viewer.removeOverlayVertex(q);
+                    overlayCounter--;
+                } else {
+                    this.viewer.moveOverlayVertex(q, r);
+                }
+
             } else {
                 //draw
                 this.viewer.unhighlightVertex(ps.points[index - 1]);
 
                 //remove overlay
                 this.viewer.moveOverlayVertex(q, p);
+                overlayCounter++;
 
                 this.hullStack.pop();
             }
