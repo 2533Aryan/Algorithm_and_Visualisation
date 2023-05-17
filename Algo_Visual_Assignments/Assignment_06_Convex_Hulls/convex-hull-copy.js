@@ -442,7 +442,7 @@ function ConvexHull (ps, viewer) {
                 this.viewer.unhighlightVertex(ps.points[index - 1]);
 
                 //remove overlay
-                this.viewer.moveOverlayVertex(r, q);
+                this.viewer.moveOverlayVertex(q, p);
 
                 this.hullStack.pop();
             }
