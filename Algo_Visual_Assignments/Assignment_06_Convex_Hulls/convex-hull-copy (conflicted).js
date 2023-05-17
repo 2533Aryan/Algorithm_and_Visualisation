@@ -569,4 +569,4 @@ function main() {
     exports.ConvexHull = ConvexHull;
   } catch (e) {
     console.log("not running in Node");
-}
+  }
