@@ -332,14 +332,41 @@ const BinaryTreeViewer = function (svg, rootGroup) {
     // set the layout according to Wetherell and Shannon's Tidy Tree
     // procedure
     this.setLayoutTidy = function () {
+		const vertices = this.tree.verticesInOrder();
+		const depths = this.tree.depths;
+		const columnWidths = [];
 	
-
-	////////////////////////////////////////
-	// COMPLETE THIS METHOD
-	////////////////////////////////////////
-
+		// Compute the column widths based on the number of vertices at each depth
+		for (let vtx of vertices) {
+			let depth = depths.get(vtx.id);
+			if (!columnWidths[depth]) {
+				columnWidths[depth] = 0;
+			}
+			columnWidths[depth]++;
+		}
 	
-
+		// Compute the x-coordinate of each vertex based on column widths
+		const xCoords = new Map();
+		for (let vtx of vertices) {
+			let depth = depths.get(vtx.id);
+			let column = 0;
+			for (let i = 0; i < depth; i++) {
+				column += columnWidths[i] || 0;
+			}
+			column += Math.floor((columnWidths[depth] - 1) / 2);
+			xCoords.set(vtx.id, PADDING + column * COL_SEP);
+		}
+	
+		// Compute the y-coordinate of each vertex based on depth
+		const yCoords = new Map();
+		for (let vtx of vertices) {
+			let depth = depths.get(vtx.id);
+			yCoords.set(vtx.id, this.height - PADDING - depth * ROW_SEP);
+		}
+	
+		this.xCoords = xCoords;
+		this.yCoords = yCoords;
+	
     }
 }
 
