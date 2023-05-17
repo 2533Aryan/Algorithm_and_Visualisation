@@ -376,6 +376,10 @@ function ConvexHull (ps, viewer) {
     // index
     var index = 2;
     
+    // Counter for reverse mode
+    var reverse = true;
+
+    
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
         // Sort pointset 
@@ -398,8 +402,15 @@ function ConvexHull (ps, viewer) {
     }
 
 
-    // perform a single step of the Graham scan algorithm performed on ps
+    // Perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
+        this.actualStep();
+
+    }
+
+    // Actual step function
+    this.actualStep = function () {
+        
         // Hull Stack just has two element
         if (index == 2) {
             // highlight vertex
@@ -460,8 +471,9 @@ function ConvexHull (ps, viewer) {
         // increment index
         index++;
 
-        console.log(this.hullStack);
+        console.log(this.hullStack);        
     }
+
 
     // Orientation
     this.rightTurn = function(p, q, r) {
