@@ -393,7 +393,7 @@ function ConvexHull (ps, viewer) {
             this.viewer.highlightVertex(ps.points[0]);
 
             // overlay
-            this.viewer.addOverlayVertex(ps.points[1]);       
+            // this.viewer.addOverlayVertex(ps.points[1]);       
         }    
     }
 
@@ -406,9 +406,9 @@ function ConvexHull (ps, viewer) {
             this.viewer.highlightVertex(ps.points[1]);
 
             // move overlay
-            if(this.ps.size() > 2){
-                this.viewer.moveOverlayVertex(ps.points[1], ps.points[2]);                       
-            }
+            // if(this.ps.size() > 2){
+            //     this.viewer.moveOverlayVertex(ps.points[1], ps.points[2]);                       
+            // }
         } else{
             // For last element
             if (index == ps.size()){
@@ -418,7 +418,7 @@ function ConvexHull (ps, viewer) {
                 this.viewer.highlightVertex(ps.points[index-1]);                
 
                 //remove overlay
-                this.viewer.removeOverlayVertex(ps.points[index-1]);
+                // this.viewer.removeOverlayVertex(ps.points[index-1]);
 
                 return;
             }
@@ -436,20 +436,22 @@ function ConvexHull (ps, viewer) {
                 this.viewer.highlightVertex(ps.points[index - 1]);
 
                 // overlay
-                if (overlayCounter == 1){
-                    this.viewer.removeOverlayVertex(p);
-                    overlayCounter--;
-                } else {
-                    this.viewer.moveOverlayVertex(q, r);
-                }
+                // if (overlayCounter == 1){
+                //     this.viewer.removeOverlayVertex(this.ps.points[index - 3]);
+                //     overlayCounter--;
+
+                //     this.viewer.addOverlayVertex(q);
+                // } else {
+                //     this.viewer.moveOverlayVertex(q, r);
+                // }
 
             } else {
                 //draw
                 this.viewer.unhighlightVertex(ps.points[index - 1]);
 
                 //remove overlay
-                this.viewer.moveOverlayVertex(q, p);
-                overlayCounter++;
+                // this.viewer.moveOverlayVertex(q, p);
+                // overlayCounter++;
 
                 this.hullStack.pop();
             }
