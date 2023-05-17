@@ -420,7 +420,7 @@ function ConvexHull (ps, viewer) {
     // Actual step function
     this.upperStep = function () {
 
-        // hull stack elemenet add
+        // hull stack empty - add new points
         if (hullStack.length == 0){
             hullStack.push(this.ps.points[0]);
             hullStack.push(this.ps.points[1]);
@@ -435,7 +435,7 @@ function ConvexHull (ps, viewer) {
         } else{
             // For last element
             if (index == ps.size()){
-                this.hullStack.push(ps.points[index-1]);
+                hullStack.push(ps.points[index-1]);
 
                 //draw
                 this.viewer.highlightVertex(ps.points[index-1]);                
@@ -453,7 +453,7 @@ function ConvexHull (ps, viewer) {
 
             // Right turn
             if (this.rightTurn(p, q, r)){
-                this.hullStack.push(q);
+                hullStack.push(q);
 
                 //draw
                 this.viewer.highlightVertex(ps.points[index - 1]);
@@ -476,14 +476,14 @@ function ConvexHull (ps, viewer) {
                 // this.viewer.moveOverlayVertex(q, p);
                 // overlayCounter++;
 
-                this.hullStack.pop();
+                hullStack.pop();
             }
         }
 
         // increment index
         index++;
 
-        console.log(this.hullStack);        
+        console.log(hullStack);        
     }
 
 
