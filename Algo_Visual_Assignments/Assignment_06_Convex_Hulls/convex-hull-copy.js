@@ -387,20 +387,26 @@ function ConvexHull (ps, viewer) {
         // Sort pointset 
         this.ps.sort();
         // console.log(this.ps.points);
+
+        // highlight initial vertex
+        this.viewer.highlightVertex(ps.points[0]);
         
-        // Empty
-        if (this.ps.size() == 0) {
-            console.log("empty");
-        } else if (this.ps.size() > 1) {
-            // Initialize Hull
-            this.hullStack = [this.ps.points[0], this.ps.points[1]];
+        // Initialize Hull
+        this.hullStack;
+        
+        // // Empty
+        // if (this.ps.size() == 0) {
+        //     console.log("empty");
+        // } else if (this.ps.size() > 1) {
+        //     // Initialize Hull
+        //     this.hullStack = [this.ps.points[0], this.ps.points[1]];
 
-            // highlight initial vertex
-            this.viewer.highlightVertex(ps.points[0]);
+        //     // highlight initial vertex
+        //     this.viewer.highlightVertex(ps.points[0]);
 
-            // overlay
-            // this.viewer.addOverlayVertex(ps.points[1]);       
-        }    
+        //     // overlay
+        //     // this.viewer.addOverlayVertex(ps.points[1]);       
+        // }    
     }
 
 
@@ -412,6 +418,11 @@ function ConvexHull (ps, viewer) {
 
     // Actual step function
     this.upperStep = function () {
+        if (this.hullStack.length == 0){
+            this.hullStack.push(this.ps.points[0]);
+            this.hullStack.push(this.ps.points[1]);
+        }
+
         // Hull Stack just has two element
         if (index == 2) {
             // highlight vertex
