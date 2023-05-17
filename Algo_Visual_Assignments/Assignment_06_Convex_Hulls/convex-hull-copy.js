@@ -379,7 +379,7 @@ function ConvexHull (ps, viewer) {
     // Counter for reverse mode
     var reverse = true;
 
-    
+
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
         // Sort pointset 
@@ -404,7 +404,67 @@ function ConvexHull (ps, viewer) {
 
     // Perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
-        this.actualStep();
+        // Hull Stack just has two element
+        if (index == 2) {
+            // highlight vertex
+            this.viewer.highlightVertex(ps.points[1]);
+
+            // move overlay
+            // if(this.ps.size() > 2){
+            //     this.viewer.moveOverlayVertex(ps.points[1], ps.points[2]);                       
+            // }
+        } else{
+            // For last element
+            if (index == ps.size()){
+                this.hullStack.push(ps.points[index-1]);
+
+                //draw
+                this.viewer.highlightVertex(ps.points[index-1]);                
+
+                //remove overlay
+                // this.viewer.removeOverlayVertex(ps.points[index-1]);
+
+                return;
+            }
+
+            // Set three points
+            var p = this.ps.points[index - 2];
+            var q = this.ps.points[index - 1];
+            var r = this.ps.points[index];
+
+            // Right turn
+            if (this.rightTurn(p, q, r)){
+                this.hullStack.push(q);
+
+                //draw
+                this.viewer.highlightVertex(ps.points[index - 1]);
+
+                // overlay
+                // if (overlayCounter == 1){
+                //     this.viewer.removeOverlayVertex(this.ps.points[index - 3]);
+                //     overlayCounter--;
+
+                //     this.viewer.addOverlayVertex(q);
+                // } else {
+                //     this.viewer.moveOverlayVertex(q, r);
+                // }
+
+            } else {
+                //draw
+                this.viewer.unhighlightVertex(ps.points[index - 1]);
+
+                //remove overlay
+                // this.viewer.moveOverlayVertex(q, p);
+                // overlayCounter++;
+
+                this.hullStack.pop();
+            }
+        }
+
+        // increment index
+        index++;
+
+        console.log(this.hullStack);        
 
     }
 
