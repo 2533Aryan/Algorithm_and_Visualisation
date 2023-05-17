@@ -333,10 +333,6 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 	// procedure
 	this.setLayoutTidy = function () {
 
-		// initialize the x and y coordinates of all vertices to 0
-		// this.xCoords = new Map();
-		// this.yCoords = new Map();
-	
 		// get the root vertex
 		let root = this.tree.root;
 	
