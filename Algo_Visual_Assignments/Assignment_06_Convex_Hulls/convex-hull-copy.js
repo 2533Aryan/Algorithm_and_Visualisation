@@ -437,7 +437,7 @@ function ConvexHull (ps, viewer) {
 
                 // overlay
                 if (overlayCounter == 1){
-                    this.viewer.removeOverlayVertex(q);
+                    this.viewer.removeOverlayVertex(p);
                     overlayCounter--;
                 } else {
                     this.viewer.moveOverlayVertex(q, r);
