@@ -373,8 +373,11 @@ function ConvexHull (ps, viewer) {
     // Counter for overlay
     var overlayCounter = 0;
     
-    // index
+    // index for upper hull
     var index = 2;
+
+    // counter for lower hull
+    var counter = 2;
     
     // Counter for reverse mode
     var reverse = false;
@@ -486,7 +489,7 @@ function ConvexHull (ps, viewer) {
 
     this.lowerStep = function () {
         // Hull Stack just has two element
-        if (index == 2) {
+        if (counter == 2) {
             // highlight vertex
             this.viewer.highlightVertex(ps.points[1]);
 
@@ -496,34 +499,34 @@ function ConvexHull (ps, viewer) {
             // }
         } else{
             // For last element
-            if (index == ps.size()){
-                this.hullStack.push(ps.points[index-1]);
+            if (counter == ps.size()){
+                this.hullStack.push(ps.points[counter-1]);
 
                 //draw
-                this.viewer.highlightVertex(ps.points[index-1]);                
+                this.viewer.highlightVertex(ps.points[counter-1]);                
 
                 //remove overlay
-                // this.viewer.removeOverlayVertex(ps.points[index-1]);
+                // this.viewer.removeOverlayVertex(ps.points[counter-1]);
 
                 reverse = true;
                 return;
             }
 
             // Set three points
-            var p = this.ps.points[index - 2];
-            var q = this.ps.points[index - 1];
-            var r = this.ps.points[index];
+            var p = this.ps.points[counter - 2];
+            var q = this.ps.points[counter - 1];
+            var r = this.ps.points[counter];
 
-            // Right turn
-            if (this.rightTurn(p, q, r)){
+            // Left turn
+            if (!this.rightTurn(p, q, r)){
                 this.hullStack.push(q);
 
                 //draw
-                this.viewer.highlightVertex(ps.points[index - 1]);
+                this.viewer.highlightVertex(ps.points[counter - 1]);
 
                 // overlay
                 // if (overlayCounter == 1){
-                //     this.viewer.removeOverlayVertex(this.ps.points[index - 3]);
+                //     this.viewer.removeOverlayVertex(this.ps.points[counter - 3]);
                 //     overlayCounter--;
 
                 //     this.viewer.addOverlayVertex(q);
@@ -533,7 +536,7 @@ function ConvexHull (ps, viewer) {
 
             } else {
                 //draw
-                this.viewer.unhighlightVertex(ps.points[index - 1]);
+                this.viewer.unhighlightVertex(ps.points[counter - 1]);
 
                 //remove overlay
                 // this.viewer.moveOverlayVertex(q, p);
@@ -543,8 +546,8 @@ function ConvexHull (ps, viewer) {
             }
         }
 
-        // increment index
-        index++;
+        // increment counter
+        counter++;
 
         console.log(this.hullStack);            
     }
