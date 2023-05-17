@@ -407,18 +407,7 @@ function ConvexHull (ps, viewer) {
     // Perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
         this.upperStep();
-        this.lowerStep();
-
-        // if (reverse){
-        //     // reset index
-        //     index = 3;
-        //     console.log(1);
-        //     // reverse
-        //     // this.ps = this.ps.reverse();
-        //     this.actualStep();
-        // }else{
-        //     this.actualStep();
-        // }
+        // this.lowerStep();
     }
 
     // Actual step function
