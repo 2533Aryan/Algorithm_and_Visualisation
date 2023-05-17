@@ -337,7 +337,7 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 		let root = this.tree.root;
 		
 		// recursively traverse the tree and set the x and y coordinates of each vertex
-		this.setLayoutTidyRecursive(root, 250, 200);
+		this.setLayoutTidyRecursive(root, 250, 350);
 	
 		// update the positions of all vertices in the SVG elements
 		this.update();
@@ -354,13 +354,13 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 		// if the current vertex has a left child
 		if (vtx.left != null) {
 			// recursively traverse the left subtree
-			this.setLayoutTidyRecursive(vtx.left, x - ROW_SEP, y + COL_SEP);
+			this.setLayoutTidyRecursive(vtx.left, x - ROW_SEP, y - COL_SEP);
 		}
 	
 		// if the current vertex has a right child
 		if (vtx.right != null) {
 			// recursively traverse the right subtree
-			this.setLayoutTidyRecursive(vtx.right, x + ROW_SEP, y + COL_SEP);
+			this.setLayoutTidyRecursive(vtx.right, x + ROW_SEP, y - COL_SEP);
 		}
 	}
 		
