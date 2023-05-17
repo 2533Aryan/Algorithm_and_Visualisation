@@ -426,7 +426,7 @@ function ConvexHull (ps, viewer) {
             hullStack.push(this.ps.points[1]);
 
             // highlight vertex
-            this.viewer.highlightVertex(this.ps.points[1]);
+            this.viewer.highlightVertex(hullStack[1]);
 
             // move overlay
             // if(this.ps.size() > 2){
