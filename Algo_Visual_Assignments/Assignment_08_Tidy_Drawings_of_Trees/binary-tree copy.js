@@ -283,109 +283,12 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 	this.update();
     }
 
-    // set the layout with random positions for the vertices
-    this.setLayoutRandom = function () {
-	const vertices = this.tree.verticesInOrder();
-	for (let vtx of vertices) {
-	    this.xCoords.set(vtx.id, Math.floor(Math.random() * (this.width - 2 * PADDING)) + this.xMin + PADDING);
-	    this.yCoords.set(vtx.id, Math.floor(Math.random() * (this.height - 2 * PADDING)) + this.yMin + PADDING);
-	}
-    }
-
-    // set the layout using a greedy positioning procedure
-    this.setLayoutGreedy = function () {
-	const vertices = this.tree.verticesPreOrder();
-	const depths = this.tree.depths;
-
-	// compute the maximum depth of a vertex
-	let maxDepth = this.tree.depth;
-
-	// keep trak of the current column at each depth
-	const cols = [];
-	for (let i = 0; i <= maxDepth; i++) {
-	    cols.push(0);
-	}
-
-	// iterate over vertices 
-	for (let vtx of vertices) {
-	    let row = depths.get(vtx.id)
-	    let col = cols[row];
-	    cols[row]++;
-
-	    this.xCoords.set(vtx.id, PADDING + col * COL_SEP);
-	    this.yCoords.set(vtx.id, this.height - PADDING - row * ROW_SEP);
-	}
-    }
-
-    // set the layout according to Knuth's procedure
-    this.setLayoutKnuth = function () {
-	const vertices = this.tree.verticesInOrder();
-	const depths = this.tree.depths;
-	for (let i = 0; i < vertices.length; i++) {
-	    let vtx = vertices[i];
-	    this.xCoords.set(vtx.id, PADDING + i * COL_SEP);
-	    let depth = depths.get(vtx.id);
-	    this.yCoords.set(vtx.id, this.height - PADDING - depth * ROW_SEP);
-	}
-    }
-
-	// set the layout according to Wetherell and Shannon's Tidy Tree
-	// procedure
-	this.setLayoutTidy = function () {
-
-		// initialize the x and y coordinates of all vertices to 0
-		this.xCoords = new Map();
-		this.yCoords = new Map();
-	
-		// get the root vertex
-		let root = this.tree.root;
-	
-		// recursively traverse the tree and set the x and y coordinates of each vertex
-		this.setLayoutTidyRecursive(root, 0, 0);
-	
-		// update the positions of all vertices in the SVG elements
-		this.update();
-	
-	}
-	
-	// recursively traverse the tree and set the x and y coordinates of each vertex
-	this.setLayoutTidyRecursive = function (vtx, x, y) {
-	
-		// set the x and y coordinates of the current vertex
-		this.xCoords.set(vtx.id, x);
-		this.yCoords.set(vtx.id, y);
-	
-		// if the current vertex has a left child
-		if (vtx.left != null) {
-	
-		// recursively traverse the left subtree
-		this.setLayoutTidyRecursive(vtx.left, x - ROW_SEP, y + COL_SEP);
-	
-		}
-	
-		// if the current vertex has a right child
-		if (vtx.right != null) {
-	
-		// recursively traverse the right subtree
-		this.setLayoutTidyRecursive(vtx.right, x + ROW_SEP, y + COL_SEP);
-	
-		}
-	
-	}
-		
-	// Helper method to calculate the label width of a vertex
-	this.getLabelWidth = function (vtx) {
-		const vElt = this.vElts.get(vtx.id);
-		const label = vtx.toString();
-		const textElement = document.createElementNS(SVG_NS, 'text');
-		textElement.textContent = label;
-		this.vertexGroup.appendChild(textElement);
-		const labelWidth = textElement.getBBox().width;
-		this.vertexGroup.removeChild(textElement);
-		return labelWidth;
+    // set the layout according to Wetherell and Shannon's Tidy Tree
+    // procedure
+    this.setLayoutTidy = function () {
+		// COMPLETE THIS FUNCTION 
 	}
 }
-
 
 // make and return a random binary tree of a given size
 function getRandomTree (size) {
@@ -409,30 +312,6 @@ function getRandomTree (size) {
     return bt;
 }
 
-function getNotGreatTree (size) {
-    const bt = new BinaryTree(new Vertex('0'));
-    bt.addLeftChild('0', '1');
-    bt.addLeftChild('1', '2');
-    bt.addRightChild('0', '3');
-    for (let id = 4; id < size; id++) {
-	bt.addLeftChild((id-1).toString(), id.toString());
-    }
-
-    return bt;
-}
-
-function getBadTree (size) {
-    const bt = new BinaryTree(new Vertex('0'));
-    for (let id = 1; id < size; id++) {
-	if (id % 2 == 0) {
-	    bt.addRightChild((id-1).toString(), id.toString());
-	} else {
-	    bt.addLeftChild((id-1).toString(), id.toString());
-	}
-    }
-
-    return bt;
-}
 
 function getTidyTree () {
     const bt = new BinaryTree(new Vertex('0'));
@@ -462,37 +341,14 @@ btnRandomTree.addEventListener("click", function () {
     btv.setTree(getRandomTree(17));
 });
 
-const btnExampleOne = document.querySelector("#btn-example-one");
-btnExampleOne.addEventListener("click", function () {
-    btv.setTree(getNotGreatTree(12));
-});
-
-const btnExampleTwo = document.querySelector("#btn-example-two");
-btnExampleTwo.addEventListener("click", function () {
-    btv.setTree(getBadTree(12));
-});
-
 const btnExampleThree = document.querySelector("#btn-example-three");
 btnExampleThree.addEventListener("click", function () {
     btv.setTree(getTidyTree());
 });
 
-const btnRandom = document.querySelector("#btn-random-layout");
-btnRandom.addEventListener("click", function () {
-    btv.setLayout("random");
-});
-
-const btnGreedy = document.querySelector("#btn-greedy-layout");
-btnGreedy.addEventListener("click", function () {
-    btv.setLayout("greedy");
-});
-
-const btnKnuth = document.querySelector("#btn-knuth-layout");
-btnKnuth.addEventListener("click", function () {
-    btv.setLayout("knuth");    
-});
 
 const btnTidy = document.querySelector("#btn-tidy-layout");
 btnTidy.addEventListener("click", function () {
     btv.setLayout("tidy");    
 });
+
