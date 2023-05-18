@@ -385,21 +385,21 @@ function ConvexHull (ps, viewer) {
     // Initialize Hull
     var hullStack = [];
 
-    var upperHullStack = new PointSet();
+    var upperHullStack = [];
     var lowerHullStack = [];
 
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
-        // Sort pointset 
-        upperHullStack = this.ps.points.sort();
-        console.log(upperHullStack);
+        // sort
+        this.ps.sort();
+        
+        // Highlight first vertex - first and last element
     }
 
 
     // Perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
-        this.upperStep();
-        // this.lowerStep();
+        
     }
 
     // Actual step function
