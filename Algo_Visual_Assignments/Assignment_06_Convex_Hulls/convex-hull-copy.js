@@ -403,7 +403,8 @@ function ConvexHull (ps, viewer) {
 
     // Perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
-        this.upperStep();        
+        // this.upperStep();     
+        this.lowerStep();   
     }
 
     // Actual step function
@@ -507,7 +508,7 @@ function ConvexHull (ps, viewer) {
             var r = this.ps.points[counter];
 
             // Left turn
-            if (!this.rightTurn(p, q, r)){
+            if (this.rightTurn(p, q, r)){
                 this.hullStack.push(q);
 
                 //draw
@@ -548,6 +549,18 @@ function ConvexHull (ps, viewer) {
 
         // Clockwise orientation (right turn)
         if(orientation < 0) {
+            return true;
+        } else{  // Counterclockwise orientation (left turn)
+            return false;
+        }
+    }
+
+    // Orientation
+    this.leftTurn = function(p, q, r) {
+        var orientation = (q.y - p.y)*(r.x - q.x) - (q.x - p.x)*(r.y-q.y);
+
+        // Clockwise orientation (right turn)
+        if(orientation > 0) {
             return true;
         } else{  // Counterclockwise orientation (left turn)
             return false;
