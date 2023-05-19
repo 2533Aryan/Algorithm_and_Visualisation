@@ -443,7 +443,7 @@ function ConvexHull (ps, viewer) {
         }
 
         // Return the convex hull PointSet
-        return hull;        
+        console.log(hull);        
     }
 
     // Actual step function
