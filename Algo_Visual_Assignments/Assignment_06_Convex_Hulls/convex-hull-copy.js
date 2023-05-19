@@ -430,7 +430,7 @@ function ConvexHull (ps, viewer) {
                 hullStack.push(ps.points[index-1]);
 
                 //draw
-                this.viewer.highlightVertex(ps.points[index-1]);                
+                this.viewer.highlightVertex(hullStack[index-2]);                
 
                 // edge
                 // const currentEdge = this.viewer.addEdge(hullStack[hullStack.length - 1], ps.points[index-1]);
@@ -452,15 +452,14 @@ function ConvexHull (ps, viewer) {
                 hullStack.push(q);
 
                 //draw
-                this.viewer.highlightVertex(ps.points[index - 1]);
+                this.viewer.highlightVertex(hullStack[index - 1]);
                 
                 // edge
                 // const currentEdge = this.viewer.addEdge(ps.points[index - 2], ps.points[index - 1]);
                 // this.viewer.visEdge(currentEdge);
             } else {
                 //draw
-                this.viewer.unhighlightVertex(ps.points[index - 1]);
-                // hullStack.pop();
+                // this.viewer.unhighlightVertex(hullStack[index]);
             }
         }
 
