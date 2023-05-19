@@ -434,6 +434,10 @@ function ConvexHull (ps, viewer) {
                 //draw
                 this.viewer.highlightVertex(ps.points[index-1]);                
 
+                // edge
+                const currentEdge = this.viewer.addEdge(ps.points[index - 2], ps.points[index - 1]);
+                this.viewer.visEdge(currentEdge);
+
                 //remove overlay
                 // this.viewer.removeOverlayVertex(ps.points[index-1]);
 
