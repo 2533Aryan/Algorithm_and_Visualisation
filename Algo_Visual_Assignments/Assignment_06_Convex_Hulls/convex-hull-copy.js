@@ -398,6 +398,9 @@ function ConvexHull (ps, viewer) {
 
         // highlight initial vertex
         this.viewer.highlightVertex(ps.points[0]);
+
+        console.log(ps.points);        
+
     }
 
 
@@ -419,8 +422,8 @@ function ConvexHull (ps, viewer) {
             this.viewer.highlightVertex(hullStack[1]);
             
             // edge
-            const currentEdge = this.viewer.addEdge(hullStack[0], hullStack[1]);
-            this.viewer.visEdge(currentEdge);
+            // const currentEdge = this.viewer.addEdge(hullStack[0], hullStack[1]);
+            // this.viewer.visEdge(currentEdge);
         } else{
             // For last element
             if (index == ps.size()){
@@ -430,11 +433,11 @@ function ConvexHull (ps, viewer) {
                 this.viewer.highlightVertex(ps.points[index-1]);                
 
                 // edge
-                const currentEdge = this.viewer.addEdge(hullStack[hullStack.length - 1], ps.points[index-1]);
-                this.viewer.visEdge(currentEdge);
+                // const currentEdge = this.viewer.addEdge(hullStack[hullStack.length - 1], ps.points[index-1]);
+                // this.viewer.visEdge(currentEdge);
 
-                this.viewer.addOverlayVertex(hullStack[hullStack.length - 1]);
-                this.viewer.addOverlayVertex(ps.points[index-1]);
+                // this.viewer.addOverlayVertex(hullStack[hullStack.length - 1]);
+                // this.viewer.addOverlayVertex(ps.points[index-1]);
 
                 return;
             }
@@ -452,12 +455,12 @@ function ConvexHull (ps, viewer) {
                 this.viewer.highlightVertex(ps.points[index - 1]);
                 
                 // edge
-                const currentEdge = this.viewer.addEdge(ps.points[index - 2], ps.points[index - 1]);
-                this.viewer.visEdge(currentEdge);
+                // const currentEdge = this.viewer.addEdge(ps.points[index - 2], ps.points[index - 1]);
+                // this.viewer.visEdge(currentEdge);
             } else {
                 //draw
                 this.viewer.unhighlightVertex(ps.points[index - 1]);
-                hullStack.pop();
+                // hullStack.pop();
             }
         }
 
