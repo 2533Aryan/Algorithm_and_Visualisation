@@ -417,7 +417,11 @@ function ConvexHull (ps, viewer) {
 
             // highlight vertex
             this.viewer.highlightVertex(hullStack[1]);
-
+            
+            // edge
+            const currentEdge = this.viewer.addEdge(hullStack[0], hullStack[1]);
+            this.viewer.visEdge(currentEdge);
+            
             // move overlay
             // if(this.ps.size() > 2){
             //     this.viewer.moveOverlayVertex(ps.points[1], ps.points[2]);                       
@@ -460,7 +464,7 @@ function ConvexHull (ps, viewer) {
 
             } else {
                 //draw
-                this.viewer.unhighlightVertex(ps.points[index - 1]);
+                // this.viewer.unhighlightVertex(ps.points[index - 1]);
 
                 //remove overlay
                 // this.viewer.moveOverlayVertex(q, p);
