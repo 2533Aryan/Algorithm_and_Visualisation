@@ -385,8 +385,8 @@ function ConvexHull (ps, viewer) {
     // Initialize Hull
     var hullStack = [];
 
-    var upperHullStack = [];
-    var lowerHullStack = [];
+    var upperHull;
+    var lowerHull;
 
     var i = 0
 
@@ -395,6 +395,10 @@ function ConvexHull (ps, viewer) {
         // sort
         this.ps.sort();
         
+        // Declare
+        var upperHull = [];
+        var lowerHull = [];
+
         // Highlight first vertex - first and last element
     }
 
