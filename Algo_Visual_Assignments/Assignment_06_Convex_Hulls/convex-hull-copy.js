@@ -403,8 +403,8 @@ function ConvexHull (ps, viewer) {
 
     // Perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
-        // this.upperStep();     
-        this.lowerStep();   
+        this.upperStep();     
+        // this.lowerStep();   
     }
 
     // Actual step function
@@ -477,70 +477,73 @@ function ConvexHull (ps, viewer) {
     }
 
 
-    this.lowerStep = function () {
-        // Hull Stack just has two element
-        if (counter == 2) {
-            // highlight vertex
-            this.viewer.highlightVertex(ps.points[1]);
+    // this.lowerStep = function () {
+    //     // hull stack empty - add new points
+    //     if (hullStack.length == 0){
+    //         hullStack.push(this.ps.points[0]);
+    //         hullStack.push(this.ps.points[1]);
 
-            // move overlay
-            // if(this.ps.size() > 2){
-            //     this.viewer.moveOverlayVertex(ps.points[1], ps.points[2]);                       
-            // }
-        } else{
-            // For last element
-            if (counter == ps.size()){
-                this.hullStack.push(ps.points[counter-1]);
+    //         // highlight vertex
+    //         this.viewer.highlightVertex(hullStack[1]);
 
-                //draw
-                this.viewer.highlightVertex(ps.points[counter-1]);                
+    //         // move overlay
+    //         // if(this.ps.size() > 2){
+    //         //     this.viewer.moveOverlayVertex(ps.points[1], ps.points[2]);                       
+    //         // }
+    //     } else{
+    //         // For last element
+    //         if (counter == ps.size()){
+    //             this.hullStack.push(ps.points[counter-1]);
 
-                //remove overlay
-                // this.viewer.removeOverlayVertex(ps.points[counter-1]);
+    //             //draw
+    //             this.viewer.highlightVertex(ps.points[counter-1]);                
 
-                reverse = true;
-                return;
-            }
+    //             //remove overlay
+    //             // this.viewer.removeOverlayVertex(ps.points[counter-1]);
 
-            // Set three points
-            var p = this.ps.points[counter - 2];
-            var q = this.ps.points[counter - 1];
-            var r = this.ps.points[counter];
+    //             reverse = true;
+    //             return;
+    //         }
 
-            // Left turn
-            if (this.rightTurn(p, q, r)){
-                this.hullStack.push(q);
+    //         // Set three points
+    //         var p = this.ps.points[counter - 2];
+    //         var q = this.ps.points[counter - 1];
+    //         var r = this.ps.points[counter];
 
-                //draw
-                this.viewer.highlightVertex(ps.points[counter - 1]);
+    //         // Left turn
+    //         if (this.leftTurn(p, q, r)){
+    //             this.hullStack.push(q);
 
-                // overlay
-                // if (overlayCounter == 1){
-                //     this.viewer.removeOverlayVertex(this.ps.points[counter - 3]);
-                //     overlayCounter--;
+    //             //draw
+    //             this.viewer.highlightVertex(ps.points[counter - 1]);
 
-                //     this.viewer.addOverlayVertex(q);
-                // } else {
-                //     this.viewer.moveOverlayVertex(q, r);
-                // }
+    //             // overlay
+    //             // if (overlayCounter == 1){
+    //             //     this.viewer.removeOverlayVertex(this.ps.points[counter - 3]);
+    //             //     overlayCounter--;
 
-            } else {
-                //draw
-                this.viewer.unhighlightVertex(ps.points[counter - 1]);
+    //             //     this.viewer.addOverlayVertex(q);
+    //             // } else {
+    //             //     this.viewer.moveOverlayVertex(q, r);
+    //             // }
 
-                //remove overlay
-                // this.viewer.moveOverlayVertex(q, p);
-                // overlayCounter++;
+    //         } else {
+    //             //draw
+    //             this.viewer.unhighlightVertex(ps.points[counter - 1]);
 
-                this.hullStack.pop();
-            }
-        }
+    //             //remove overlay
+    //             // this.viewer.moveOverlayVertex(q, p);
+    //             // overlayCounter++;
 
-        // increment counter
-        counter++;
+    //             this.hullStack.pop();
+    //         }
+    //     }
 
-        console.log(this.hullStack);            
-    }
+    //     // increment counter
+    //     counter++;
+
+    //     console.log(this.hullStack);            
+    // }
 
 
     // Orientation
