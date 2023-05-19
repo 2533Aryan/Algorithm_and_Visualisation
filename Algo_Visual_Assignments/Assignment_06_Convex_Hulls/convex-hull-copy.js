@@ -410,6 +410,65 @@ function ConvexHull (ps, viewer) {
         // this.lowerStep();   
     }
 
+    // // Actual step function
+    // this.upperStep = function () {
+
+    //     // hull stack empty - add new points
+    //     if (hullStack.length == 0){
+    //         hullStack.push(this.ps.points[0]);
+    //         hullStack.push(this.ps.points[1]);
+
+    //         // highlight vertex
+    //         this.viewer.highlightVertex(hullStack[1]);
+            
+    //         // edge
+    //         // const currentEdge = this.viewer.addEdge(hullStack[0], hullStack[1]);
+    //         // this.viewer.visEdge(currentEdge);
+    //     } else{
+    //         // For last element
+    //         if (index == ps.size()){
+    //             hullStack.push(ps.points[index-1]);
+
+    //             //draw
+    //             this.viewer.highlightVertex(hullStack[index-2]);                
+
+    //             // edge
+    //             // const currentEdge = this.viewer.addEdge(hullStack[hullStack.length - 1], ps.points[index-1]);
+    //             // this.viewer.visEdge(currentEdge);
+
+    //             // this.viewer.addOverlayVertex(hullStack[hullStack.length - 1]);
+    //             // this.viewer.addOverlayVertex(ps.points[index-1]);
+
+    //             return;
+    //         }
+
+    //         // Set three points
+    //         var p = this.ps.points[index - 2];
+    //         var q = this.ps.points[index - 1];
+    //         var r = this.ps.points[index];
+
+    //         // Right turn
+    //         if (this.rightTurn(p, q, r)){
+    //             hullStack.push(q);
+
+    //             //draw
+    //             this.viewer.highlightVertex(hullStack[index - 1]);
+                
+    //             // edge
+    //             // const currentEdge = this.viewer.addEdge(ps.points[index - 2], ps.points[index - 1]);
+    //             // this.viewer.visEdge(currentEdge);
+    //         } else {
+    //             //draw
+    //             // this.viewer.unhighlightVertex(hullStack[index]);
+    //         }
+    //     }
+
+    //     // increment index
+    //     index++;
+
+    //     console.log(hullStack);        
+    // }
+
     // Actual step function
     this.upperStep = function () {
 
@@ -421,9 +480,6 @@ function ConvexHull (ps, viewer) {
             // highlight vertex
             this.viewer.highlightVertex(hullStack[1]);
             
-            // edge
-            // const currentEdge = this.viewer.addEdge(hullStack[0], hullStack[1]);
-            // this.viewer.visEdge(currentEdge);
         } else{
             // For last element
             if (index == ps.size()){
@@ -431,14 +487,6 @@ function ConvexHull (ps, viewer) {
 
                 //draw
                 this.viewer.highlightVertex(hullStack[index-2]);                
-
-                // edge
-                // const currentEdge = this.viewer.addEdge(hullStack[hullStack.length - 1], ps.points[index-1]);
-                // this.viewer.visEdge(currentEdge);
-
-                // this.viewer.addOverlayVertex(hullStack[hullStack.length - 1]);
-                // this.viewer.addOverlayVertex(ps.points[index-1]);
-
                 return;
             }
 
@@ -454,12 +502,6 @@ function ConvexHull (ps, viewer) {
                 //draw
                 this.viewer.highlightVertex(hullStack[index - 1]);
                 
-                // edge
-                // const currentEdge = this.viewer.addEdge(ps.points[index - 2], ps.points[index - 1]);
-                // this.viewer.visEdge(currentEdge);
-            } else {
-                //draw
-                // this.viewer.unhighlightVertex(hullStack[index]);
             }
         }
 
@@ -468,7 +510,6 @@ function ConvexHull (ps, viewer) {
 
         console.log(hullStack);        
     }
-
 
     // this.lowerStep = function () {
     //     // hull stack empty - add new points
