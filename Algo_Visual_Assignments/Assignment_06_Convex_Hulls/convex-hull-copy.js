@@ -392,58 +392,18 @@ function ConvexHull (ps, viewer) {
 
     // start a visualization of the Graham scan algorithm performed on ps
     this.start = function () {
-        // sort
+        // Sort pointset 
         this.ps.sort();
-        
-        // Declare
-        var upperHull = [];
-        var lowerHull = [];
+        // console.log(this.ps.points);
 
-        // Highlight first vertex - first and last element
+        // highlight initial vertex
+        this.viewer.highlightVertex(ps.points[0]);
     }
 
 
     // Perform a single step of the Graham scan algorithm performed on ps
     this.step = function () {
-
-        // Process each point in the sorted point set
-        if (i < this.ps.size()) {
-            var p = this.ps.points[i];
-            
-            // Build the lower hull
-            if (lowerHull.length >= 2) {
-                var q = lowerHull[lowerHull.length - 1];
-                var r = lowerHull[lowerHull.length - 2];
-                if ((p.y - r.y) * (r.x - q.x) >= (r.y - q.y) * (p.x - r.x)) {
-                    lowerHull.pop();
-                }
-            }
-            lowerHull.push(p);
-        
-
-            // Build the upper hull
-            if (upperHull.length >= 2) {
-                var q = upperHull[upperHull.length - 1];
-                var r = upperHull[upperHull.length - 2];
-                if ((p.y - r.y) * (r.x - q.x) <= (r.y - q.y) * (p.x - r.x)) {
-                    upperHull.pop();
-                }
-            }
-            upperHull.push(p);
-        }
-        
-        // Combine the lower and upper hulls into a single hull
-        upperHull.pop();
-        var hullPoints = upperHull.concat(lowerHull.reverse());
-
-        // Create a new PointSet to hold the convex hull points
-        var hull = new PointSet();
-        for (var i = 0; i < hullPoints.length; i++) {
-            hull.addPoint(hullPoints[i]);
-        }
-
-        // Return the convex hull PointSet
-        console.log(hull);        
+        this.upperStep();        
     }
 
     // Actual step function
