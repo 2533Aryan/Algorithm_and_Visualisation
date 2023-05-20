@@ -329,53 +329,46 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 	}
     }
 
-	// // set the layout according to Wetherell and Shannon's Tidy Tree
-	// // procedure
-	// this.setLayoutTidy = function () {
-		
-	// }
 
-  // Helper function to calculate the sum of ancestor's offsets
-  function calculateSumOfAncestorOffsets(node, offsetMap) {
+	// Helper function to calculate the sum of ancestor's offsets
+	function calculateSumOfAncestorOffsets(node, offsetMap) {
 	let sum = 0;
 	let parent = node.parent;
-	
+
 	while (parent) {
-	  sum += offsetMap.get(parent);
-	  parent = parent.parent;
+		sum += offsetMap.get(parent);
+		parent = parent.parent;
 	}
-	
+
 	return sum;
-  }
-  
-  // Phase Two - Placeholder
-  
+	}
+
 	this.setLayoutTidy = function () {
-	const vertices = this.tree.verticesInOrder();
-	const posMap = new Map();
-	const offsetMap = new Map();
-	
-	// Implementation for Phase One Setup
-	for (let i = 0; i < vertices.length; i++) {
-	  const vtx = vertices[i];
-	  const col = vtx.depth; // Next available column at each depth
-	  const offset = calculateSumOfAncestorOffsets(vtx, offsetMap);
-	  
-	  posMap.set(vtx, col); // Store position for each vertex
-	  offsetMap.set(vtx, offset); // Store offset for each vertex
+		const vertices = this.tree.verticesInOrder();
+		const posMap = new Map();
+		const offsetMap = new Map();
+
+		// Implementation for Phase One Setup
+		for (let i = 0; i < vertices.length; i++) {
+			const vtx = vertices[i];
+			const col = vtx.depth; // Next available column at each depth
+			const offset = calculateSumOfAncestorOffsets(vtx, offsetMap);
+			
+			posMap.set(vtx, col); // Store position for each vertex
+			offsetMap.set(vtx, offset); // Store offset for each vertex
+		}
+
+		// Implementation for Phase Two
+		for (let i = 0; i < vertices.length; i++) {
+			const vtx = vertices[i];
+			const row = vtx.depth;
+			const col = posMap.get(vtx) + calculateSumOfAncestorOffsets(vtx, offsetMap);
+			
+			// Set final position of vtx (row and col)
+			this.xCoords.set(vtx.id, PADDING + col * COL_SEP);
+			this.yCoords.set(vtx.id, this.height - PADDING - row * ROW_SEP);
+		}
 	}
-	
-	// Implementation for Phase Two
-	for (let i = 0; i < vertices.length; i++) {
-	  const vtx = vertices[i];
-	  const row = vtx.depth;
-	  const col = posMap.get(vtx) + calculateSumOfAncestorOffsets(vtx, offsetMap);
-	  
-		// Set final position of vtx (row and col)
-		this.xCoords.set(vtx.id, PADDING + col * COL_SEP);
-		this.yCoords.set(vtx.id, this.height - PADDING - row * ROW_SEP);
-	}
-  }
 	// // set the layout according to Wetherell and Shannon's Tidy Tree
 	// // procedure
 	// this.setLayoutTidy = function () {
