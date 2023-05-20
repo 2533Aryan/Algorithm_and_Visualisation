@@ -350,9 +350,10 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 			offsetMap.set(vtx, offset); // Store offset for each vertex
 		}
 
+		
+		// Implementation for Phase Two
 		vertices = this.tree.verticesPreOrder();
 
-		// Implementation for Phase Two
 		for (let i = 0; i < vertices.length; i++) {
 			let vtx = vertices[i];
 			const row = depths.get(vtx.id);
