@@ -331,7 +331,7 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 
 
 	this.setLayoutTidy = function () {
-		const vertices = this.tree.verticesPostOrder();
+		let vertices = this.tree.verticesPostOrder();
 		const depths = this.tree.depths;
 
 		// Map
@@ -348,30 +348,45 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 			offsetMap.set(vtx, offset); // Store offset for each vertex
 		}
 
+		vertices = this.tree.verticesPreOrder();
+
 		// Implementation for Phase Two
 		for (let i = 0; i < vertices.length; i++) {
 			const vtx = vertices[i];
-			const row = vtx.depth;
-			const col = posMap.get(vtx) + calculateSumOfAncestorOffsets(vtx, offsetMap);
-			
+			const row = depths.get(vtx.id);
+			const col = posMap.get(vtx) + offsetMap.get(vtx);
+		
 			// Set final position of vtx (row and col)
 			this.xCoords.set(vtx.id, PADDING + col * COL_SEP);
 			this.yCoords.set(vtx.id, this.height - PADDING - row * ROW_SEP);
 		}
+
+		// Helper function to calculate the sum of ancestor offsets
+		function calculateSumOfAncestorOffsets(vertex, offsetMap) {
+			let offset = 0;
+			let parent = vertex.parent;
+
+			while (parent) {
+			offset += offsetMap.get(parent);
+			parent = parent.parent;
+			}
+
+			return offset;
+		}		
 	}
 
-	// Helper function to calculate the sum of ancestor's offsets
-	function calculateSumOfAncestorOffsets(node, offsetMap) {
-		let sum = 0;
-		let parent = node.parent;
+	// // Helper function to calculate the sum of ancestor's offsets
+	// function calculateSumOfAncestorOffsets(node, offsetMap) {
+	// 	let sum = 0;
+	// 	let parent = node.parent;
 	
-		while (parent) {
-			sum += offsetMap.get(parent);
-			parent = parent.parent;
-		}
+	// 	while (parent) {
+	// 		sum += offsetMap.get(parent);
+	// 		parent = parent.parent;
+	// 	}
 	
-		return sum;
-	}
+	// 	return sum;
+	// }
 
 	// // set the layout according to Wetherell and Shannon's Tidy Tree
 	// // procedure
