@@ -331,7 +331,10 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 
 
 	this.setLayoutTidy = function () {
-		const vertices = this.tree.verticesInOrder();
+		const vertices = this.tree.verticesPostOrder();
+		const depths = this.tree.depths;
+
+		// Map
 		const posMap = new Map();
 		const offsetMap = new Map();
 
