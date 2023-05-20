@@ -332,6 +332,8 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 	// set the layout according to Wetherell and Shannon's Tidy Tree
 	// procedure
 	this.setLayoutTidy = function () {
+		
+		// Implementation for Phase One Setup
 		let vertices = this.tree.verticesPostOrder();
 		const depths = this.tree.depths;
 
@@ -339,9 +341,8 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 		const posMap = new Map();
 		const offsetMap = new Map();
 
-		// Implementation for Phase One Setup
 		for (let i = 0; i < vertices.length; i++) {
-			const vtx = vertices[i];
+			let vtx = vertices[i];
 			const col = depths.get(vtx.id); // Next available column at each depth
 			const offset = calculateSumOfAncestorOffsets(vtx, offsetMap);
 			
@@ -353,7 +354,7 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 
 		// Implementation for Phase Two
 		for (let i = 0; i < vertices.length; i++) {
-			const vtx = vertices[i];
+			let vtx = vertices[i];
 			const row = depths.get(vtx.id);
 			const col = posMap.get(vtx) + offsetMap.get(vtx);
 		
