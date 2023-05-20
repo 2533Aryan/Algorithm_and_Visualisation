@@ -335,20 +335,6 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 		
 	// }
 
-// Helper function to get vertices in post-order
-function getVerticesInPostOrder(tree) {
-	const vertices = [];
-	
-	function traverse(node) {
-	  if (node.left) traverse(node.left);
-	  if (node.right) traverse(node.right);
-	  vertices.push(node);
-	}
-	
-	traverse(tree.root);
-	return vertices;
-  }
-  
   // Helper function to calculate the sum of ancestor's offsets
   function calculateSumOfAncestorOffsets(node, offsetMap) {
 	let sum = 0;
