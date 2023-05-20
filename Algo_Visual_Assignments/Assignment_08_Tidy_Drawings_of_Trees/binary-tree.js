@@ -341,7 +341,7 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 		// Implementation for Phase One Setup
 		for (let i = 0; i < vertices.length; i++) {
 			const vtx = vertices[i];
-			const col = vtx.depth; // Next available column at each depth
+			const col = depths.get(vtx.id); // Next available column at each depth
 			const offset = calculateSumOfAncestorOffsets(vtx, offsetMap);
 			
 			posMap.set(vtx, col); // Store position for each vertex
