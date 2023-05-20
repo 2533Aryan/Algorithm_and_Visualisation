@@ -364,14 +364,15 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 			this.yCoords.set(vtx.id, this.height - PADDING - row * ROW_SEP);
 		}
 
+		
 		// Helper function to calculate the sum of ancestor offsets
 		function calculateSumOfAncestorOffsets(vertex, offsetMap) {
 			let offset = 0;
 			let parent = vertex.parent;
 
 			while (parent) {
-			offset += offsetMap.get(parent);
-			parent = parent.parent;
+				offset += offsetMap.get(parent);
+				parent = parent.parent;
 			}
 
 			return offset;
