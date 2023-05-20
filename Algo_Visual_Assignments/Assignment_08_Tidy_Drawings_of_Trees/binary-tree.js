@@ -330,19 +330,6 @@ const BinaryTreeViewer = function (svg, rootGroup) {
     }
 
 
-	// Helper function to calculate the sum of ancestor's offsets
-	function calculateSumOfAncestorOffsets(node, offsetMap) {
-	let sum = 0;
-	let parent = node.parent;
-
-	while (parent) {
-		sum += offsetMap.get(parent);
-		parent = parent.parent;
-	}
-
-	return sum;
-	}
-
 	this.setLayoutTidy = function () {
 		const vertices = this.tree.verticesInOrder();
 		const posMap = new Map();
@@ -369,6 +356,20 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 			this.yCoords.set(vtx.id, this.height - PADDING - row * ROW_SEP);
 		}
 	}
+
+	// Helper function to calculate the sum of ancestor's offsets
+	function calculateSumOfAncestorOffsets(node, offsetMap) {
+		let sum = 0;
+		let parent = node.parent;
+	
+		while (parent) {
+			sum += offsetMap.get(parent);
+			parent = parent.parent;
+		}
+	
+		return sum;
+	}
+
 	// // set the layout according to Wetherell and Shannon's Tidy Tree
 	// // procedure
 	// this.setLayoutTidy = function () {
