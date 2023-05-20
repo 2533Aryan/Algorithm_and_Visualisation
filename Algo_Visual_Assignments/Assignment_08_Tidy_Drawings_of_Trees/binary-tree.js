@@ -329,6 +329,14 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 	}
     }
 
+	////////////////////////////////////////////////////////////////////////////////////////////
+	// Below is my attempt to implement the setup from the 14th lecture, but it's not 
+	// functioning as expected. I wish I have more time to improve upon this assignment. 
+	// Nevertheless, I enjoyed working on it and would appreciate your guidance in identifying 
+	// the issues and suggesting potential solutions. Also, the previous version of the 
+	// implementation can be found below this function and is commented out.
+	////////////////////////////////////////////////////////////////////////////////////////////
+
 	// set the layout according to Wetherell and Shannon's Tidy Tree
 	// procedure
 	this.setLayoutTidy = function () {
