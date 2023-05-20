@@ -329,39 +329,100 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 	}
     }
 
-	// set the layout according to Wetherell and Shannon's Tidy Tree
-	// procedure
-	this.setLayoutTidy = function () {
-
-		// get the root vertex
-		let root = this.tree.root;
+	// // set the layout according to Wetherell and Shannon's Tidy Tree
+	// // procedure
+	// this.setLayoutTidy = function () {
 		
-		// recursively traverse the tree and set the x and y coordinates of each vertex
-		this.setLayoutTidyRecursive(root, 250, 350);
+	// }
+
+// Helper function to get vertices in post-order
+function getVerticesInPostOrder(tree) {
+	const vertices = [];
 	
-		// update the positions of all vertices in the SVG elements
-		this.update();
+	function traverse(node) {
+	  if (node.left) traverse(node.left);
+	  if (node.right) traverse(node.right);
+	  vertices.push(node);
 	}
 	
-	// recursively traverse the tree and set the x and y coordinates of each vertex
-	this.setLayoutTidyRecursive = function (vtx, x, y) {
+	traverse(tree.root);
+	return vertices;
+  }
+  
+  // Helper function to calculate the sum of ancestor's offsets
+  function calculateSumOfAncestorOffsets(node, offsetMap) {
+	let sum = 0;
+	let parent = node.parent;
 	
-		// set the x and y coordinates of the current vertex
-		this.xCoords.set(vtx.id, x);
-		this.yCoords.set(vtx.id, y);
-	
-		// if the current vertex has a left child
-		if (vtx.left != null) {
-			// recursively traverse the left subtree
-			this.setLayoutTidyRecursive(vtx.left, x - ROW_SEP, y - COL_SEP);
-		}
-	
-		// if the current vertex has a right child
-		if (vtx.right != null) {
-			// recursively traverse the right subtree
-			this.setLayoutTidyRecursive(vtx.right, x + ROW_SEP, y - COL_SEP);
-		}
+	while (parent) {
+	  sum += offsetMap.get(parent);
+	  parent = parent.parent;
 	}
+	
+	return sum;
+  }
+  
+  // Phase Two - Placeholder
+  
+	this.setLayoutTidy = function () {
+	const vertices = this.tree.verticesInOrder();
+	const posMap = new Map();
+	const offsetMap = new Map();
+	
+	// Implementation for Phase One Setup
+	for (let i = 0; i < vertices.length; i++) {
+	  const vtx = vertices[i];
+	  const col = vtx.depth; // Next available column at each depth
+	  const offset = calculateSumOfAncestorOffsets(vtx, offsetMap);
+	  
+	  posMap.set(vtx, col); // Store position for each vertex
+	  offsetMap.set(vtx, offset); // Store offset for each vertex
+	}
+	
+	// Implementation for Phase Two
+	for (let i = 0; i < vertices.length; i++) {
+	  const vtx = vertices[i];
+	  const row = vtx.depth;
+	  const col = posMap.get(vtx) + calculateSumOfAncestorOffsets(vtx, offsetMap);
+	  
+		// Set final position of vtx (row and col)
+		this.xCoords.set(vtx.id, PADDING + col * COL_SEP);
+		this.yCoords.set(vtx.id, this.height - PADDING - row * ROW_SEP);
+	}
+  }
+	// // set the layout according to Wetherell and Shannon's Tidy Tree
+	// // procedure
+	// this.setLayoutTidy = function () {
+
+	// 	// get the root vertex
+	// 	let root = this.tree.root;
+		
+	// 	// recursively traverse the tree and set the x and y coordinates of each vertex
+	// 	this.setLayoutTidyRecursive(root, 250, 350);
+	
+	// 	// update the positions of all vertices in the SVG elements
+	// 	this.update();
+	// }
+	
+	// // recursively traverse the tree and set the x and y coordinates of each vertex
+	// this.setLayoutTidyRecursive = function (vtx, x, y) {
+	
+	// 	// set the x and y coordinates of the current vertex
+	// 	this.xCoords.set(vtx.id, x);
+	// 	this.yCoords.set(vtx.id, y);
+	
+	// 	// if the current vertex has a left child
+	// 	if (vtx.left != null) {
+	// 		// recursively traverse the left subtree
+	// 		this.setLayoutTidyRecursive(vtx.left, x - ROW_SEP, y - COL_SEP);
+	// 	}
+	
+	// 	// if the current vertex has a right child
+	// 	if (vtx.right != null) {
+	// 		// recursively traverse the right subtree
+	// 		this.setLayoutTidyRecursive(vtx.right, x + ROW_SEP, y - COL_SEP);
+	// 	}
+	// }
 		
 	// Helper method to calculate the label width of a vertex
 	this.getLabelWidth = function (vtx) {
