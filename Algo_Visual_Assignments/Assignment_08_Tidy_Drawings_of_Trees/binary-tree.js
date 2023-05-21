@@ -336,7 +336,7 @@ const BinaryTreeViewer = function (svg, rootGroup) {
 	// the issues and suggesting potential solutions. Also, the previous version of the 
 	// implementation can be found below this function and is commented out.
 	////////////////////////////////////////////////////////////////////////////////////////////
-				
+					
 	// set the layout according to Wetherell and Shannon's Tidy Tree
 	// procedure
 	this.setLayoutTidy = function () {
