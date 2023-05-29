@@ -77,3 +77,4 @@ const k = 5;
 const visualization = new d3ml.KNNVisualization(data, visualizationOptions, dataPointTypes, k);
 visualization.draw();
 
+
